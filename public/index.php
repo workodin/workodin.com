@@ -10,6 +10,7 @@
     <meta name="keywords" content="emploi, formation, développeur web, formation distance">
 
     <link rel="icon" type="image/png" href="/assets/images/icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <style>
 html, body {
@@ -20,6 +21,7 @@ html, body {
     margin:0;
     padding:0;
     background-color:#000000;
+    font-family: 'Roboto', sans-serif;
 }    
 .page {
     max-width:1280px;
@@ -30,6 +32,10 @@ html, body {
 header, section, footer {
     padding:1rem;
 }
+a {
+    color: #666666;
+    text-decoration:none;
+}
     </style>
 </head>
 <body>
@@ -39,16 +45,19 @@ header, section, footer {
         </header>
         <main>
             <section>
-                <h2>Découvrez les offres d'emploi près de chez vous</h2>
+                <h2>Découvrez les offres d'emploi Développeur Web, près de chez vous</h2>
                 <p>Nous allons construire un observatoire des offres d'emploi sur la France.</p>
+                <p>Entreprises: détaillez votre description de poste et les niveaux de compétences attendus.</p>
             </section>
             <section>
                 <h2>Préparez vos compétences avec une formation à distance</h2>
-                <p>Entrainez-vous aux techniques professionnelles pour réaliser des sites internet</p>
+                <p>Entrainez-vous aux techniques professionnelles pour réaliser des sites internet.</p>
+                <p>Chaque jour, réussissez des exercices pratiques et apprenez de nouvelles techniques.</p>
             </section>
             <section>
                 <h2>Rejoignez une communauté de partage et d'entraide</h2>
                 <p>Venez rencontrer des développeurs de tous âges et de tous niveaux, sur la France entière.</p>
+                <p>Travaillez en équipe sur des projets innovants et motivants!</p>
             </section>
         </main>
         <footer>

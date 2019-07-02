@@ -91,3 +91,8 @@ RewriteRule . /index.php [L]
 * (note: on passe à 98% en performance web.dev)
 
 
+## Ajouter une police de caractères Roboto
+
+* https://fonts.google.com/specimen/Roboto?selection.family=Roboto
+* (note: sur web.dev, on a un conseil "high" Eliminate render-blocking resources)
+
