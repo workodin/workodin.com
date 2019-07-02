@@ -106,4 +106,11 @@ RewriteRule . /index.php [L]
 * et aussi ajout d'images
 * (note: on passe à 97% en performance, avec un conseil sur les tailles des images)
 
+## premier tag: version 0.4
+
+* on a la base pour une landing page
+* qui peut commencer à être référencé par les moteurs de recherche
+
+
+
 
