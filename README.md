@@ -51,3 +51,17 @@ Code pour le site internet https://workodin.com
 ## ajouter un peu de CSS
 
 * ajouter du contenu et du code CSS
+
+## Google Analytics
+
+* on ajoute rapidement Google Analytics
+* pour commencer à suivre la fréquentation du site
+* https://analytics.google.com/
+* (il faut avoir créé un compte gmail pour accéder aux services Google)
+* => Google fournit un code JS à ajouter avant la balise fermante body
+* (note: on tombe à 99% de performance sur web.dev)
+* On peut immédiatement suivre la fréquentation du site dans Google Analytics en Temps Réel
+
+
+
+

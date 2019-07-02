@@ -51,5 +51,16 @@ header, section, footer {
             <p><a href="//workodin.com">workodin.com</a> - tous droits réservés - &copy;2019</p>
         </footer>
     </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143142316-1"></script>
+    <script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-143142316-1');
+    </script>
+
 </body>
 </html>
