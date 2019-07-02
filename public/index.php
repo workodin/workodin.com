@@ -4,9 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Workodin : le site pour trouver et préparer votre poste de développeur web depuis chez vous</title>
+    
+    <title>Workodin.com : le site pour trouver et préparer votre poste de développeur web depuis chez vous</title>
     <meta name="description" content="Workodin : le site pour trouver et préparer votre poste de développeur web depuis chez vous">
     <meta name="keywords" content="emploi, formation, développeur web, formation distance">
+
+    <link rel="icon" type="image/png" href="/assets/images/icon.png">
+
     <style>
 html, body {
     width:100%;
@@ -31,7 +35,7 @@ header, section, footer {
 <body>
     <div class="page">
         <header>
-            <h1>WORKODIN</h1>
+            <h1>Workodin.com</h1>
         </header>
         <main>
             <section>

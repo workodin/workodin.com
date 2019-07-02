@@ -62,6 +62,32 @@ Code pour le site internet https://workodin.com
 * (note: on tombe à 99% de performance sur web.dev)
 * On peut immédiatement suivre la fréquentation du site dans Google Analytics en Temps Réel
 
+## Ajout de .htaccess pour centraliser les URLs sur index.php
 
+* Grâce aux Rewrite Rules
+* on peut ajouter un fichier .htaccess dans le dossier public/
+* https://wordpress.org/support/article/htaccess/
+* on paramètre le serveur web Apache pour déléguer les requêtes à index.php
+* => toutes les URLs sont centralisées par index.php
+* exemple: https://workodin.com/hello
+
+
+```
+# BEGIN WordPress
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# END WordPress
+```
+
+## Ajouter un favicon et le fichier robots.txt
+
+* les navigateurs et les moteurs de recherche utilisent ces fichiers
+* (note: on passe à 98% en performance web.dev)
 
 
