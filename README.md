@@ -115,5 +115,11 @@ RewriteRule . /index.php [L]
 
 * ajouter plus de texte pour améliorer le référencement
 
+## Ajout du formulaire d'inscription à la newsletter
+
+* ajout du code html et css pour le formulaire
+* ajout du code php pour le traitement du formulaire
+* on enregistre les infos dans un fichier .csv
+
 
 
