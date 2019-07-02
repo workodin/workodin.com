@@ -85,14 +85,43 @@ figure {
         </header>
         <main>
             <section>
-                <h2>Découvrez les offres d'emploi Développeur Web, près de chez vous</h2>
+                <h2>Découvrez les offres d'emploi Développeur Web Fullstack, près de chez vous</h2>
                 <p>Nous allons construire un observatoire des offres d'emploi sur la France.</p>
                 <p>Entreprises: détaillez votre description de poste et les niveaux de compétences attendus.</p>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS, Flex & Grid</li>
+                    <li>JavaScript</li>
+                    <li>PHP</li>
+                    <li>SQL</li>
+                </ul>
+                <ul>
+                    <li>Programmation Orientée Objet</li>
+                    <li>MVC et Design Patterns</li>
+                    <li>Framework et CMS</li>
+                </ul>
+                <ul>
+                    <li>WordPress</li>
+                    <li>Laravel</li>
+                    <li>Symfony</li>
+                </ul>
+                <ul>
+                    <li>VueJS</li>
+                    <li>BabylonJS</li>
+                    <li>jQuery</li>
+                    <li>Bootstrap</li>
+                </ul>
             </section>
             <section>
                 <h2>Préparez vos compétences avec une formation à distance</h2>
                 <p>Entrainez-vous aux techniques professionnelles pour réaliser des sites internet.</p>
                 <p>Chaque jour, réussissez des exercices pratiques et apprenez de nouvelles techniques.</p>
+                <ul>
+                    <li>Site Vitrine (TPE, PME)</li>
+                    <li>Site Blog (Magazine)</li>
+                    <li>Site Petites Annonces (Marketplace)</li>
+                </ul>
+                
             </section>
             <section>
                 <h2>Rejoignez une communauté de partage et d'entraide</h2>

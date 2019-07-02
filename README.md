@@ -111,6 +111,9 @@ RewriteRule . /index.php [L]
 * on a la base pour une landing page
 * qui peut commencer à être référencé par les moteurs de recherche
 
+## Ajout de contenu pour référencement
+
+* ajouter plus de texte pour améliorer le référencement
 
 
 
