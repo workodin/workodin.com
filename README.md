@@ -101,4 +101,9 @@ RewriteRule . /index.php [L]
 * https://pexels.com
 * https://allthefreestock.com
 
+## Ajout de CSS Flex
+
+* et aussi ajout d'images
+* (note: on passe à 97% en performance, avec un conseil sur les tailles des images)
+
 
