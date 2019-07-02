@@ -96,3 +96,9 @@ RewriteRule . /index.php [L]
 * https://fonts.google.com/specimen/Roboto?selection.family=Roboto
 * (note: sur web.dev, on a un conseil "high" Eliminate render-blocking resources)
 
+## Ajouter une image de fond
+
+* https://pexels.com
+* https://allthefreestock.com
+
+

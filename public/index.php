@@ -28,9 +28,12 @@ html, body {
     margin:0 auto;
     background-color:#ffffff;
     min-height:100%;
+    background: url('/assets/images/workodin-workout.jpg');
+    background-size:cover;
 }
 header, section, footer {
     padding:1rem;
+    background-color:rgba(255,255,255,0.8);
 }
 a {
     color: #666666;
@@ -42,6 +45,7 @@ a {
     <div class="page">
         <header>
             <h1>Workodin.com</h1>
+            <strong>Workout & Coding. Everyday & Everywhere.</strong>
         </header>
         <main>
             <section>
