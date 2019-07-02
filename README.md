@@ -42,3 +42,12 @@ Code pour le site internet https://workodin.com
 </body>
 </html>
 ```
+
+## tester les performances du site
+
+* Google propose un site qui permet de vérifier si le code d'une page est correct et si les temps de chargement sont rapides.
+* https://web.dev
+
+## ajouter un peu de CSS
+
+* ajouter du contenu et du code CSS
