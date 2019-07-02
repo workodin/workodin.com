@@ -120,6 +120,8 @@ RewriteRule . /index.php [L]
 * ajout du code html et css pour le formulaire
 * ajout du code php pour le traitement du formulaire
 * on enregistre les infos dans un fichier .csv
+* ajout de fichier .gitignore pour ne pas gérer les fichier private/*.csv dans git
+
 
 
 
