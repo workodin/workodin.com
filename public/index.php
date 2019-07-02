@@ -140,11 +140,16 @@ form .feedback {
             <section>
                 <h2>Suivez le projet: inscrivez-vous à la newsletter</h2>
                 <form id="form-newsletter" action="#form-newsletter" method="POST">
-                    <input type="text" name="nom" required placeholder="votre nom">
-                    <input type="email" name="email" required placeholder="votre email">
+                    <label for="form-nom">nom</label>
+                    <input id="form-nom" type="text" name="nom" required placeholder="votre nom">
+                    <label for="form-email">email</label>
+                    <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
                     <button type="submit">je soutiens ce projet !</button>
                     <div class="feedback">
 <?php
+// https://www.php.net/manual/fr/function.date-default-timezone-set.php
+date_default_timezone_set("Europe/Paris");
+
 // traitement du formulaire
 function getInfo($name, $default="")
 {
@@ -154,8 +159,6 @@ $nom        = getInfo("nom");
 $email      = getInfo("email");
 if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
 {
-    // https://www.php.net/manual/fr/function.date-default-timezone-set.php
-    date_default_timezone_set("Europe/Paris");
     $today = date("Y-m-d");
     $now   = date("H:i:s");
     // sauvegarder dans un fichier CSV
@@ -193,6 +196,7 @@ if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
         <div class="col col50">
             <p><a href="//workodin.com">workodin.com</a> - tous droits réservés - &copy;2019</p>
             <p><a href="//workodin.com/credits">crédits</a> - <a href="//workodin.com/mentions-legales">mentions légales</a></p>
+            <p><small>(page publiée le <?php echo date("d/m/Y - H:i:s") ?>)</small></p>
         </div>    
         </footer>
     </div>
