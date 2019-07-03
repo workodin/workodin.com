@@ -76,7 +76,9 @@ function processFormNewsletter ()
 
 }
 
-
+/**
+ * garde un log de chaque visiteur
+ */
 function trackVisit ()
 {
     // attention
@@ -91,4 +93,25 @@ function trackVisit ()
     // sauvegarder dans un fichier CSV
     file_put_contents("$modelDir/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
     
+}
+
+/**
+ * détermine quelle est la page à afficher
+ */
+function getPageUri ()
+{
+    $uri        = $_SERVER["REQUEST_URI"];
+    // https://www.php.net/manual/fr/function.parse-url.php
+    $path       = parse_url($uri, PHP_URL_PATH);
+    // cas spécial auparavant géré par Apache
+    if ($path == "/") 
+    {
+        // on considère que c'est index.php
+        $path = "/index";   
+    }
+
+    // https://www.php.net/manual/fr/function.pathinfo.php
+    $filename   = pathinfo($path, PATHINFO_FILENAME);
+
+    return $filename;
 }

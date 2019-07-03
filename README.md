@@ -170,11 +170,9 @@ https://www.php.net/manual/fr/function.mail.php
 1. et on charge le code des fonctions au début de starter.php
 1. on peut alors déplacer le code de getInfo dans function.php
 1. on peut créer plus de fonctions, par exemple setSiteMode
-
 1. avec la programmation fonctionnelle, on peut ranger du code complexe dans des fonctions
 1. => et ensuite activer ce code en appelant la fonction
 1. => meilleure organisation et meilleure lisibilité du code
-
 1. exemple: on crée plusieurs fonctions
 
 ## MVC: Model View Controller
@@ -183,8 +181,22 @@ https://www.php.net/manual/fr/function.mail.php
 1. Pour organiser notre code, on va suivre la recommendation MVC
 1. MVC: Model View Controller
 1. => Cela consiste à séparer notre code en 3 parties principales
-1. => de manière simple, dans l'avancement de notre projet
+1. => de manière simple, dans l'avancement actuel de notre projet
 1. Model: les données
 1. View: les templates
 1. Controller: le traitement des formulaires
+1. (attention: les fichiers CSV seront maintenant dans le dossier private/model/)
+
+## Routeur pour gérer plusieurs pages
+
+1. Comme on a centralisé toutes les requêtes du navigateur vers index.php
+1. Il faut maintenant retrouver quelle est la page demandée par le navigateur
+1. On va travailler avec $_SERVER["REQUEST_URI"]
+1. On crée une fonction getPageUri
+1. On met en place une convention de nommage sur le nom des fichiers de template
+1. La page index sera composée avec section-index.php
+1. La page credits sera composée avec section-credits.php
+1. Si le fichier section n'existe pas, alors on renvoie une erreur HTTP 404
+1. Ca y'est on a le code de base de notre framework pour gérer un site avec plusieurs pages !
+
 
