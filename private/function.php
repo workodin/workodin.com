@@ -1,7 +1,18 @@
 <?php
-
 // dans ce fichier, il n'y aura que des déclarations de fonctions
 // aucun code ne devrait être activé
+
+//===================================================================
+// FONCTIONS MODEL
+
+
+//===================================================================
+// FONCTIONS VIEW
+
+
+//===================================================================
+// FONCTIONS CONTROLLER
+
 
 /**
  * configure le mode de développement
@@ -41,7 +52,7 @@ function processFormNewsletter ()
     // attention
     // on peut utiliser des variables globales
     // mais il faut prévenir PHP
-    global $baseDir, $today, $now;
+    global $modelDir, $today, $now;
 
     // traitement du formulaire
     $nom        = getInfo("nom");
@@ -49,7 +60,7 @@ function processFormNewsletter ()
     if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
     {
         // sauvegarder dans un fichier CSV
-        file_put_contents("$baseDir/private/newsletter-$today.csv", "$nom,$email,$today $now\n", FILE_APPEND);
+        file_put_contents("$modelDir/newsletter-$today.csv", "$nom,$email,$today $now\n", FILE_APPEND);
 
         // message feedback
         echo "merci de votre inscription avec $email ($nom)";
@@ -71,13 +82,13 @@ function trackVisit ()
     // attention
     // on peut utiliser des variables globales
     // mais il faut prévenir PHP
-    global $baseDir, $today, $now;
+    global $modelDir, $today, $now;
 
     $uri        = $_SERVER["REQUEST_URI"];
     $userAgent  = $_SERVER["HTTP_USER_AGENT"];
     $ip         = $_SERVER["REMOTE_ADDR"];
     
     // sauvegarder dans un fichier CSV
-    file_put_contents("$baseDir/private/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
+    file_put_contents("$modelDir/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
     
 }

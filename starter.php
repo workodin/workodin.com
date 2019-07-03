@@ -1,6 +1,13 @@
 <?php
+
+// variables globales
+
 // on garde ce dossier comme base pour tous les chemins
-$baseDir = __DIR__;
+$baseDir    = __DIR__;
+
+$modelDir   = "$baseDir/private/model";
+$today      = date("Y-m-d");
+$now        = date("H:i:s");
 
 // programmation fonctionnelle
 // charger les déclarations des fonctions avant de pouvoir les utiliser
@@ -9,9 +16,6 @@ require_once("$baseDir/private/function.php");
 // mode dev: debug plus facile
 setSiteMode("DEV");
 
-// variables globales
-$today      = date("Y-m-d");
-$now        = date("H:i:s");
 
 // garder un log du visiteur
 trackVisit();

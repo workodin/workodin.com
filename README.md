@@ -177,4 +177,14 @@ https://www.php.net/manual/fr/function.mail.php
 
 1. exemple: on crée plusieurs fonctions
 
+## MVC: Model View Controller
+
+1. On commence par avoir beaucoup de fichiers dans notre projet
+1. Pour organiser notre code, on va suivre la recommendation MVC
+1. MVC: Model View Controller
+1. => Cela consiste à séparer notre code en 3 parties principales
+1. => de manière simple, dans l'avancement de notre projet
+1. Model: les données
+1. View: les templates
+1. Controller: le traitement des formulaires
 
