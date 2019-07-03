@@ -124,4 +124,10 @@ RewriteRule . /index.php [L]
 * (note: web.dev / performance = 96%)
 
 
+## Ajout de l'envoi d'un mail suite à inscription à la newsletter
+
+https://www.php.net/manual/fr/function.mail.php
+
+
+
 

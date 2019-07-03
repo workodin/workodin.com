@@ -166,6 +166,14 @@ if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
 
     // message feedback
     echo "merci de votre inscription avec $email ($nom)";
+
+    // on envoie un mail
+    // https://www.php.net/manual/fr/function.mail.php
+    $headers =  'From: hello@workodin.com' . "\r\n" .
+                'Reply-To: hello@workodin.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+                
+    @mail("hello@workodin.com", "newsletter/$email/$nom", "nouvel inscrit: $email / $nom", $headers);
 }
 ?>
                     </div>
@@ -181,9 +189,9 @@ if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
                         </figure>
                     </div>
                     <div class="col col40">
-                        <p>Venez rencontrer des développeurs de tous niveaux, femmes et hommes, de tout âge sur la France entière, et même au delà des frontières !.</p>
+                        <p>Venez rencontrer des développeurs de tous niveaux, femmes et hommes, de tout âge sur la France entière, et même au delà des frontières !</p>
                         <p>Travaillez en équipe sur des projets innovants et motivants!</p>
-                        <p><a href="https://github.com/workodin/workodin.com">Participez au développement du site sur GitHub</a></p>
+                        <p><a href="https://github.com/workodin/workodin.com">Participez au développement du site workodin.com sur GitHub</a></p>
                     </div>
                 </div>
             </section>
@@ -191,7 +199,7 @@ if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
        </main>
         <footer class="row">
         <div class="col col50">
-            <p><a href="https://github.com/workodin/workodin.com">participez au développement du site sur GitHub</a></p>
+            <p><a href="https://github.com/workodin/workodin.com">participez au développement du site workodin.com sur GitHub</a></p>
         </div>    
         <div class="col col50">
             <p><a href="//workodin.com">workodin.com</a> - tous droits réservés - &copy;2019</p>
