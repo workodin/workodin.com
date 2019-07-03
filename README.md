@@ -128,6 +128,11 @@ RewriteRule . /index.php [L]
 
 https://www.php.net/manual/fr/function.mail.php
 
+## Ajout de log pour suivre les visiteurs
+
+* on récupère les différentes informations dans le tableau associatif $_SERVER
+* et on crée une nouvelle ligne dans un fichier "log"
+https://www.php.net/manual/fr/function.file-put-contents.php
 
 
 

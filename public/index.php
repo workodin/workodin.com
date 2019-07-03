@@ -1,3 +1,16 @@
+<?php
+// ajout de log pour suivre les visiteurs
+// https://www.php.net/manual/fr/function.date-default-timezone-set.php
+date_default_timezone_set("Europe/Paris");
+$today      = date("Y-m-d");
+$now        = date("H:i:s");
+$uri        = $_SERVER["REQUEST_URI"];
+$userAgent  = $_SERVER["HTTP_USER_AGENT"];
+$ip         = $_SERVER["REMOTE_ADDR"];
+// sauvegarder dans un fichier CSV
+file_put_contents(__DIR__ . "/../private/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -147,8 +160,6 @@ form .feedback {
                     <button type="submit">je soutiens ce projet !</button>
                     <div class="feedback">
 <?php
-// https://www.php.net/manual/fr/function.date-default-timezone-set.php
-date_default_timezone_set("Europe/Paris");
 
 // traitement du formulaire
 function getInfo($name, $default="")
@@ -159,8 +170,6 @@ $nom        = getInfo("nom");
 $email      = getInfo("email");
 if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
 {
-    $today = date("Y-m-d");
-    $now   = date("H:i:s");
     // sauvegarder dans un fichier CSV
     file_put_contents(__DIR__ . "/../private/newsletter-$today.csv", "$nom,$email,$today $now\n", FILE_APPEND);
 
@@ -172,7 +181,7 @@ if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
     $headers =  'From: hello@workodin.com' . "\r\n" .
                 'Reply-To: hello@workodin.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
-                
+
     @mail("hello@workodin.com", "newsletter/$email/$nom", "nouvel inscrit: $email / $nom", $headers);
 }
 ?>
