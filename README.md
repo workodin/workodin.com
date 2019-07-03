@@ -132,7 +132,7 @@ https://www.php.net/manual/fr/function.mail.php
 
 * on récupère les différentes informations dans le tableau associatif $_SERVER
 * et on crée une nouvelle ligne dans un fichier "log"
-https://www.php.net/manual/fr/function.file-put-contents.php
+* https://www.php.net/manual/fr/function.file-put-contents.php
 
 
 
