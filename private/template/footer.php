@@ -1,0 +1,26 @@
+
+       </main>
+        <footer class="row">
+        <div class="col col50">
+            <p><a href="https://github.com/workodin/workodin.com">participez au développement du site workodin.com sur GitHub</a></p>
+        </div>    
+        <div class="col col50">
+            <p><a href="//workodin.com">workodin.com</a> - tous droits réservés - &copy;2019</p>
+            <p><a href="//workodin.com/credits">crédits</a> - <a href="//workodin.com/mentions-legales">mentions légales</a></p>
+            <p><small>(page publiée le <?php echo date("d/m/Y - H:i:s") ?>)</small></p>
+        </div>    
+        </footer>
+    </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143142316-1"></script>
+    <script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-143142316-1');
+    </script>
+
+</body>
+</html>

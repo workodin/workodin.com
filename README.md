@@ -135,4 +135,30 @@ https://www.php.net/manual/fr/function.mail.php
 * https://www.php.net/manual/fr/function.file-put-contents.php
 
 
+## Découpage du code PHP en tranches dans plusieurs fichiers
 
+* on évolue vers un code plus complexe 
+* car on va découper notre code en plus de fichiers
+* PHP est un moteur de templates HTML
+* => PHP construit le code HTML final pour le navigateur
+* => en composant avec différents fichiers disponibles
+
+* DIVIDE AND CONQUER
+
+* on crée des nouveaux fichiers
+* starter.php
+* private/template/header.php
+* private/template/section-index.php
+* private/template/footer.php
+
+* et on réaprtit le code php dans ces fichiers
+
+* puis on recompose avec require_once
+* https://www.php.net/manual/fr/function.require-once.php
+
+* on crée une variable globale $baseDir
+* pour donner le chemin de base à tous les fichiers
+* attention: on améliore le code des file_put_contents pour utiliser cette variable $baseDir
+
+* on ajoute aussi la configuration pour afficher les erreurs PHP dans la page
+* => plus facile pour le debug
