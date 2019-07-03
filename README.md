@@ -162,3 +162,14 @@ https://www.php.net/manual/fr/function.mail.php
 
 * on ajoute aussi la configuration pour afficher les erreurs PHP dans la page
 * => plus facile pour le debug
+
+
+## programmation fonctionnelle
+
+1. on ajoute le fichier private/function.php
+1. et on charge le code des fonctions au début de starter.php
+1. on peut alors déplacer le code de getInfo dans function.php
+1. on peut créer plus de fonctions, par exemple setSiteMode
+
+
+

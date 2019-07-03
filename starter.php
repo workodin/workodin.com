@@ -3,6 +3,7 @@
 $baseDir = __DIR__;
 
 // programmation fonctionnelle
+// charger les déclarations des fonctions avant de pouvoir les utiliser
 require_once("$baseDir/private/function.php");
 
 // mode dev: debug plus facile

@@ -1,5 +1,8 @@
 <?php
 
+// dans ce fichier, il n'y aura que des déclarations de fonctions
+// aucun code ne devrait être activé
+
 /**
  * configure le mode de développement
  */
