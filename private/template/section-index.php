@@ -49,28 +49,7 @@
                     <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
                     <button type="submit">je soutiens ce projet !</button>
                     <div class="feedback">
-<?php
-
-// traitement du formulaire
-$nom        = getInfo("nom");
-$email      = getInfo("email");
-if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
-{
-    // sauvegarder dans un fichier CSV
-    file_put_contents("$baseDir/private/newsletter-$today.csv", "$nom,$email,$today $now\n", FILE_APPEND);
-
-    // message feedback
-    echo "merci de votre inscription avec $email ($nom)";
-
-    // on envoie un mail
-    // https://www.php.net/manual/fr/function.mail.php
-    $headers =  'From: hello@workodin.com' . "\r\n" .
-                'Reply-To: hello@workodin.com' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
-
-    @mail("hello@workodin.com", "newsletter/$email/$nom", "nouvel inscrit: $email / $nom", $headers);
-}
-?>
+                        <?php processFormNewsletter() ?>
                     </div>
                 </form>
             </section>

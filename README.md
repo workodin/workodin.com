@@ -171,5 +171,10 @@ https://www.php.net/manual/fr/function.mail.php
 1. on peut alors déplacer le code de getInfo dans function.php
 1. on peut créer plus de fonctions, par exemple setSiteMode
 
+1. avec la programmation fonctionnelle, on peut ranger du code complexe dans des fonctions
+1. => et ensuite activer ce code en appelant la fonction
+1. => meilleure organisation et meilleure lisibilité du code
+
+1. exemple: on crée plusieurs fonctions
 
 
