@@ -52,10 +52,6 @@
 <?php
 
 // traitement du formulaire
-function getInfo($name, $default="")
-{
-    return trim(strip_tags($_REQUEST["$name"] ?? "$default"));
-}
 $nom        = getInfo("nom");
 $email      = getInfo("email");
 if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))

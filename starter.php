@@ -1,10 +1,12 @@
 <?php
-// mode dev: debug plus facile
-error_reporting(E_ALL);
-ini_set("display_errors", "1");
-
 // on garde ce dossier comme base pour tous les chemins
 $baseDir = __DIR__;
+
+// programmation fonctionnelle
+require_once("$baseDir/private/function.php");
+
+// mode dev: debug plus facile
+setSiteMode("DEV");
 
 // ajout de log pour suivre les visiteurs
 // https://www.php.net/manual/fr/function.date-default-timezone-set.php
@@ -17,3 +19,8 @@ $ip         = $_SERVER["REMOTE_ADDR"];
 
 // sauvegarder dans un fichier CSV
 file_put_contents("$baseDir/private/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
+
+// recomposer la page eavec les tranches de HTML
+require_once("$baseDir/private/template/header.php");
+require_once("$baseDir/private/template/section-index.php");
+require_once("$baseDir/private/template/footer.php");
