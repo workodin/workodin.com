@@ -304,6 +304,15 @@ https://www.php.net/manual/fr/function.mail.php
 * Ensuite on change la fonction getInfo en méthode de Form
 * ATTENTION: il faut changer aussi le code des fonctions de traitement
 
+## Création de classes pour les traitements de formulaire
+
+* En fonctionnel, on avait une fonction processFormNewsletter et processFormContact
+* En POO, on va transformer le code en des classes 
+* FormNewsletter avec une méthode process
+* FormContact avec une méthode process
+* ATTENTION: on va aussi changer le code de la méthode Form::process
+* SECURITE: ce code est pratique mais dangereux si mal sécurisé !
+
 
 
 
