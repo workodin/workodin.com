@@ -313,6 +313,13 @@ https://www.php.net/manual/fr/function.mail.php
 * ATTENTION: on va aussi changer le code de la méthode Form::process
 * SECURITE: ce code est pratique mais dangereux si mal sécurisé !
 
+## VERSION 1.0 EN POO
+
+* On a maintenant un framework MVC et POO
+* template HTML
+* framework de traitement de formulaires en POO
+* sans database SQL
+* stockage dans des fichiers plats
 
 
 

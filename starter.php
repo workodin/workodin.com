@@ -20,6 +20,8 @@ spl_autoload_register(function($nomClasse){
         require_once($cheminFichierClasse);
     }
 });
+
 // On peut maintenant créer des objets
+// => PHP va déclencher la méthode Site::__construct
 $objetSite = new Site($baseDir);
 
