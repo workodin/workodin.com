@@ -285,7 +285,13 @@ https://www.php.net/manual/fr/function.mail.php
 * astuce: pour le moment, on peut utiliser la variable Super-Globale $GLOBALS pour manipuler les variables globales
 * todo: à terme, il faudra gérer toutes les variables en propriétés de classe
 
+## Déplacement de la fonction setSiteMode en méthode de la classe Site
 
+* Il suffit de déplacer la déclaration de la fonction dans la classe Site
+* Attention: pour appeler une méthode de la même classe, il faut ajouter $this->setSiteMode("DEV")
+* et non plus directement setSiteMode("DEV")
+* En POO, on passe par un objet de la classe pour activer une méthode de la classe
+* C'est ce qui fait que la POO est plus lourde à écrire comparé à du code en fonctionnel
 
 
 

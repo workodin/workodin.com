@@ -14,23 +14,6 @@
 // FONCTIONS CONTROLLER
 
 
-/**
- * configure le mode de développement
- * @param mode = "DEV"
- */
-function setSiteMode ($mode)
-{
-    if ($mode == "DEV") 
-    {
-        error_reporting(E_ALL);
-        ini_set("display_errors", "1"); 
-        
-        // heure de Paris
-        // https://www.php.net/manual/fr/function.date-default-timezone-set.php
-        date_default_timezone_set("Europe/Paris");
-
-    }
-}
 
 /**
  * récupère une info envoyée la navigateur à travers un formulaire

@@ -13,7 +13,7 @@ class Site
     function __construct ($baseDir)
     {
         // mode dev: debug plus facile
-        setSiteMode("DEV");
+        $this->setSiteMode("DEV");
 
         // variables globales avec $GLOBALS
         $GLOBALS["modelDir"]   = "$baseDir/private/model";
@@ -56,4 +56,23 @@ class Site
 
     }
     
+
+    /**
+     * configure le mode de développement
+     * @param mode = "DEV"
+     */
+    function setSiteMode ($mode)
+    {
+        if ($mode == "DEV") 
+        {
+            error_reporting(E_ALL);
+            ini_set("display_errors", "1"); 
+            
+            // heure de Paris
+            // https://www.php.net/manual/fr/function.date-default-timezone-set.php
+            date_default_timezone_set("Europe/Paris");
+
+        }
+    }
+
 }
