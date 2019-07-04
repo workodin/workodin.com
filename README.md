@@ -247,6 +247,24 @@ https://www.php.net/manual/fr/function.mail.php
 * mais directement avec PHP et require_once
 * Cela permet de mieux séparer les codes HTML, CSS, PHP dans des fichiers spécifiques
 
+## Programmation Orientée Objet
+
+* On a bien avancé sur la partie fonctionnelle
+* On peut maintenant ajouter la Programmation Orientée Objet
+
+## Ajout autoload de classe
+
+* La première étape est de rajouter une fonction de callback 
+* pour permettre le chargement automatique de classe
+* https://www.php.net/manual/fr/function.spl-autoload-register.php
+* Nous allons ranger chaque classe dans son propre fichier PHP
+* Pour notre framework, on prend comme convention de nommage
+* le fichier PHP sera dans le dossier private/class/
+* et le nom du fichier sera le nom de la classe (Majuscule au début)
+
+    exemple:
+    la classe Site sera déclarée dans le fichier private/class/Site.php
+    
 
 
 
