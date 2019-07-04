@@ -6,7 +6,7 @@
         </div>    
         <div class="col col50">
             <p><a href="//workodin.com">workodin.com</a> - tous droits réservés - &copy;2019</p>
-            <p><a href="//workodin.com/credits">crédits</a> - <a href="//workodin.com/mentions-legales">mentions légales</a></p>
+            <p><a href="//workodin.com/contact">contact</a> - <a href="//workodin.com/credits">crédits</a> - <a href="//workodin.com/mentions-legales">mentions légales</a></p>
             <p><small>(page publiée le <?php echo date("d/m/Y - H:i:s") ?>)</small></p>
         </div>    
         </footer>

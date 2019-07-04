@@ -27,6 +27,7 @@
                     <li>jQuery</li>
                     <li>Bootstrap</li>
                 </ul>
+                <p>Vous avez une question ? <a href="/contact">Contactez-nous !</a></p>
             </section>
 
             <section>
@@ -43,17 +44,21 @@
 
             <section>
                 <h2>Suivez le projet: inscrivez-vous à la newsletter</h2>
-                <form id="form-newsletter" action="#form-newsletter" method="POST">
-                    <label for="form-nom">nom</label>
-                    <input id="form-nom" type="text" name="nom" required placeholder="votre nom">
-                    <label for="form-email">email</label>
-                    <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
-                    <button type="submit">je soutiens ce projet !</button>
-                    <input type="hidden" name="formTag" value="Newsletter">
-                    <div class="feedback">
-                        <?php processForm("Newsletter") ?>
+                <div class="row">
+                    <div class="col col40">
+                        <form id="form-newsletter" action="#form-newsletter" method="POST">
+                            <label for="form-nom">nom</label>
+                            <input id="form-nom" type="text" name="nom" required placeholder="votre nom">
+                            <label for="form-email">email</label>
+                            <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
+                            <button type="submit">je soutiens ce projet !</button>
+                            <input type="hidden" name="formTag" value="Newsletter">
+                            <div class="feedback">
+                                <?php processForm("Newsletter") ?>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </section>
 
             <section>

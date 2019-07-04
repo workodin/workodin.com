@@ -55,15 +55,24 @@ img {
 figure {
     margin:0;
 }
-input, button {
+input, button, textarea {
+    display:inline-block;
+    max-width:100%;
+    min-width:200px;
     padding:0.5rem;
     margin:0.25rem;
     font-size:1rem;
+    font-family:monospace, sans-serif;
+}
+textarea {
+    width:100%;
+}
+form button {
+    display:block;
 }
 form .feedback {
     padding:1rem;
 }
-
 @media screen {
     form label {
         display:block;

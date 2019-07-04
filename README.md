@@ -231,4 +231,10 @@ https://www.php.net/manual/fr/function.mail.php
 1. la 2e fois pour afficher le message de confirmation (feedback)
 1. Avec cette fonctionnalité dans notre framework, la gestion des formulaire devient plus simple
 
+## Ajout du formulaire de contact
+
+1. On ajoute une page /contact
+1. Cette page propose un formulaire de contact pour le visiteur
+1. Champs obligatoires: nom, email, message
+1. le code HTML et PHP reprennent une bonne partie du code du formulaire de Newsletter
 
