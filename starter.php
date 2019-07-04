@@ -6,7 +6,7 @@
 $baseDir    = __DIR__;
 
 $modelDir   = "$baseDir/private/model";
-$viewDir   = "$baseDir/private/template";
+$viewDir    = "$baseDir/private/template";
 $today      = date("Y-m-d");
 $now        = date("H:i:s");
 

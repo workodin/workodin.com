@@ -11,6 +11,7 @@
                     <li>SQL</li>
                 </ul>
                 <ul>
+                    <li>Programmation Fonctionnelle</li>
                     <li>Programmation Orientée Objet</li>
                     <li>MVC et Design Patterns</li>
                     <li>Framework et CMS</li>

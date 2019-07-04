@@ -24,6 +24,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }    
 .page {
+    width:100%;
     max-width:1280px;
     margin:0 auto;
     background-color:#ffffff;
@@ -62,6 +63,13 @@ input, button {
 form .feedback {
     padding:1rem;
 }
+
+@media screen {
+    form label {
+        display:block;
+    }
+}
+
 /* flex */
 .row {
     display:flex;
