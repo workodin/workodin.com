@@ -238,3 +238,17 @@ https://www.php.net/manual/fr/function.mail.php
 1. Champs obligatoires: nom, email, message
 1. le code HTML et PHP reprennent une bonne partie du code du formulaire de Newsletter
 
+## Ajout de fichiers site.css et site.js
+
+* On ajoute 2 fichiers
+* assets/css/site.css
+* assets/js/site.js
+* On ne charge pas le code par une requête HTML supplémentaire
+* mais directement avec PHP et require_once
+* Cela permet de mieux séparer les codes HTML, CSS, PHP dans des fichiers spécifiques
+
+
+
+
+
+

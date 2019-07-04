@@ -21,6 +21,9 @@ gtag('js', new Date());
 
 gtag('config', 'UA-143142316-1');
     </script>
+    <script>
+<?php require_once("$baseDir/public/assets/js/site.js") ?>
+    </script>
 
 </body>
 </html>
