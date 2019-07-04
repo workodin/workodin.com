@@ -51,7 +51,7 @@
                     <button type="submit">je soutiens ce projet !</button>
                     <input type="hidden" name="formTag" value="Newsletter">
                     <div class="feedback">
-                        <?php processForm() ?>
+                        <?php processForm("Newsletter") ?>
                     </div>
                 </form>
             </section>

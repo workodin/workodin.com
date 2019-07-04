@@ -26,6 +26,10 @@ $fichierSection = "$viewDir/section-$pageUri.php";
 // https://www.php.net/manual/fr/function.is-file.php
 if (is_file($fichierSection)) 
 {
+    // CONTROLLER
+    // traitement des formulaires
+    processForm();
+
     // VIEW
     // recomposer la page eavec les tranches de HTML
     require_once("$viewDir/header.php");

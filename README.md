@@ -219,4 +219,16 @@ https://www.php.net/manual/fr/function.mail.php
     <input type="hidden" name="formTag" value="Newsletter">
     en PHP:
     function processFormNewsletter ()
-    
+
+## Amélioration du MVC avec les formulaires
+
+1. Pour être plus rigoureux avec le MVC
+1. On effectue le traitement des formulaires (controller)
+1. Et ensuite, on crée la page qui affiche le message de confirmation (view)
+1. On améliore la fonction processForm avec un paramètre formFeedback
+1. La fonction sera appelée 2 fois:
+1. la première fois pour traiter le formulaire
+1. la 2e fois pour afficher le message de confirmation (feedback)
+1. Avec cette fonctionnalité dans notre framework, la gestion des formulaire devient plus simple
+
+
