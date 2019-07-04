@@ -292,6 +292,11 @@ https://www.php.net/manual/fr/function.mail.php
 * et non plus directement setSiteMode("DEV")
 * En POO, on passe par un objet de la classe pour activer une méthode de la classe
 * C'est ce qui fait que la POO est plus lourde à écrire comparé à du code en fonctionnel
+* Ensuite on peut continuer à déplacer plus de fonctions dans la classe
+* A terme, il ne faudrait plus avoir de fonctions dans le fichier private/function.php
+* mais tout notre code devrait être rangé dans le dossier private/class/
+* => C'est un critère simple pour évaluer si tout notre code PHP est Orienté Objet !
+
 
 
 

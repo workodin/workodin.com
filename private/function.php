@@ -31,50 +31,50 @@ function getInfo($name, $default="")
     return $value;
 }
 
-
-/**
- * traiter le formulaire envoyé dans une requête
- * (note: cette fonction appelle une autre fonction getInfo)
- * @param  l'étiquette du formulaire 
- * 
- */
-function processForm ($formFeedback="")
-{
-    // on garde des valeurs dans une variable static
-    // pour les réutiliser à travers plusieurs appels à la même focntion
-    static $tabFeedback = [];
-
-    if ($formFeedback == "")
+    /**
+     * traiter le formulaire envoyé dans une requête
+     * (note: cette fonction appelle une autre fonction getInfo)
+     * @param  l'étiquette du formulaire 
+     * 
+     */
+    function processForm ($formFeedback="")
     {
-        $formTag = getInfo("formTag");
-        // filtrer pour ne garder que les lettres et les chiffres
-        // https://www.php.net/manual/fr/function.preg-replace.php
-        $formTag = preg_replace("/[^a-zA-Z0-9]/", "", $formTag);
-    
-        // framework dynamique
-        // on prend comme convention que le traitement du formulaire est géré 
-        // par une fonction dont le nom commence par processForm
-        // et finit par l'étiquette du formulaire
-        // exemple: 
-        // <input type="hidden" name="formTag" value="Newsletter">
-        // sera traité par la fonction processFormNewsletter
-        if ($formTag != "")
+        // on garde des valeurs dans une variable static
+        // pour les réutiliser à travers plusieurs appels à la même focntion
+        static $tabFeedback = [];
+
+        if ($formFeedback == "")
         {
-            $nomFonction = "processForm$formTag";
-            if (function_exists($nomFonction)) {
-                // assez étrange, mais ça fonctionne avec PHP ;-p
-                // et on mémorise le feedback pour pouvoir l'afficher plus tard
-                $tabFeedback[$formTag] = $nomFonction();
+            $formTag = getInfo("formTag");
+            // filtrer pour ne garder que les lettres et les chiffres
+            // https://www.php.net/manual/fr/function.preg-replace.php
+            $formTag = preg_replace("/[^a-zA-Z0-9]/", "", $formTag);
+        
+            // framework dynamique
+            // on prend comme convention que le traitement du formulaire est géré 
+            // par une fonction dont le nom commence par processForm
+            // et finit par l'étiquette du formulaire
+            // exemple: 
+            // <input type="hidden" name="formTag" value="Newsletter">
+            // sera traité par la fonction processFormNewsletter
+            if ($formTag != "")
+            {
+                $nomFonction = "processForm$formTag";
+                if (function_exists($nomFonction)) {
+                    // assez étrange, mais ça fonctionne avec PHP ;-p
+                    // et on mémorise le feedback pour pouvoir l'afficher plus tard
+                    $tabFeedback[$formTag] = $nomFonction();
+                }    
             }    
-        }    
+        }
+        else 
+        {
+            // on affiche le message feedback 
+            // pour permettre l'affichage dans la partie view
+            echo $tabFeedback[$formFeedback] ?? "";
+        }
     }
-    else 
-    {
-        // on affiche le message feedback 
-        // pour permettre l'affichage dans la partie view
-        echo $tabFeedback[$formFeedback] ?? "";
-    }
-}
+
 
 /**
  * traiter le formulaire de newsletter
@@ -160,42 +160,3 @@ TEXTE;
     return $feedback;
 }
 
-/**
- * garde un log de chaque visiteur
- */
-function trackVisit ()
-{
-    // attention
-    // on peut utiliser des variables globales
-    // mais il faut prévenir PHP
-    global $modelDir, $today, $now;
-
-    $uri        = $_SERVER["REQUEST_URI"];
-    $userAgent  = $_SERVER["HTTP_USER_AGENT"];
-    $ip         = $_SERVER["REMOTE_ADDR"];
-    
-    // sauvegarder dans un fichier CSV
-    file_put_contents("$modelDir/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
-    
-}
-
-/**
- * détermine quelle est la page à afficher
- */
-function getPageUri ()
-{
-    $uri        = $_SERVER["REQUEST_URI"];
-    // https://www.php.net/manual/fr/function.parse-url.php
-    $path       = parse_url($uri, PHP_URL_PATH);
-    // cas spécial auparavant géré par Apache
-    if ($path == "/") 
-    {
-        // on considère que c'est index.php
-        $path = "/index";   
-    }
-
-    // https://www.php.net/manual/fr/function.pathinfo.php
-    $filename   = pathinfo($path, PATHINFO_FILENAME);
-
-    return $filename;
-}
