@@ -264,7 +264,27 @@ https://www.php.net/manual/fr/function.mail.php
 
     exemple:
     la classe Site sera déclarée dans le fichier private/class/Site.php
-    
+
+## Méthode constructeur __construct
+
+* La POO inclut de nombreux mécanismes automatiques (cachés car sans code explicite)
+* La méthode constructeur __construct
+* est appelée automatiquement par PHP quand on écrit new pour créer un objet
+
+    exemple
+    $objetSite = new Site;
+    // => PHP appelle automatiquement la méthode Site::__construct
+
+
+
+## déplacement de code fonctionnel vers objet
+
+* On peut maintenant transformer notre code fonctionnel en code POO
+* Il faut déplacer le code dans des méthodes de classe
+* ATTENTION: en déplaçant le code des variables dans des méthodes, elles deviennent des variables locales !
+* astuce: pour le moment, on peut utiliser la variable Super-Globale $GLOBALS pour manipuler les variables globales
+* todo: à terme, il faudra gérer toutes les variables en propriétés de classe
+
 
 
 
