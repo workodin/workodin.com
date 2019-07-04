@@ -13,7 +13,7 @@
                 <button type="submit">envoyer votre message</button>
                 <input type="hidden" name="formTag" value="Contact">
                 <div class="feedback">
-                    <?php processForm("Contact") ?>
+                    <?php $form->process("Contact") ?>
                 </div>
             </form>
         </div>

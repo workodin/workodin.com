@@ -297,6 +297,11 @@ https://www.php.net/manual/fr/function.mail.php
 * mais tout notre code devrait être rangé dans le dossier private/class/
 * => C'est un critère simple pour évaluer si tout notre code PHP est Orienté Objet !
 
+## Création de classe Form et de méthode process
+
+* En fonctionnel, on avait une fonction processForm
+* En POO, on va transformer le code en une classe Form avec une méthode process
+
 
 
 

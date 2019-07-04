@@ -34,7 +34,8 @@ class Site
         {
             // CONTROLLER
             // traitement des formulaires
-            processForm();
+            $form = new Form;
+            $form->process();
 
             // VIEW
             // recomposer la page eavec les tranches de HTML
