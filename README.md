@@ -301,6 +301,9 @@ https://www.php.net/manual/fr/function.mail.php
 
 * En fonctionnel, on avait une fonction processForm
 * En POO, on va transformer le code en une classe Form avec une méthode process
+* Ensuite on change la fonction getInfo en méthode de Form
+* ATTENTION: il faut changer aussi le code des fonctions de traitement
+
 
 
 

@@ -19,7 +19,7 @@ class Form
 
         if ($formFeedback == "")
         {
-            $formTag = getInfo("formTag");
+            $formTag = $this->getInfo("formTag");
             // filtrer pour ne garder que les lettres et les chiffres
             // https://www.php.net/manual/fr/function.preg-replace.php
             $formTag = preg_replace("/[^a-zA-Z0-9]/", "", $formTag);
@@ -37,7 +37,7 @@ class Form
                 if (function_exists($nomFonction)) {
                     // assez étrange, mais ça fonctionne avec PHP ;-p
                     // et on mémorise le feedback pour pouvoir l'afficher plus tard
-                    $tabFeedback[$formTag] = $nomFonction();
+                    $tabFeedback[$formTag] = $nomFonction($this);
                 }    
             }    
         }
@@ -47,6 +47,22 @@ class Form
             // pour permettre l'affichage dans la partie view
             echo $tabFeedback[$formFeedback] ?? "";
         }
+    }
+
+    /**
+     * récupère une info envoyée la navigateur à travers un formulaire
+     * exemple:
+     * <input name="nom">
+     * $nom = getInfo("nom");
+     */
+    function getInfo($name, $default="")
+    {
+        $value = $default;
+        if (isset($_REQUEST["$name"]))
+        {
+            $value = trim(strip_tags($_REQUEST["$name"]));
+        }
+        return $value;
     }
 
 }

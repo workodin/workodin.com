@@ -13,33 +13,13 @@
 //===================================================================
 // FONCTIONS CONTROLLER
 
-
-
-/**
- * récupère une info envoyée la navigateur à travers un formulaire
- * exemple:
- * <input name="nom">
- * $nom = getInfo("nom");
- */
-function getInfo($name, $default="")
-{
-    $value = $default;
-    if (isset($_REQUEST["$name"]))
-    {
-        $value = trim(strip_tags($_REQUEST["$name"]));
-    }
-    return $value;
-}
-
-
-
 /**
  * traiter le formulaire de newsletter
  * (note: cette fonction appelle une autre fonction getInfo)
  * @return le message de confirmation (feedback)
  * 
  */
-function processFormNewsletter ()
+function processFormNewsletter ($form)
 {
     // attention
     // on peut utiliser des variables globales
@@ -48,8 +28,8 @@ function processFormNewsletter ()
 
     $feedback = "";
     // traitement du formulaire
-    $nom        = getInfo("nom");
-    $email      = getInfo("email");
+    $nom        = $form->getInfo("nom");
+    $email      = $form->getInfo("email");
     if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
     {
         // sauvegarder dans un fichier CSV
@@ -75,7 +55,7 @@ function processFormNewsletter ()
  * @return le message de confirmation (feedback)
  * 
  */
-function processFormContact ()
+function processFormContact ($form)
 {
     // attention
     // on peut utiliser des variables globales
@@ -84,9 +64,9 @@ function processFormContact ()
 
     $feedback = "";
     // traitement du formulaire
-    $nom        = getInfo("nom");
-    $email      = getInfo("email");
-    $message    = getInfo("message");
+    $nom        = $form->getInfo("nom");
+    $email      = $form->getInfo("email");
+    $message    = $form->getInfo("message");
     if (($message != "") && ($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
     {
         // sauvegarder dans un fichier texte
