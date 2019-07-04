@@ -200,3 +200,23 @@ https://www.php.net/manual/fr/function.mail.php
 1. Ca y'est on a le code de base de notre framework pour gérer un site avec plusieurs pages !
 
 
+## Ajout d'une étiquette sur les formulaires pour les identifier
+
+1. Pour préparer le site à pouvoir gérer de nombreux formulaires
+1. On va ajouter une étiquette à chaque formulaire pour les distinguer
+1. On utilise la balise input type="hidden" avec une valeur prédéfinie
+1. On choisit pour notre framework name="formTag"
+1. Chaque formulaire aura une value différente pour ce champ input
+
+    <input type="hidden" name="formTag" value="Newsletter">
+
+1. Pour le code PHP de traitement du formulaire
+1. On ajoute une convention dans notre framework
+1. La fonction qui contient le code pour traiter le formulaire DOIT avoir un nom précis
+1. On choisit que le nom de la fonction a pour préfixe processForm et pour suffixe la valeur de formTag
+
+    en HTML:
+    <input type="hidden" name="formTag" value="Newsletter">
+    en PHP:
+    function processFormNewsletter ()
+    

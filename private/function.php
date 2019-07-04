@@ -39,7 +39,42 @@ function setSiteMode ($mode)
  */
 function getInfo($name, $default="")
 {
-    return trim(strip_tags($_REQUEST["$name"] ?? "$default"));
+    $value = $default;
+    if (isset($_REQUEST["$name"]))
+    {
+        $value = trim(strip_tags($_REQUEST["$name"]));
+    }
+    return $value;
+}
+
+
+/**
+ * traiter le formulaire envoyé dans une requête
+ * (note: cette fonction appelle une autre fonction getInfo)
+ * 
+ */
+function processForm ()
+{
+    $formTag = getInfo("formTag");
+    // filtrer pour ne garder que les lettres et les chiffres
+    // https://www.php.net/manual/fr/function.preg-replace.php
+    $formTag = preg_replace("/[^a-zA-Z0-9]/", "", $formTag);
+
+    // framework dynamique
+    // on prend comme convention que le traitement du formulaire est géré 
+    // par une fonction dont le nom commence par processForm
+    // et finit par l'étiquette du formulaire
+    // exemple: 
+    // <input type="hidden" name="formTag" value="Newsletter">
+    // sera traité par la fonction processFormNewsletter
+    if ($formTag != "")
+    {
+        $nomFonction = "processForm$formTag";
+        if (function_exists($nomFonction)) {
+            // assez étrange, mais ça fonctionne avec PHP ;-p
+            $nomFonction();
+        }    
+    }
 }
 
 /**
