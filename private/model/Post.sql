@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `Post`
 --
 
-CREATE TABLE IF NOT EXISTS `post` (
+CREATE TABLE IF NOT EXISTS `Post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(160) NOT NULL,
   `uri` varchar(160) NOT NULL,

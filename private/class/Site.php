@@ -137,13 +137,14 @@ class Site
      */
     function install ()
     {
-        global $tabConfigSQL, $modelDir;
+        global $tabConfigSQL, $modelDir, $installKey;
 
-        
+        $keyMD5 = md5($installKey);
+
         echo 
 <<<TEXTE
 
-* installation de SQL
+* installation de SQL ($installKey)($keyMD5)
 
 TEXTE;
 

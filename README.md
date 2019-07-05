@@ -350,6 +350,11 @@ https://www.php.net/manual/fr/function.mail.php
 * Pour préparer l'évolution du framework vers un CMS
 * On crée une Table SQL Post
 
+## Ajout page install et formulairte d'installation avec clé
+
+* Ajout d'une page install pour pouvoir déclencher l'installation par un formulaire
+* Ajout d'une clé d'installation pour protéger l'activation de l'installation
+
 
 
 
