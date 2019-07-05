@@ -355,7 +355,15 @@ https://www.php.net/manual/fr/function.mail.php
 * Ajout d'une page install pour pouvoir déclencher l'installation par un formulaire
 * Ajout d'une clé d'installation pour protéger l'activation de l'installation
 
+## Ajout méthode insertLine dans la classe Model et modification formulaire Newsletter
 
+* Pour pouvoir insérer une ligne dans une table SQL, on crée la méthode insertLine dans la classe Model
+* Pour pouvoir utiliser la classe Model, on ajoute une méthode statique Get dans la classe Site
+* (On utilise le Design Pattern Factory pour l'injection de dépendances...)
+* => Notre framework est maintenant utilisable avec MySQL
+
+* Pour corriger les erreurs SQL, la méthode debugDumpParams est bien pratique
+* https://www.php.net/manual/fr/pdostatement.debugdumpparams.php
 
 
 

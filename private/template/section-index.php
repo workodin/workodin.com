@@ -48,7 +48,7 @@
                     <div class="col col40">
                         <form id="form-newsletter" action="#form-newsletter" method="POST">
                             <label for="form-nom">nom</label>
-                            <input id="form-nom" type="text" name="nom" required placeholder="votre nom">
+                            <input id="form-nom" type="text" name="name" required placeholder="votre nom">
                             <label for="form-email">email</label>
                             <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
                             <button type="submit">je soutiens ce projet !</button>

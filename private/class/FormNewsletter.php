@@ -21,15 +21,25 @@ class FormNewsletter
     
         $feedback = "";
         // traitement du formulaire
-        $nom        = $form->getInfo("nom");
+        $name       = $form->getInfo("name");
         $email      = $form->getInfo("email");
-        if (($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
+        if (($name != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
         {
+            // compléter les infos manquantes 
+            $creationDate = date("Y-m-d H:i:s");
+
+            // insertion dans la table SQL Newsletter
+            $objModel = Site::Get("Model");
+            $objModel->insertLine("Newsletter", [ 
+                                        "name"          => $name, 
+                                        "email"         => $email, 
+                                        "creationDate"  => $creationDate,
+                                    ]);
+
             // sauvegarder dans un fichier CSV
-            file_put_contents("$modelDir/newsletter-$today.csv", "$nom,$email,$today $now\n", FILE_APPEND);
-    
+            file_put_contents("$modelDir/newsletter-$today.csv", "$name,$email,$today $now\n", FILE_APPEND);
             // message feedback
-            $feedback = "merci de votre inscription avec $email ($nom)";
+            $feedback = "merci de votre inscription avec $email ($name)";
     
             // on envoie un mail
             // https://www.php.net/manual/fr/function.mail.php
@@ -37,7 +47,7 @@ class FormNewsletter
                         'Reply-To: hello@workodin.com' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
     
-            @mail("hello@workodin.com", "newsletter/$email/$nom", "nouvel inscrit: $email / $nom", $headers);
+            @mail("hello@workodin.com", "newsletter/$email/$name", "nouvel inscrit: $email / $name", $headers);
         }
         return $feedback;
     }

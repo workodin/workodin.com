@@ -73,12 +73,55 @@ class Model
         // https://www.php.net/manual/fr/pdostatement.execute.php
         $this->objPDOStatement->execute($tabToken);
 
+        // debug
+        // https://www.php.net/manual/fr/pdostatement.debugdumpparams.php
+        // $this->objPDOStatement->debugDumpParams();
+
         // pour la lecture des données
         // https://www.php.net/manual/fr/pdostatement.setfetchmode.php
         // https://www.php.net/manual/fr/pdostatement.fetch.php
         $this->objPDOStatement->setFetchMode(PDO::FETCH_ASSOC);
 
         return $this->objPDOStatement;
+    }
+
+    /**
+     * 
+     */
+    function insertLine($tableName, $tabColumnValue)
+    {
+        $listColumn = "";
+        $listToken  = "";
+        $first      = true;
+        foreach($tabColumnValue as $col => $val)
+        {
+            if ($first)
+            {
+                $listColumn .= "`$col`";
+                $listToken  .= ":$col";
+                $first = false;
+            }
+            else 
+            {
+                $listColumn .= ", `$col`";
+                $listToken  .= ", :$col";
+            }
+
+        }
+        // on construit une requête SQL préparée avec des jetons/tokens
+        $codeSQL =
+<<<SQL
+ 
+ INSERT INTO `$tableName`
+ ( $listColumn ) 
+ VALUES 
+ ( $listToken );
+
+SQL;
+
+        // on exécute la requête preparée
+        $this->executeSQL($codeSQL, $tabColumnValue);
+
     }
 
 }

@@ -5,7 +5,7 @@
         <div class="col col40">
             <form id="form-contact" action="#form-contact" method="POST">
                 <label for="form-nom">nom</label>
-                <input id="form-nom" type="text" name="nom" required placeholder="votre nom">
+                <input id="form-nom" type="text" name="name" required placeholder="votre nom">
                 <label for="form-email">email</label>
                 <input id="form-email" type="email" name="email" required placeholder="votre email">
                 <label for="form-message">message</label>

@@ -23,6 +23,31 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+--
+-- Structure de la table `Newsletter`
+--
+
+CREATE TABLE IF NOT EXISTS `Newsletter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(160) NOT NULL,
+  `email` varchar(160) NOT NULL,
+  `creationDate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+--
+-- Structure de la table `Contact`
+--
+
+CREATE TABLE IF NOT EXISTS `Contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(160) NOT NULL,
+  `email` varchar(160) NOT NULL,
+  `message` text NOT NULL,
+  `creationDate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Structure de la table `Post`
@@ -38,6 +63,8 @@ CREATE TABLE IF NOT EXISTS `Post` (
   `creationDate` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

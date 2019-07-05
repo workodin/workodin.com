@@ -5,7 +5,30 @@
  */
 class Site
 {
-    // méthodes
+    // propriétés de classe
+    public static $tabInfo = [];
+
+    // méthodes de classe
+    // design pattern Factory
+    public static function Get ($className)
+    {
+        if (!isset(self::$tabInfo[$className]))
+        {
+            if ($className == "Model")
+            {
+                global $tabConfigSQL;
+                self::$tabInfo[$className] = new Model($tabConfigSQL);
+            }
+            else
+            {
+                self::$tabInfo[$className] = new $className;
+            }
+        }
+        return self::$tabInfo[$className];
+    }
+
+    // méthodes d'objets
+
     /**
      * constructeur
      * @param $baseDir est le dossier de base au code du site

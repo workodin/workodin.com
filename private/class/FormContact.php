@@ -17,17 +17,17 @@ class FormContact
 
         $feedback = "";
         // traitement du formulaire
-        $nom        = $form->getInfo("nom");
+        $name       = $form->getInfo("name");
         $email      = $form->getInfo("email");
         $message    = $form->getInfo("message");
-        if (($message != "") && ($nom != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
+        if (($message != "") && ($name != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
         {
             // sauvegarder dans un fichier texte
             $messageContact =
 <<<TEXTE
 ==============
 date: $today $now
-nom: $nom
+nom: $name
 email: $email
 $message
 
@@ -36,7 +36,7 @@ TEXTE;
             file_put_contents("$modelDir/contact-$today.txt", $messageContact, FILE_APPEND);
 
             // message feedback
-            $feedback = "merci de votre message, $nom($email)";
+            $feedback = "merci de votre message, $name($email)";
 
             // on envoie un mail
             // https://www.php.net/manual/fr/function.mail.php
@@ -44,7 +44,7 @@ TEXTE;
                         'Reply-To: hello@workodin.com' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
 
-            @mail("hello@workodin.com", "contact/$email/$nom", $messageContact, $headers);
+            @mail("hello@workodin.com", "contact/$email/$name", $messageContact, $headers);
         }
 
         return $feedback;
