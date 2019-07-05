@@ -1,1 +1,5 @@
 private/*.csv
+private/*.txt
+*.log
+my-*
+

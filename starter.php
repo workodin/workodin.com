@@ -21,7 +21,15 @@ spl_autoload_register(function($nomClasse){
     }
 });
 
+// chargement du fichier de config
+$siteMode   = "DEV";
+$configFile = "$baseDir/my-config.php";
+if (is_file($configFile))
+{
+    require_once($configFile);
+}
+
 // On peut maintenant créer des objets
 // => PHP va déclencher la méthode Site::__construct
-$objetSite = new Site($baseDir);
+$objetSite = new Site($baseDir, $siteMode);
 

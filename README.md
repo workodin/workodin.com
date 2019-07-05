@@ -321,6 +321,13 @@ https://www.php.net/manual/fr/function.mail.php
 * sans database SQL
 * stockage dans des fichiers plats
 
+## Ajout d'un fichier my-config.php
+
+* Ce fichier my-config.php permet de paramétrer le site suivant l'hébergement d'installation
+* Ainsi il ne sera pas géré avec git (ajout dans le .gitignore)
+* Pour la suite, on y stockera les paramètres comme la connexion à la Base De Données MySQL
+
+
 
 
 

@@ -10,10 +10,10 @@ class Site
      * constructeur
      * @param $baseDir est le dossier de base au code du site
      */
-    function __construct ($baseDir)
-    {
+    function __construct ($baseDir, $siteMode="DEV")
+    {        
         // mode dev: debug plus facile
-        $this->setSiteMode("DEV");
+        $this->setSiteMode($siteMode);
 
         // variables globales avec $GLOBALS
         $GLOBALS["modelDir"]   = "$baseDir/private/model";
