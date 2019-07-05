@@ -20,39 +20,47 @@ class Site
         $GLOBALS["today"]      = date("Y-m-d");
         $GLOBALS["now"]        = date("H:i:s");
 
-        // garder un log du visiteur
-        $this->trackVisit();
-
-        // FRONT CONTROLLER ET ROUTEUR
-        // on extrait de l'URI la page demandée
-        global $pageUri;
-        $pageUri                =  $this->getPageUri();
-        $viewDir                = "$baseDir/private/template";
-        $fichierSection         = "$viewDir/section-$pageUri.php";
-        // https://www.php.net/manual/fr/function.is-file.php
-        if (is_file($fichierSection)) 
+        if ($siteMode == "TERMINAL")
         {
-            // CONTROLLER
-            // traitement des formulaires
-            $form = new Form;
-            $form->process();
-
-            // VIEW
-            // recomposer la page eavec les tranches de HTML
-            require_once("$viewDir/header.php");
-            require_once($fichierSection);
-            require_once("$viewDir/footer.php");
+            $this->setupTerminal();
         }
         else
         {
-            // page non trouvée
-            // important: erreur 404 pour les moteurs de recherche
-            // https://www.php.net/manual/fr/function.header.php
-            header("HTTP/1.0 404 Not Found");
+            // garder un log du visiteur
+            $this->trackVisit();
 
-            require_once("$viewDir/header.php");
-            require_once("$viewDir/section-404.php");
-            require_once("$viewDir/footer.php");
+            // FRONT CONTROLLER ET ROUTEUR
+            // on extrait de l'URI la page demandée
+            global $pageUri;
+            $pageUri                =  $this->getPageUri();
+            $viewDir                = "$baseDir/private/template";
+            $fichierSection         = "$viewDir/section-$pageUri.php";
+            // https://www.php.net/manual/fr/function.is-file.php
+            if (is_file($fichierSection)) 
+            {
+                // CONTROLLER
+                // traitement des formulaires
+                $form = new Form;
+                $form->process();
+
+                // VIEW
+                // recomposer la page eavec les tranches de HTML
+                require_once("$viewDir/header.php");
+                require_once($fichierSection);
+                require_once("$viewDir/footer.php");
+            }
+            else
+            {
+                // page non trouvée
+                // important: erreur 404 pour les moteurs de recherche
+                // https://www.php.net/manual/fr/function.header.php
+                header("HTTP/1.0 404 Not Found");
+
+                require_once("$viewDir/header.php");
+                require_once("$viewDir/section-404.php");
+                require_once("$viewDir/footer.php");
+            }
+
         }
 
     }
@@ -116,5 +124,37 @@ class Site
         return $filename;
     }
 
+    /**
+     * paramétrage pour le mode terminal
+     */
+    function setupTerminal ()
+    {
 
+    }
+
+    /**
+     * 
+     */
+    function install ()
+    {
+        global $tabConfigSQL, $modelDir;
+
+        
+        echo 
+<<<TEXTE
+
+* installation de SQL
+
+TEXTE;
+
+        // création de la table Post
+        $objModel = new Model($tabConfigSQL);
+        $filePost = "$modelDir/Post.sql";
+        if (is_file($filePost)) 
+        {
+            $sqlPost = file_get_contents($filePost);
+            $objModel->executeSQL($sqlPost);
+        }
+
+    }
 }

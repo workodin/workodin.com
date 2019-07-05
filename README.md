@@ -327,6 +327,29 @@ https://www.php.net/manual/fr/function.mail.php
 * Ainsi il ne sera pas géré avec git (ajout dans le .gitignore)
 * Pour la suite, on y stockera les paramètres comme la connexion à la Base De Données MySQL
 
+## Ajout de la classe Model pour gérer MySQL
+
+* On ajoute la classe Model qui gère l'envoi de requêtes vers MySQL
+* On utilise les classes PHP version Orienté Objet 
+* PDO
+* PDOStatement
+* On se protège des injections SQL avec la séparation
+* prepare
+* execute
+
+## Ajout du mode TERMINAL dans le framework
+
+* On ajoute un fichier install.php
+* On modifie la classe Site pour gérer le mode en ligne de commande
+* On peut utiliser PHP en ligne de commande
+
+    php install.php
+
+## Ajout de la création de la Table SQL Post
+
+* Pour préparer l'évolution du framework vers un CMS
+* On crée une Table SQL Post
+
 
 
 
