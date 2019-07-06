@@ -374,3 +374,9 @@ https://www.php.net/manual/fr/function.mail.php
 * On va créer une classe Email pour gérer l'envoi des emails
 * Cela permet de simplifier le code de traitement de Newsletter
 
+# Contact: Amélioration traitement formulaire
+
+* On modifie le code PHP de traitement du formulaire de Contact
+* On ne stocke plus les messages dans des fichiers
+* mais dans la table SQL Contact
+

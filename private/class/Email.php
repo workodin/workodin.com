@@ -9,12 +9,12 @@ class Email
     /**
      * 
      */
-    function send ($to, $title, $content)
+    function send ($title, $content, $to="hello@workodin.com")
     {
         // https://www.php.net/manual/fr/function.mail.php
-        $headers =  'From: hello@workodin.com' . "\r\n" .
-                    'Reply-To: hello@workodin.com' . "\r\n" .
-                    'X-Mailer: PHP/' . phpversion();
+        $headers =  "From: $to" . "\r\n" .
+                    "Reply-To: $to" . "\r\n" .
+                    "X-Mailer: PHP/" . phpversion();
 
         @mail($to, $title, $content, $headers);
 

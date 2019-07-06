@@ -35,9 +35,8 @@ class FormNewsletter
             $feedback = "merci de votre inscription avec $email ($name)";
     
             // on envoie un mail    
-            Site::Get("Email")->send("hello@workodin.com", 
-                                        "newsletter/$email/$name", 
-                                        "nouvel inscrit: $email / $name", $headers);
+            Site::Get("Email")->send("newsletter/$email/$name", 
+                                        "nouvel inscrit: $email / $name");
         }
         return $feedback;
     }

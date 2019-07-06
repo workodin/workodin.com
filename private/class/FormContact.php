@@ -13,7 +13,6 @@ class FormContact
         // attention
         // on peut utiliser des variables globales
         // mais il faut prévenir PHP
-        global $modelDir, $today, $now;
 
         $feedback = "";
         // traitement du formulaire
@@ -22,29 +21,31 @@ class FormContact
         $message    = $form->getInfo("message");
         if (($message != "") && ($name != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
         {
-            // sauvegarder dans un fichier texte
+            // compléter les infos manquantes 
+            $creationDate = date("Y-m-d H:i:s");
+            // ajouter une ligne dans la table SQL Contact
+            Site::Get("Model")->insertLine("Contact", [
+                                                "name"          => $name, 
+                                                "email"         => $email, 
+                                                "message"       => $message, 
+                                                "creationDate"  => $creationDate,
+                                            ]);
+
+            // message feedback
+            $feedback = "merci de votre message, $name ($email)";
+
+            // on envoie un mail
             $messageContact =
 <<<TEXTE
 ==============
-date: $today $now
+date: $creationDate
 nom: $name
 email: $email
 $message
 
 TEXTE;
-
-            file_put_contents("$modelDir/contact-$today.txt", $messageContact, FILE_APPEND);
-
-            // message feedback
-            $feedback = "merci de votre message, $name($email)";
-
-            // on envoie un mail
-            // https://www.php.net/manual/fr/function.mail.php
-            $headers =  'From: hello@workodin.com' . "\r\n" .
-                        'Reply-To: hello@workodin.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-
-            @mail("hello@workodin.com", "contact/$email/$name", $messageContact, $headers);
+            
+           Site::Get("Email")->send("contact/$email/$name", $messageContact);
         }
 
         return $feedback;
