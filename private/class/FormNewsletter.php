@@ -13,12 +13,7 @@ class FormNewsletter
      * 
      */
     function process ($form)
-    {
-        // attention
-        // on peut utiliser des variables globales
-        // mais il faut prévenir PHP
-        global $modelDir, $today, $now;
-    
+    {    
         $feedback = "";
         // traitement du formulaire
         $name       = $form->getInfo("name");
@@ -36,8 +31,6 @@ class FormNewsletter
                                         "creationDate"  => $creationDate,
                                     ]);
 
-            // sauvegarder dans un fichier CSV
-            file_put_contents("$modelDir/newsletter-$today.csv", "$name,$email,$today $now\n", FILE_APPEND);
             // message feedback
             $feedback = "merci de votre inscription avec $email ($name)";
     

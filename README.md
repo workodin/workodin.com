@@ -365,6 +365,8 @@ https://www.php.net/manual/fr/function.mail.php
 * Pour corriger les erreurs SQL, la méthode debugDumpParams est bien pratique
 * https://www.php.net/manual/fr/pdostatement.debugdumpparams.php
 
-
+* Suppression du stockage dans un fichier
+* On nettoie le code de traitement du formulaire de Newsletter pour seulement garder le stockage dans MySQL
+* Amélioration: Cela permet aussi de ne plus utiliser les variables globales
 
 
