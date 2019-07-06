@@ -34,13 +34,10 @@ class FormNewsletter
             // message feedback
             $feedback = "merci de votre inscription avec $email ($name)";
     
-            // on envoie un mail
-            // https://www.php.net/manual/fr/function.mail.php
-            $headers =  'From: hello@workodin.com' . "\r\n" .
-                        'Reply-To: hello@workodin.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-    
-            @mail("hello@workodin.com", "newsletter/$email/$name", "nouvel inscrit: $email / $name", $headers);
+            // on envoie un mail    
+            Site::Get("Email")->send("hello@workodin.com", 
+                                        "newsletter/$email/$name", 
+                                        "nouvel inscrit: $email / $name", $headers);
         }
         return $feedback;
     }

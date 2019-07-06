@@ -369,4 +369,8 @@ https://www.php.net/manual/fr/function.mail.php
 * On nettoie le code de traitement du formulaire de Newsletter pour seulement garder le stockage dans MySQL
 * Amélioration: Cela permet aussi de ne plus utiliser les variables globales
 
+# Ajout classe Email
+
+* On va créer une classe Email pour gérer l'envoi des emails
+* Cela permet de simplifier le code de traitement de Newsletter
 
