@@ -390,6 +390,11 @@ https://www.php.net/manual/fr/function.mail.php
 * ajout d'un champ supplémentaire dont la valeur change à chaque visite
 * => ça ne protège pas, car les spammeurs visitent le site et analyse le code avant de forger le formulaire
 
+* technique2:
+* On teste si les spammeurs exécutent le code JS de la page
+* on inverse les champs formTag et formKey, ce qui désactive le traitement du formulaire
+* ajout de code js pour remettre les bonnes valeurs dans chaque champ au chargement de la page
+* à suivre...
 
 
 

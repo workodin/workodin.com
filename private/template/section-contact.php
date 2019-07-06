@@ -11,8 +11,8 @@
                 <label for="form-message">message</label>
                 <textarea id="form-message" name="message" required placeholder="votre message" rows="8"></textarea>
                 <button type="submit">envoyer votre message</button>
-                <input type="hidden" name="formTag" value="Contact">
-                <input type="hidden" name="formKey" value="<?php $form->show("formKeyPublic") ?>">
+                <input type="hidden" name="formKey" value="Contact">
+                <input type="hidden" name="formTag" value="<?php $form->show("formKeyPublic") ?>">
                 <div class="feedback">
                     <?php $form->process("Contact") ?>
                 </div>
