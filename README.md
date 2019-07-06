@@ -380,3 +380,17 @@ https://www.php.net/manual/fr/function.mail.php
 * On ne stocke plus les messages dans des fichiers
 * mais dans la table SQL Contact
 
+## Antispam: protection des formulaires
+
+* Au bout de quelques jours, les formulaires sont déjà spammés
+* (alors que les moteurs de recherche n'ont même pas encore référence le site...)
+* Il faut compliquer la vie aux spammeurs...
+
+* technique1: 
+* ajout d'un champ supplémentaire dont la valeur change à chaque visite
+* => ça ne protège pas, car les spammeurs visitent le site et analyse le code avant de forger le formulaire
+
+
+
+
+

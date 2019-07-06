@@ -6,6 +6,23 @@
 class Form
 {
     /**
+     * 
+     */
+    public $tabKeyVal = [];
+
+    /**
+     * 
+     */
+    function __construct ()
+    {
+        $keyPrivate = md5(json_encode(stat(__FILE__)));
+        $keyPublic  = base64_encode(password_hash($keyPrivate, PASSWORD_DEFAULT));
+        $this->set("formKeyPrivate", $keyPrivate);
+        $this->set("formKeyPublic", $keyPublic);
+
+    }
+
+    /**
      * traiter le formulaire envoyé dans une requête
      * (note: cette fonction appelle une autre fonction getInfo)
      * @param  l'étiquette du formulaire 
@@ -19,6 +36,7 @@ class Form
 
         if ($formFeedback == "")
         {
+            $formKey        = $this->getInfo("formKey");
             $formTag        = $this->getInfo("formTag");
             $formTagMethod  = $this->getInfo("formTagMethod", "process");
             // filtrer pour ne garder que les lettres et les chiffres
@@ -34,7 +52,7 @@ class Form
             // <input type="hidden" name="formTag" value="Newsletter">
             // <input type="hidden" name="formTagMethod" value="process">
             // sera traité par la méthode FormNewsletter::process
-            if (($formTag != "") && ($formTagMethod != ""))
+            if (($formKey != "") && ($formTag != "") && ($formTagMethod != ""))
             {
                 // SECURITE: 
                 // on préfixe le nom de la classe avec Form
@@ -75,4 +93,19 @@ class Form
         return $value;
     }
 
+    /**
+     * 
+     */
+    function set ($key, $value)
+    {
+        $this->tabKeyVal[$key] = $value;
+    }
+
+    /**
+     * 
+     */
+    function show ($key, $default="")
+    {
+        echo $this->tabKeyVal[$key] ?? $default;
+    }
 }

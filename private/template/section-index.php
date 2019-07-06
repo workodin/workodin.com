@@ -53,6 +53,7 @@
                             <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
                             <button type="submit">je soutiens ce projet !</button>
                             <input type="hidden" name="formTag" value="Newsletter">
+                            <input type="hidden" name="formKey" value="<?php $form->show("formKeyPublic") ?>">
                             <div class="feedback">
                                 <?php $form->process("Newsletter") ?>
                             </div>
