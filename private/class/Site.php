@@ -6,7 +6,16 @@
 class Site
 {
     // propriétés de classe
+    /**
+     * 
+     */
     public static $tabInfo = [];
+
+    // propriétés d'objet
+    /**
+     * 
+     */
+    public $modelDir = "";
 
     // méthodes de classe
     // design pattern Factory
@@ -38,8 +47,10 @@ class Site
         // mode dev: debug plus facile
         $this->setSiteMode($siteMode);
 
+        $this->modelDir        = "$baseDir/private/model";
+
         // variables globales avec $GLOBALS
-        $GLOBALS["modelDir"]   = "$baseDir/private/model";
+        $GLOBALS["modelDir"]   = $this->modelDir;
         $GLOBALS["today"]      = date("Y-m-d");
         $GLOBALS["now"]        = date("H:i:s");
 
@@ -63,7 +74,7 @@ class Site
             {
                 // CONTROLLER
                 // traitement des formulaires
-                $form = new Form;
+                $form = Site::Get("Form");
                 $form->process();
 
                 // VIEW
@@ -97,12 +108,16 @@ class Site
     {
         if ($mode == "DEV") 
         {
-            error_reporting(E_ALL);
-            ini_set("display_errors", "1"); 
-            
             // heure de Paris
             // https://www.php.net/manual/fr/function.date-default-timezone-set.php
             date_default_timezone_set("Europe/Paris");
+            $today = date("Y-m-d");
+
+            // erreurs
+            error_reporting(E_ALL);
+            ini_set("display_errors",   "1"); 
+            ini_set("log_errors",       true);
+            ini_set("error_log",        $this->modelDir . "/error-$today.log");            
 
         }
     }
@@ -115,14 +130,16 @@ class Site
         // attention
         // on peut utiliser des variables globales
         // mais il faut prévenir PHP
-        global $modelDir, $today, $now;
 
         $uri        = $_SERVER["REQUEST_URI"];
         $userAgent  = $_SERVER["HTTP_USER_AGENT"];
         $ip         = $_SERVER["REMOTE_ADDR"];
-        
+        $today      = date("Y-m-d");
+        $now        = date("Y-m-d H:i:s");
+        $modelDir   = $this->modelDir;
+
         // sauvegarder dans un fichier CSV
-        file_put_contents("$modelDir/visit-$today.csv", "$today $now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
+        file_put_contents("$modelDir/visit-$today.csv", "$now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
         
     }
 
