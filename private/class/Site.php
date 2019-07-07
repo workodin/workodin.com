@@ -5,13 +5,15 @@
  */
 class Site
 {
-    // propriétés de classe
+    // (static) propriétés collectives de Classe
+
     /**
      * 
      */
-    public static $tabInfo = [];
+    public static $tabInfo  = [];
 
-    // propriétés d'objet
+    // propriétés individuelles d'objet
+
     /**
      * 
      */

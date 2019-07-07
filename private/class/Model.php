@@ -5,6 +5,15 @@
  */
 class Model 
 {
+    // (static) propriétés collectives de Classe
+
+    /**
+     * connesion unique à la BDD MySQL
+     */
+    public static $objPDO   = null;
+
+    // propriétés individuelles d'objet
+
     /**
      * DSN pour se connecter à la database
      */
@@ -19,11 +28,6 @@ class Model
      * 
      */
     public $passwordSQL = "";
-
-    /**
-     * 
-     */
-    public $objPDO = null;
 
     /**
      * 
@@ -58,18 +62,18 @@ class Model
     function executeSQL ($requestSQL, $tabToken=[])
     {
         // connexion seulement la première fois
-        if ($this->objPDO == null)
+        if (self::$objPDO == null)
         {
             // https://www.php.net/manual/fr/pdo.construct.php
-            $this->objPDO = new PDO($this->dsnSQL, $this->userSQL, $this->passwordSQL);
+            self::$objPDO = new PDO($this->dsnSQL, $this->userSQL, $this->passwordSQL);
             // https://www.php.net/manual/fr/pdo.error-handling.php
-            $this->objPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            self::$objPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         }
 
         // SECURITE
         // PROTECTION CONTRE LES INJECTIONS SQL
         // https://www.php.net/manual/fr/pdo.prepare.php
-        $this->objPDOStatement = $this->objPDO->prepare($requestSQL);
+        $this->objPDOStatement = self::$objPDO->prepare($requestSQL);
         // https://www.php.net/manual/fr/pdostatement.execute.php
         $this->objPDOStatement->execute($tabToken);
 

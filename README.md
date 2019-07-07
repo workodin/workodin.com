@@ -396,6 +396,13 @@ https://www.php.net/manual/fr/function.mail.php
 * ajout de code js pour remettre les bonnes valeurs dans chaque champ au chargement de la page
 * à suivre...
 
+## Log des visites dans MySQL
+
+* Pour suivre les visites, on va mémoriser chaque visite dans une table SQL Visit
+* On améliore la classe Model pour garder une seule connexion SQL à chaque requête
+* La performance web.dev reste à 98%
+
+
 
 
 
