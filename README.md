@@ -402,6 +402,11 @@ https://www.php.net/manual/fr/function.mail.php
 * On améliore la classe Model pour garder une seule connexion SQL à chaque requête
 * La performance web.dev reste à 98%
 
+## Ajout de template de page
+
+* On peut vouloir créer des templates de page différents
+* Modification de la Classe Site pour tester siun template de page existe
+* On peut ainsi suivre les requêtes vers robots.txt des moteurs de recherche
 
 
 

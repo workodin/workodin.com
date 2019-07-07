@@ -71,8 +71,20 @@ class Site
             $pageUri                =  $this->getPageUri();
             $viewDir                = "$baseDir/private/template";
             $fichierSection         = "$viewDir/section-$pageUri.php";
+            $fichierPage            = "$viewDir/page-$pageUri.php";
+            
             // https://www.php.net/manual/fr/function.is-file.php
-            if (is_file($fichierSection)) 
+            if (is_file($fichierPage)) 
+            {
+                // CONTROLLER
+                // traitement des formulaires
+                $form = Site::Get("Form");
+                $form->process();
+
+                // VIEW
+                require_once($fichierPage);
+            }
+            elseif (is_file($fichierSection)) 
             {
                 // CONTROLLER
                 // traitement des formulaires
