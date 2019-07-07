@@ -134,7 +134,7 @@ class Site
         $uri        = $_SERVER["REQUEST_URI"];
         $userAgent  = $_SERVER["HTTP_USER_AGENT"];
         $ip         = $_SERVER["REMOTE_ADDR"];
-        $referer    = $_SERVER["HTTP_REFERER"];
+        $referer    = $_SERVER["HTTP_REFERER"] ?? "";
         $code       = json_encode($_REQUEST);   // TODO: SECURITY
         $today      = date("Y-m-d");
         $now        = date("Y-m-d H:i:s");

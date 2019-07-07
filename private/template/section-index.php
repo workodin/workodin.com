@@ -50,7 +50,7 @@
                             <label for="form-nom">nom</label>
                             <input id="form-nom" type="text" name="name" required placeholder="votre nom">
                             <label for="form-email">email</label>
-                            <input id="form-email" type="text"  type="email" name="email" required placeholder="votre email">
+                            <input id="form-email" type="email" name="email" required placeholder="votre email">
                             <button type="submit">je soutiens ce projet !</button>
                             <input type="hidden" name="formKey" value="Newsletter">
                             <input type="hidden" name="formTag" value="<?php $form->show("formKeyPublic") ?>">
