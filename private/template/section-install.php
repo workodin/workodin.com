@@ -9,7 +9,8 @@
                 <label for="form-code">code</label>
                 <textarea id="form-code" name="code" required placeholder="votre code" rows="8"></textarea>
                 <button type="submit">démarrer</button>
-                <input type="hidden" name="formTag" value="Install">
+                <input type="hidden" name="formTag" value="<?php $form->show("formKeyPublic") ?>">
+                <input type="hidden" name="formKey" value="Install">
                 <div class="feedback">
                     <?php $form->process("Install") ?>
                 </div>

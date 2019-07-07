@@ -123,24 +123,31 @@ class Site
     }
 
     /**
-     * garde un log de chaque visiteur
+     * garder un log de chaque visiteur
      */
     function trackVisit ()
     {
         // attention
         // on peut utiliser des variables globales
         // mais il faut prévenir PHP
-
+        // https://www.php.net/manual/fr/reserved.variables.server.php
         $uri        = $_SERVER["REQUEST_URI"];
         $userAgent  = $_SERVER["HTTP_USER_AGENT"];
         $ip         = $_SERVER["REMOTE_ADDR"];
+        $referer    = $_SERVER["HTTP_REFERER"];
+        $code       = json_encode($_REQUEST);   // TODO: SECURITY
         $today      = date("Y-m-d");
         $now        = date("Y-m-d H:i:s");
-        $modelDir   = $this->modelDir;
 
         // sauvegarder dans un fichier CSV
-        file_put_contents("$modelDir/visit-$today.csv", "$now,$uri,$ip,'$userAgent'\n", FILE_APPEND);
-        
+        Site::Get("Model")->insertLine("Visit", [
+           "creationDate"   => $now,
+           "uri"            => $uri,
+           "code"           => $code,
+           "userAgent"      => $userAgent, 
+           "referer"        => $referer, 
+           "ip"             => $ip, 
+        ]);
     }
 
     /**

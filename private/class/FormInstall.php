@@ -13,16 +13,16 @@ class FormInstall
         // attention
         // on peut utiliser des variables globales
         // mais il faut prévenir PHP
-        global $modelDir, $today, $now, $installKey, $tabConfigSQL;
+        global $modelDir, $installKey;
 
-        $feedback = "";
+        $feedback = "...";
         // traitement du formulaire
         $key    = $form->getInfo("key");
         $code   = $form->getInfo("code");
         if (($key != "") && ($key == $installKey) && ($code != ""))
         {
             // création de la table Post
-            $objModel = new Model($tabConfigSQL);
+            $objModel = Site::Get("Model");
             $filePost = "$modelDir/Post.sql";
             if (is_file($filePost)) 
             {
