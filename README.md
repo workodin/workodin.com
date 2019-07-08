@@ -432,3 +432,6 @@ https://www.php.net/manual/fr/function.mail.php
 * https://www.php.net/manual/fr/function.password-verify.php
 
 
+* On ajoute la création d'un User avec le rôle admin dans FormInstall
+* BUG: il faut d'abord créer les tables SQL et ensuite créer le User admin ?!
+

@@ -15,22 +15,54 @@ class FormInstall
         // mais il faut prévenir PHP
         global $modelDir, $installKey;
 
-        $feedback = "...";
+        $feedback = "";
         // traitement du formulaire
-        $key    = $form->getInfo("key");
-        $code   = $form->getInfo("code");
-        if (($key != "") && ($key == $installKey) && ($code != ""))
+        $password   = $form->getInfo("password");
+        $code       = $form->getInfo("code");
+        if (($password != "") && ($password == $installKey) && ($code != ""))
         {
-            // création de la table Post
             $objModel = Site::Get("Model");
-            $filePost = "$modelDir/Post.sql";
-            if (is_file($filePost)) 
-            {
-                $sqlPost = file_get_contents($filePost);
-                $objModel->executeSQL($sqlPost);
-            }
 
-            $feedback = "code exécuté";
+            $tabScript = explode("\n", $code);
+            foreach($tabScript as $lineScript)
+            {
+                $lineScript = trim($lineScript);
+                $feedback .= "($lineScript)";
+                if ($lineScript == "SQL")
+                {
+                    // création des tables SQL
+                    $filePost = "$modelDir/Post.sql";
+                    if (is_file($filePost)) 
+                    {
+                        $sqlPost = file_get_contents($filePost);
+                        $objModel->executeSQL($sqlPost);
+
+                    }
+                }        
+                if ($lineScript == "USER")
+                {
+                    // ajout de l'utilisateur admin
+                    $nbUser = $objModel->count("User");
+                    if ($nbUser == 0)
+                    {
+                        global $adminEmail;
+                        $adminPassword = $this->createPassword($adminEmail);
+                        // https://www.php.net/manual/fr/function.password-hash.php
+                        $adminPasswordHash = password_hash($adminPassword, PASSWORD_DEFAULT);
+                        $objModel->insertLine("User", [
+                            "login"             => "admin",
+                            "email"             => $adminEmail,
+                            "password"          => $adminPasswordHash,
+                            "level"             => 100,
+                            "role"              => "admin",
+                            "creationDate"      => date("Y-m-d H:i:s"),
+                        ]);
+
+                        $feedback .= "($adminPassword)";
+
+                    }
+                }
+            }
         }
         else 
         {
@@ -39,4 +71,14 @@ class FormInstall
         return $feedback;
     }
 
+
+    /**
+     * 
+     */
+    function createPassword ($seed)
+    {
+        // https://www.php.net/manual/fr/function.password-hash.php
+        // https://www.php.net/manual/fr/function.md5.php
+        return md5(password_hash($seed, PASSWORD_DEFAULT));
+    }
 }
