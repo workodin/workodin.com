@@ -104,3 +104,17 @@ table td {
     width:50%;
     padding:1rem;
 }
+
+/* nav */
+nav ul {
+    display:flex;
+    padding-left:0px;
+    margin:0;
+    list-style:none;
+    flex-wrap:wrap;
+    width:100%;
+}
+nav li {
+    padding:0.5rem;
+    margin:0.25rem;
+}
