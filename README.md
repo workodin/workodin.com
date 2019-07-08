@@ -414,6 +414,11 @@ https://www.php.net/manual/fr/function.mail.php
 * On ajoute une page publique /login avec un formulaire de login
 * On ajoute une page /admin (qui devra être protégée...) 
 
+## Ajout de la méthode Model::count
+
+* On améliore le formulaire de Newsletter
+* On vérifie que l'email n'est pas déjà présent dans la table SQL Newsletter
+* Si déjà présent, on ne crée pas de doublon
 
 
 

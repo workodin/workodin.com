@@ -25,11 +25,16 @@ class FormNewsletter
 
             // insertion dans la table SQL Newsletter
             $objModel = Site::Get("Model");
-            $objModel->insertLine("Newsletter", [ 
-                                        "name"          => $name, 
-                                        "email"         => $email, 
-                                        "creationDate"  => $creationDate,
-                                    ]);
+            // ne pas dupliquer un email déjà présent
+            $nbEmailFound = $objModel->count("Newsletter", "email", $email);
+            if ($nbEmailFound == 0)
+            {
+                $objModel->insertLine("Newsletter", [ 
+                    "name"          => $name, 
+                    "email"         => $email, 
+                    "creationDate"  => $creationDate,
+                ]);
+            }
 
             // message feedback
             $feedback = "merci de votre inscription avec $email ($name)";

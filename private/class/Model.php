@@ -124,8 +124,37 @@ class Model
 SQL;
 
         // on exécute la requête preparée
-        $this->executeSQL($codeSQL, $tabColumnValue);
+        return $this->executeSQL($codeSQL, $tabColumnValue);
 
     }
 
+    /**
+     * 
+     */
+    function count ($tableName, $filterColumn="", $filterValue="")
+    {
+        $tabColumnValue = [];
+        $filterWhere = "";
+        if ($filterColumn != "")
+        {
+            $filterWhere = "WHERE `$filterColumn` = :$filterColumn";
+            $tabColumnValue[$filterColumn] = $filterValue;
+        }
+        // on construit une requête SQL préparée avec des jetons/tokens
+        $codeSQL =
+<<<SQL
+ 
+SELECT count(*) 
+FROM `$tableName`
+$filterWhere
+
+SQL;
+
+        // on exécute la requête preparée
+        $objPDOStatement = $this->executeSQL($codeSQL, $tabColumnValue);
+        // on renvoie directement la valeur
+        // https://www.php.net/manual/fr/pdostatement.fetchcolumn.php
+        return $objPDOStatement->fetchColumn();
+    }
+    
 }
