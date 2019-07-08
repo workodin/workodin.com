@@ -19,8 +19,8 @@ else
     // accès ok
     $loginUser = Site::Get("Session")->get("loginUser");
 
-    require_once("$viewDir/header.php");
+    require_once("$viewDir/header-admin.php");
     require_once($fichierSection);
-    require_once("$viewDir/footer.php");
+    require_once("$viewDir/footer-admin.php");
 
 }

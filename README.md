@@ -447,3 +447,15 @@ https://www.php.net/manual/fr/function.mail.php
 
 * On ajoute des redirections pour faciliter la navigation pour le visiteur
 
+## Ajout de header-admin.php et footer-admin.php
+
+* La partie Back-Office est différente de la partie publique
+* On va créer de nouveaux fichiers pour la partie admin
+* header-admin.php et footer-admin.php
+* on ajoute notamment la balise meta noindex pour ne pas être référencé
+
+
+    <!-- http://robots-txt.com/meta-robots/ -->
+    <meta name="robots" content="noindex, nofollow">
+
+

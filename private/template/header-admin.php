@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Workodin.com: trouvez et préparez votre poste de développeur web fullstack depuis chez vous</title>
-    <meta name="description" content="Trouvez et préparez votre poste de développeur web fullstack depuis chez vous">
-    <meta name="keywords" content="emploi, formation, développeur web, formation distance, france, grande école numérique">
+    <!-- http://robots-txt.com/meta-robots/ -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Workodin.com : le site pour trouver et préparer votre poste de développeur web depuis chez vous</title>
+    <meta name="description" content="Workodin : le site pour trouver et préparer votre poste de développeur web depuis chez vous">
+    <meta name="keywords" content="emploi, formation, développeur web, formation distance">
 
     <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
