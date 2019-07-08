@@ -97,6 +97,14 @@ class Form
     }
 
     /**
+     * SECURITE: transforme le texte extérieur en nombre entier
+     */
+    function getInt ($name, $default=0)
+    {
+        return intval($this->getInfo($name, $default));
+    }
+
+    /**
      * 
      */
     function set ($key, $value)

@@ -219,4 +219,45 @@ SQL;
 
     }
 
+    /**
+     * 
+     */
+    function updateLine ($tableName, $tabColumnValue, $filterValue, $filterColumn="id")
+    {
+        $listUpdate = "";
+        $first = true;
+        foreach($tabColumnValue as $column => $value)
+        {
+            if ($first)
+            {
+                $first = false;
+            }
+            else
+            {
+                $listUpdate .= ", ";
+            }
+            $listUpdate .= "`$column` = :$column";
+        }
+        $filterWhere    = "";
+        if ($filterColumn != "")
+        {
+            $filterWhere = "WHERE `$filterColumn` = :FW$filterColumn";
+            $tabColumnValue["FW$filterColumn"] = $filterValue;
+        }
+        // on construit une requête SQL préparée avec des jetons/tokens
+        $codeSQL =
+<<<SQL
+ 
+UPDATE `$tableName`
+SET
+$listUpdate
+$filterWhere
+
+SQL;
+
+        // on exécute la requête preparée
+        return $this->executeSQL($codeSQL, $tabColumnValue);
+
+    }
+
 }

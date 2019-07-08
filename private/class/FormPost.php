@@ -17,6 +17,7 @@ class FormPost
         $levelUser = Site::Get("Session")->get("levelUser");
         if ($levelUser == 100)
         {
+            $now = date("Y-m-d H:i:s");
             $feedback = $objController
                             ->check("title",    "text")
                             ->check("uri",      "text")
@@ -24,7 +25,9 @@ class FormPost
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")
                             // compléter les infos manquantes
-                            ->addData("creationDate", date("Y-m-d H:i:s"))
+                            ->addData("creationDate", $now)
+                            ->addData("modificationDate", $now)
+                            ->addData("publicationDate", $now)
                             // ajouter la ligne
                             ->insertLine("Post", "votre contenu est publié")
                             // récupérer le message de confirmation
@@ -48,6 +51,37 @@ class FormPost
         {
             $feedback = $objController
                             ->deleteLine("Post", "le contenu a été supprimé")
+                            // récupérer le message de confirmation
+                            ->getFeedback()
+                            ;
+        }
+        return $feedback;
+    }
+
+    /**
+     * 
+     */
+    function processUpdate ()
+    {
+        $feedback = "";
+        $objController = Site::Get("Controller");
+
+        // SECURITE
+        $levelUser = Site::Get("Session")->get("levelUser");
+        if ($levelUser == 100)
+        {
+            $now = date("Y-m-d H:i:s");
+            $feedback = $objController
+                            ->check("title",    "text")
+                            ->check("uri",      "text")
+                            ->check("category", "text")
+                            ->check("code",     "textarea")
+                            ->check("urlMedia", "text")
+                            // compléter les infos manquantes
+                            ->addData("modificationDate", $now)
+                            ->addData("publicationDate", $now)
+                            // ajouter la ligne
+                            ->updateLine("Post", "votre contenu est modifié")
                             // récupérer le message de confirmation
                             ->getFeedback()
                             ;

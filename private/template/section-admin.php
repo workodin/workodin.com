@@ -59,6 +59,7 @@ foreach($objPDOStatement as $tabLine)
     // on ajoute une colonne pour le lien delete
     echo 
 <<<HTML
+    <td><a href="admin-update.php?id=$id">modifier</a></td>
     <td><a href="?id=$id&formTag=Post&formTagMethod=Delete&formKey=$formKey">supprimer</a></td>
 HTML;
 
@@ -74,8 +75,8 @@ foreach($tabColumn as $column)
 {
     $htmlTableHead .= "<td>$column</td>";
 }
-// colonne supprimer
-$htmlTableHead .= "<td></td>";
+// colonne modifier et supprimer
+$htmlTableHead .= "<td></td><td></td>";
 
 ?>
     <table>

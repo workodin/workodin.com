@@ -467,7 +467,7 @@ https://www.php.net/manual/fr/function.mail.php
 * Delete
 * La vie du développeur web tourne autour du CRUD !
 
-## Ajout de formulaire admmin de création de Post
+## Ajout de formulaire admmin de création de Post (Create)
 
 * sur la page admin, on ajoute un formulaire pour créer des contenus (Post)
 * SECURITE: il faut bien vérifier le niveau du User dans le traitement du formulaire
@@ -478,7 +478,7 @@ https://www.php.net/manual/fr/function.mail.php
 * On utilise le chainage des appels de méthodes pour obtenir un code plus compact
 * Astuce: la méthode retourne $this pour permettre le chainage des appels
 
-## Ajout de l'affichage de la table Post
+## Ajout de l'affichage de la table Post (Read admin)
 
 * On ajoute dans la page admin l'affichage des Post
 * SECURITE: Il faut se protéger contre les attaques XSS avec du JS
@@ -500,11 +500,16 @@ https://www.php.net/manual/fr/function.mail.php
 * https://www.php.net/manual/fr/function.ob-start.php
 * https://www.php.net/manual/fr/function.ob-get-clean.php
 
-## Ajout de la page News
+## Ajout de la page News (Read public)
 
 * On ajoute une page /news
 * Cette page affiche seulement les Post dans la catégorie "news"
 * On fait une "boucle" de Read en filtrant sur la catégorie dans la table SQL Post
 * IMPORTANT: les boucles sont fondamentales dans les CMS
 
+## Ajout Update sur Post
+
+* Ajout de la page admin-update.php
+* Ajout de Model::updateLine
+* Ajout de Controller::updateLine
 

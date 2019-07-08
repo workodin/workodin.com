@@ -14,7 +14,17 @@
                     <li>Programmation Fonctionnelle</li>
                     <li>Programmation Orientée Objet</li>
                     <li>MVC et Design Patterns</li>
-                    <li>Framework et CMS</li>
+                    <li>Framework</li>
+                    <li>CRUD (Create Read Update Delete)</li>
+                    <li>CMS (Content Management System)</li>
+                    <li>Cookies, Sessions</li>
+                </ul>
+                <h3>Formulaires</h3>
+                <ul>
+                    <li>Newsletter</li>
+                    <li>Contact</li>
+                    <li>Login</li>
+                    <li>Blog</li>
                 </ul>
                 <ul>
                     <li>WordPress</li>

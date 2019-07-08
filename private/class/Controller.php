@@ -121,4 +121,20 @@ class Controller
         return $this;
     }
 
+    /**
+     * 
+     */
+    function updateLine($tableName, $feedbackSuccess, $columnName="id")
+    {
+        if ($this->getNbError() == 0)
+        {
+            $value = $this->form->getInfo($columnName);
+            Site::Get("Model")->updateLine($tableName, $this->getTabForm(), $value, $columnName);
+            $this->feedback = $feedbackSuccess;
+        }
+
+        // permet le chainage des appels
+        return $this;
+    }
+
 }
