@@ -435,3 +435,15 @@ https://www.php.net/manual/fr/function.mail.php
 * On ajoute la création d'un User avec le rôle admin dans FormInstall
 * BUG: il faut d'abord créer les tables SQL et ensuite créer le User admin ?!
 
+## Ajout de la classe Session et finalisation du Login/Logout
+
+* On utilise les sessions PHP pour mémoriser les infos sur un visiteur connecté
+* Et on peut maintenant finaliser le formulaire de Login
+* pour mémoriser les infos sur le User si le Login est correct
+* Et on peut ensuite retrouver ces infos de session sur la page admin
+* si le visiteur est un User admin alors on affiche la page admin
+* sinon, on affiche une page 404
+* Et on ajoute une page logout pour se déconnecter
+
+* On ajoute des redirections pour faciliter la navigation pour le visiteur
+

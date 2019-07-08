@@ -38,6 +38,21 @@ class FormLogin
                 // (notamment ici $password)
                 if (password_verify($passwordForm, $password))
                 {
+                    // on mémorise les infos User dans une session
+                    Site::Get("Session")
+                            ->set("levelUser",  $level)     // SECURITE: DONNE LES ACCES
+                            ->set("roleUser",   $role)      // SECURITE: DONNE LES ACCES
+                            ->set("idUser",     $id)
+                            ->set("emailUser",  $email)
+                            ->set("loginUser",  $login);
+                    
+                    // redirection suivant level
+                    if ($level == 100)
+                    {
+                        // https://www.php.net/manual/fr/function.header.php
+                        header("Location: /admin");
+                    } 
+
                     // message feedback
                     $feedback = "bienvenue ($login)";                
                 }
