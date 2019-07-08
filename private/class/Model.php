@@ -134,7 +134,7 @@ SQL;
     function count ($tableName, $filterColumn="", $filterValue="")
     {
         $tabColumnValue = [];
-        $filterWhere = "";
+        $filterWhere    = "";
         if ($filterColumn != "")
         {
             $filterWhere = "WHERE `$filterColumn` = :$filterColumn";
@@ -156,5 +156,31 @@ SQL;
         // https://www.php.net/manual/fr/pdostatement.fetchcolumn.php
         return $objPDOStatement->fetchColumn();
     }
-    
+
+    /**
+     * 
+     */
+    function readLine ($tableName, $filterColumn="", $filterValue="")
+    {
+        $tabColumnValue = [];
+        $filterWhere    = "";
+        if ($filterColumn != "")
+        {
+            $filterWhere = "WHERE `$filterColumn` = :$filterColumn";
+            $tabColumnValue[$filterColumn] = $filterValue;
+        }
+        // on construit une requête SQL préparée avec des jetons/tokens
+        $codeSQL =
+<<<SQL
+ 
+SELECT * 
+FROM `$tableName`
+$filterWhere
+
+SQL;
+
+        // on exécute la requête preparée
+        return $this->executeSQL($codeSQL, $tabColumnValue);
+
+    }
 }

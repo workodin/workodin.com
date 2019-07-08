@@ -420,5 +420,15 @@ https://www.php.net/manual/fr/function.mail.php
 * On vérifie que l'email n'est pas déjà présent dans la table SQL Newsletter
 * Si déjà présent, on ne crée pas de doublon
 
+## Ajout de la méthode Model::readLine
+
+* On complète le formulaire de Login
+* Comme le mot de passe est stocké dans MySQL avec un hashage
+* (obligation légale avec le RGPD)
+* On doit procéder en plusieurs étapes
+* étape1: on cherche une ligne qui correspond à l'email fourni par le visiteur
+* étape2: si on trouve une ligne, on récupère le mot de passe hashé
+* étape3: on peut utiliser la fonction password_verify qui valide que les 2 mots de passe correspondent
+* https://www.php.net/manual/fr/function.password-verify.php
 
 

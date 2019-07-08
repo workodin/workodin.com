@@ -16,12 +16,42 @@ class FormLogin
 
         $feedback = "";
         // traitement du formulaire
-        $email      = $form->getInfo("email");
-        $password   = $form->getInfo("password");
-        if (($email != "") && ($password != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
+        $email          = $form->getInfo("email");
+        $passwordForm   = $form->getInfo("password");
+        if (($email != "") && ($passwordForm != "") && (filter_var($email, FILTER_VALIDATE_EMAIL)))
         {
-            // message feedback
-            $feedback = "bienvenue ($email)";
+            $objModel = Site::Get("Model");
+            $objPDOStatement = $objModel->readLine("User", "email", $email);
+            $tabLine = [];
+            // on utilise $objPDOStatement comme Traversable
+            foreach($objPDOStatement as $tabLine)
+            {
+                // rien à faire
+            }
+            // https://www.php.net/manual/fr/function.empty.php
+            if (!empty($tabLine))
+            {
+                // OK, on a trouvé une ligne qui correspond
+                // https://www.php.net/manual/fr/function.extract.php
+                extract($tabLine);
+                // attention: extract crée des variables locales à partir des colonnes
+                // (notamment ici $password)
+                if (password_verify($passwordForm, $password))
+                {
+                    // message feedback
+                    $feedback = "bienvenue ($login)";                
+                }
+                else
+                {
+                    // mauvais mot de passe
+                    $feedback = "désolé ($email)";                
+                }
+            }
+            else
+            {
+                // email inconnu
+                $feedback = "désolé ($email)";                
+            }
         }
 
         return $feedback;
