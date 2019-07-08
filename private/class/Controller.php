@@ -36,10 +36,42 @@ class Controller
     /**
      * 
      */
-    function check($name, $type, $defaultValue="")
+    function check($name, $type, $defaultValue="", $params="", $tableName="")
     {
         $value = $this->form->getInfo($name, $defaultValue);
+
+        if ($type == "uri")
+        {
+            $value = preg_replace("/[^a-zA-Z0-9-]/", "", $value);
+        }
         $this->tabForm[$name] = $value;
+
+        $tabParam = explode("/", $params);
+        if (in_array("unique", $tabParam))
+        {
+            $nbLine = Site::Get("Model")->count($tableName, $name, $value);  
+            if ($nbLine > 0)
+            {
+                $this->tabError[] = "($name existe déjà: $value)";
+            }      
+        }
+        if (in_array("unique1", $tabParam))
+        {
+            $nbLine = 0;
+            $objPDOStatement = Site::Get("Model")->readLine($tableName, $name, $value);
+            $idCurrent = $this->form->getInt("id");
+            foreach($objPDOStatement as $tabLine)
+            {
+                if ($idCurrent != $tabLine["id"])
+                {
+                    $nbLine++;
+                }
+            }
+            if ($nbLine > 0)
+            {
+                $this->tabError[] = "($name existe déjà: $value)";
+            }      
+        }
 
         if ($value == "")
         {

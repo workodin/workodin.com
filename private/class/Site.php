@@ -66,9 +66,6 @@ class Site
         }
         else
         {
-            // garder un log du visiteur
-            $this->trackVisit();
-
             // FRONT CONTROLLER ET ROUTEUR
             // on extrait de l'URI la page demandée
             global $pageUri;
@@ -77,12 +74,12 @@ class Site
             $fichierSection         = "$viewDir/section-$pageUri.php";
             $fichierPage            = "$viewDir/page-$pageUri.php";
             
+            $form = Site::Get("Form");
             // https://www.php.net/manual/fr/function.is-file.php
             if (is_file($fichierPage)) 
             {
                 // CONTROLLER
                 // traitement des formulaires
-                $form = Site::Get("Form");
                 $form->process();
 
                 // VIEW
@@ -92,7 +89,6 @@ class Site
             {
                 // CONTROLLER
                 // traitement des formulaires
-                $form = Site::Get("Form");
                 $form->process();
 
                 // VIEW
@@ -103,15 +99,37 @@ class Site
             }
             else
             {
-                // page non trouvée
-                // important: erreur 404 pour les moteurs de recherche
-                // https://www.php.net/manual/fr/function.header.php
-                header("HTTP/1.0 404 Not Found");
+                $objPDOStatement = Site::Get("Model")->readLine("Post", "uri", $pageUri);
+                foreach($objPDOStatement as $tabLine)
+                {
+                    // traitement des formulaires
+                    $form->process();
 
-                require_once("$viewDir/header.php");
-                require_once("$viewDir/section-404.php");
-                require_once("$viewDir/footer.php");
+                    extract($tabLine);
+
+                    $templatePost = "$viewDir/template-post.php";
+                    if (is_file($templatePost))
+                    {
+                        // VIEW
+                        require_once($templatePost);
+                    }
+
+                }
+                if(empty($tabLine))
+                {
+                    // page non trouvée
+                    // important: erreur 404 pour les moteurs de recherche
+                    // https://www.php.net/manual/fr/function.header.php
+                    header("HTTP/1.0 404 Not Found");
+
+                    require_once("$viewDir/header.php");
+                    require_once("$viewDir/section-404.php");
+                    require_once("$viewDir/footer.php");
+                }
             }
+
+            // garder un log du visiteur
+            $this->trackVisit();
 
         }
 

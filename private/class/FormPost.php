@@ -20,7 +20,7 @@ class FormPost
             $now = date("Y-m-d H:i:s");
             $feedback = $objController
                             ->check("title",    "text")
-                            ->check("uri",      "text")
+                            ->check("uri",      "uri", "", "unique", "Post")
                             ->check("category", "text")
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")
@@ -73,7 +73,7 @@ class FormPost
             $now = date("Y-m-d H:i:s");
             $feedback = $objController
                             ->check("title",    "text")
-                            ->check("uri",      "text")
+                            ->check("uri",      "uri", "", "unique1", "Post")
                             ->check("category", "text")
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")

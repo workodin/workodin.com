@@ -27,8 +27,6 @@
     
 </section>
 
-<section>
-    <h3>Liste des contenus</h3>
 <?php
 
 $objModel           = Site::Get("Model");
@@ -54,11 +52,12 @@ foreach($objPDOStatement as $tabLine)
     foreach($tabLine as $column => $value)
     {
         echo "<td>$value</td>";
-    }    
-    $id = $tabLine["id"];
+    }
+    extract($tabLine);    
     // on ajoute une colonne pour le lien delete
     echo 
 <<<HTML
+    <td><a href="/$uri">voir</a></td>
     <td><a href="admin-update.php?id=$id">modifier</a></td>
     <td><a href="?id=$id&formTag=Post&formTagMethod=Delete&formKey=$formKey">supprimer</a></td>
 HTML;
@@ -75,10 +74,12 @@ foreach($tabColumn as $column)
 {
     $htmlTableHead .= "<td>$column</td>";
 }
-// colonne modifier et supprimer
-$htmlTableHead .= "<td></td><td></td>";
+// colonnes: voir, modifier et supprimer
+$htmlTableHead .= "<td></td><td></td><td></td>";
 
 ?>
+<section>
+    <h3>Liste des contenus</h3>
     <table>
         <thead>
         <?php echo $htmlTableHead ?>        
@@ -87,4 +88,4 @@ $htmlTableHead .= "<td></td><td></td>";
 <?php echo $htmlTable ?>        
         </tbody>
     </table>
-<section>
+</section>

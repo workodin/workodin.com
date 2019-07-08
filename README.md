@@ -513,3 +513,12 @@ https://www.php.net/manual/fr/function.mail.php
 * Ajout de Model::updateLine
 * Ajout de Controller::updateLine
 
+## Ajout check unique sur uri dans Post
+
+* Chaque Post doit avoir une uri unique
+* Il faut gérer le cas de l'update sur l'uri
+* Chaque Post a sa propre page accessible avec son uri
+
+
+
+
