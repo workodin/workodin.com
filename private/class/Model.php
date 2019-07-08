@@ -160,15 +160,22 @@ SQL;
     /**
      * 
      */
-    function readLine ($tableName, $filterColumn="", $filterValue="")
+    function readLine ($tableName, $filterColumn="", $filterValue="", $sortColumn="id")
     {
         $tabColumnValue = [];
         $filterWhere    = "";
+        $sortOrder      = "";
         if ($filterColumn != "")
         {
             $filterWhere = "WHERE `$filterColumn` = :$filterColumn";
             $tabColumnValue[$filterColumn] = $filterValue;
         }
+
+        if ($sortColumn != "")
+        {
+            $sortOrder = "ORDER BY `$sortColumn` DESC";
+        }
+
         // on construit une requête SQL préparée avec des jetons/tokens
         $codeSQL =
 <<<SQL
@@ -176,6 +183,7 @@ SQL;
 SELECT * 
 FROM `$tableName`
 $filterWhere
+$sortOrder
 
 SQL;
 

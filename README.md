@@ -492,5 +492,12 @@ https://www.php.net/manual/fr/function.mail.php
 * Astuce: on forge la requête directement dans l'URL
 * SECURITE: bien vérifier car on peut effacer toute une table SQL !!!
 
+## Ajout de tri sur Read
+
+* On affiche les lignes de Post du plus récent au plus ancien
+* Amélioration de l'affichage du tableau html 
+* On utilise ob_start et ob_get_clean pour simplifier le code PHP
+* https://www.php.net/manual/fr/function.ob-start.php
+* https://www.php.net/manual/fr/function.ob-get-clean.php
 
 

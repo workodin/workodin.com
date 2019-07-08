@@ -29,16 +29,23 @@
 
 <section>
     <h3>Liste des contenus</h3>
-    <table>
-        <tbody>
 <?php
 
 $objModel           = Site::Get("Model");
-$objPDOStatement    = $objModel->readLine("Post");
+$objPDOStatement    = $objModel->readLine("Post", "", "", "creationDate");
 $formKey            = $form->get("formKeyPublic");
+$tabColumn          = [];
 
+// mise en buffer de l'affichage
+// https://www.php.net/manual/fr/function.ob-start.php
+ob_start();
 foreach($objPDOStatement as $tabLine)
 {
+    // nom des colonnes
+    if (empty($tabColumn))
+    {
+        $tabColumn = array_keys($tabLine);
+    }
     // SECURITE: protection contre les attaques XSS
     // https://www.php.net/manual/fr/function.array-map.php
     array_map("htmlspecialchars", $tabLine);
@@ -57,7 +64,26 @@ HTML;
 
     echo "</tr>";
 }
+
+// fin du buffer
+// https://www.php.net/manual/fr/function.ob-get-clean.php
+$htmlTable = ob_get_clean();
+
+$htmlTableHead = "";
+foreach($tabColumn as $column)
+{
+    $htmlTableHead .= "<td>$column</td>";
+}
+// colonne supprimer
+$htmlTableHead .= "<td></td>";
+
 ?>
+    <table>
+        <thead>
+        <?php echo $htmlTableHead ?>        
+        </thead>
+        <tbody>
+<?php echo $htmlTable ?>        
         </tbody>
     </table>
 <section>
