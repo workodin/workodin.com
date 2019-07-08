@@ -24,5 +24,10 @@
         <header>
             <h1><a href="/">Workodin.com</a></h1>
             <strong>Workout & Coding. Everyday & Everywhere.</strong>
+            <nav>
+                <ul>
+                    <li><a href="/admin">admin</a></li>
+                </ul>
+            </nav>
         </header>
         <main>

@@ -478,3 +478,12 @@ https://www.php.net/manual/fr/function.mail.php
 * On utilise le chainage des appels de méthodes pour obtenir un code plus compact
 * Astuce: la méthode retourne $this pour permettre le chainage des appels
 
+## Ajout de l'affichage de la table Post
+
+* On ajoute dans la page admin l'affichage des Post
+* SECURITE: Il faut se protéger contre les attaques XSS avec du JS
+* On désactive le code HTML (et ainsi les balises script)
+* avec la fonction htmlspecialchars
+
+
+

@@ -26,3 +26,28 @@
     </form>
     
 </section>
+
+<section>
+    <h3>Liste des contenus</h3>
+    <table>
+        <tbody>
+<?php
+$objModel = Site::Get("Model");
+$objPDOStatement = $objModel->readLine("Post");
+foreach($objPDOStatement as $tabLine)
+{
+    // SECURITE: protection contre les attaques XSS
+    // https://www.php.net/manual/fr/function.array-map.php
+    array_map("htmlspecialchars", $tabLine);
+    
+    echo "<tr>";
+    foreach($tabLine as $column => $value)
+    {
+        echo "<td>$value</td>";
+    }    
+    echo "</tr>";
+}
+?>
+        </tbody>
+    </table>
+<section>

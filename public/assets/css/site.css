@@ -90,3 +90,11 @@ form .feedback {
     margin-top:0;
     padding-left:1rem;
 }
+
+table {
+    width:100%;
+}
+table td {
+    border:1px solid #aaaaaa;
+    padding:0.25rem;
+}
