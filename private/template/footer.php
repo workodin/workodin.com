@@ -3,10 +3,11 @@
         <footer class="row">
         <div class="col col50">
             <p><a href="https://github.com/workodin/workodin.com">participez au développement du site workodin.com sur GitHub</a></p>
+            <p><a href="//workodin.com/login" rel="nofollow">se connecter</a></p>
         </div>    
         <div class="col col50">
             <p><a href="//workodin.com">workodin.com</a> - tous droits réservés - &copy;2019</p>
-            <p><a href="//workodin.com/contact">contact</a> - <a href="//workodin.com/credits">crédits</a> - <a href="//workodin.com/mentions-legales">mentions légales</a></p>
+            <p><a href="//workodin.com/contact">contact</a> - <a href="//workodin.com/credits" rel="nofollow">crédits</a> - <a href="//workodin.com/mentions-legales" rel="nofollow">mentions légales</a></p>
             <p><small>(page publiée le <?php echo date("d/m/Y - H:i:s") ?>)</small></p>
         </div>    
         </footer>

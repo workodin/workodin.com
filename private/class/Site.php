@@ -149,9 +149,17 @@ class Site
         $userAgent  = $_SERVER["HTTP_USER_AGENT"];
         $ip         = $_SERVER["REMOTE_ADDR"];
         $referer    = $_SERVER["HTTP_REFERER"] ?? "";
-        $code       = json_encode($_REQUEST);   // TODO: SECURITY
+
         $today      = date("Y-m-d");
         $now        = date("Y-m-d H:i:s");
+
+        // SECURITE: on ne stocke pas les mots de passe...
+        $tabRequest = $_REQUEST;
+        if (isset($tabRequest["password"]))
+        {
+            $tabRequest["password"] = mb_strlen($tabRequest["password"]);
+        }
+        $code       = json_encode($tabRequest);   // TODO: SECURITY
 
         // sauvegarder dans un fichier CSV
         Site::Get("Model")->insertLine("Visit", [

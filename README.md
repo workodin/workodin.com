@@ -405,8 +405,14 @@ https://www.php.net/manual/fr/function.mail.php
 ## Ajout de template de page
 
 * On peut vouloir créer des templates de page différents
-* Modification de la Classe Site pour tester siun template de page existe
+* Modification de la Classe Site pour tester si un template de page existe
 * On peut ainsi suivre les requêtes vers robots.txt des moteurs de recherche
+
+## Ajout du formulaire de login
+
+* Pour préparer la partie Back-Office
+* On ajoute une page publique /login avec un formulaire de login
+* On ajoute une page /admin (qui devra être protégée...) 
 
 
 
