@@ -500,4 +500,11 @@ https://www.php.net/manual/fr/function.mail.php
 * https://www.php.net/manual/fr/function.ob-start.php
 * https://www.php.net/manual/fr/function.ob-get-clean.php
 
+## Ajout de la page News
+
+* On ajoute une page /news
+* Cette page affiche seulement les Post dans la catégorie "news"
+* On fait une "boucle" de Read en filtrant sur la catégorie dans la table SQL Post
+* IMPORTANT: les boucles sont fondamentales dans les CMS
+
 

@@ -98,3 +98,9 @@ table td {
     border:1px solid #aaaaaa;
     padding:0.25rem;
 }
+
+/* page news */
+.listPost article {
+    width:50%;
+    padding:1rem;
+}

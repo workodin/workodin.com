@@ -27,6 +27,7 @@
             <nav>
                 <ul>
                     <li><a href="/admin">admin</a></li>
+                    <li><a href="/news">news</a></li>
                 </ul>
             </nav>
         </header>

@@ -2,6 +2,7 @@
        </main>
         <footer class="row">
         <div class="col col50">
+            <p><a href="//workodin.com/news">news</a></p>
             <p><a href="https://github.com/workodin/workodin.com">participez au développement du site workodin.com sur GitHub</a></p>
             <p><a href="//workodin.com/login" rel="nofollow">se connecter</a></p>
         </div>    
