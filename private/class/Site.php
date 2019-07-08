@@ -34,7 +34,6 @@ class Site
             }
             else
             {
-                echo "($className)";
                 $objet = new $className;
             }
             // mémoriser l'objet pour les prochains appels

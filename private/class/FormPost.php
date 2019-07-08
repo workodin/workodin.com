@@ -33,4 +33,26 @@ class FormPost
         }
         return $feedback;
     }
+
+    /**
+     * 
+     */
+    function processDelete ()
+    {
+        $feedback = "";
+        $objController = Site::Get("Controller");
+
+        // SECURITE: ATTENTION PEUT SUPPRIMER TOUTE UNE TABLE
+        $levelUser = Site::Get("Session")->get("levelUser");
+        if ($levelUser == 100)
+        {
+            $feedback = $objController
+                            ->deleteLine("Post", "le contenu a été supprimé")
+                            // récupérer le message de confirmation
+                            ->getFeedback()
+                            ;
+        }
+        return $feedback;
+    }
+
 }

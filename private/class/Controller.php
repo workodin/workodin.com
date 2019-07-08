@@ -107,4 +107,18 @@ class Controller
         // permet le chainage des appels
         return $this;
     }
+
+    /**
+     * 
+     */
+    function deleteLine ($tableName, $feedbackSuccess, $columnName="id")
+    {
+        $value = $this->form->getInfo($columnName);
+        Site::Get("Model")->deleteLine($tableName, $columnName, $value);
+        $this->feedback = $feedbackSuccess;
+
+        // permet le chainage des appels
+        return $this;
+    }
+
 }

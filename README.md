@@ -485,5 +485,12 @@ https://www.php.net/manual/fr/function.mail.php
 * On désactive le code HTML (et ainsi les balises script)
 * avec la fonction htmlspecialchars
 
+## Ajout du Delete sur Post
+
+* Sur la page admin, on ajoute un lien "supprimer" sur chaque ligne de Post
+* On ne passe pas par une balise form, mais une balise a
+* Astuce: on forge la requête directement dans l'URL
+* SECURITE: bien vérifier car on peut effacer toute une table SQL !!!
+
 
 

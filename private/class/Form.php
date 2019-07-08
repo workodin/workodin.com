@@ -107,8 +107,17 @@ class Form
     /**
      * 
      */
+    function get ($key, $default="")
+    {
+        return $this->tabKeyVal[$key] ?? $default;
+    }
+
+    /**
+     * 
+     */
     function show ($key, $default="")
     {
         echo $this->tabKeyVal[$key] ?? $default;
     }
+
 }

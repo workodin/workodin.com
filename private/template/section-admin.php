@@ -32,19 +32,29 @@
     <table>
         <tbody>
 <?php
-$objModel = Site::Get("Model");
-$objPDOStatement = $objModel->readLine("Post");
+
+$objModel           = Site::Get("Model");
+$objPDOStatement    = $objModel->readLine("Post");
+$formKey            = $form->get("formKeyPublic");
+
 foreach($objPDOStatement as $tabLine)
 {
     // SECURITE: protection contre les attaques XSS
     // https://www.php.net/manual/fr/function.array-map.php
     array_map("htmlspecialchars", $tabLine);
-    
+
     echo "<tr>";
     foreach($tabLine as $column => $value)
     {
         echo "<td>$value</td>";
     }    
+    $id = $tabLine["id"];
+    // on ajoute une colonne pour le lien delete
+    echo 
+<<<HTML
+    <td><a href="?id=$id&formTag=Post&formTagMethod=Delete&formKey=$formKey">supprimer</a></td>
+HTML;
+
     echo "</tr>";
 }
 ?>

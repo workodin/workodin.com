@@ -183,4 +183,32 @@ SQL;
         return $this->executeSQL($codeSQL, $tabColumnValue);
 
     }
+
+    /**
+     * ATTENTION: PEUT SUPPRIMER TOUTES LES LIGNES SI MAL UTILISE
+     */
+    function deleteLine ($tableName, $filterColumn="", $filterValue="")
+    {
+        $tabColumnValue = [];
+        $filterWhere    = "";
+        if ($filterColumn != "")
+        {
+            $filterWhere = "WHERE `$filterColumn` = :$filterColumn";
+            $tabColumnValue[$filterColumn] = $filterValue;
+        }
+        // on construit une requête SQL préparée avec des jetons/tokens
+        $codeSQL =
+<<<SQL
+ 
+DELETE 
+FROM `$tableName`
+$filterWhere
+
+SQL;
+
+        // on exécute la requête preparée
+        return $this->executeSQL($codeSQL, $tabColumnValue);
+
+    }
+
 }
