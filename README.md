@@ -472,4 +472,9 @@ https://www.php.net/manual/fr/function.mail.php
 * sur la page admin, on ajoute un formulaire pour créer des contenus (Post)
 * SECURITE: il faut bien vérifier le niveau du User dans le traitement du formulaire
 
+## Ajout de la classe Controller
+
+* Pour simplifier le traitement des formulaires, on ajoute une classe Controller
+* On utilise le chainage des appels de méthodes pour obtenir un code plus compact
+* Astuce: la méthode retourne $this pour permettre le chainage des appels
 

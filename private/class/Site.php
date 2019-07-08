@@ -23,19 +23,24 @@ class Site
     // design pattern Factory
     public static function Get ($className)
     {
-        if (!isset(self::$tabInfo[$className]))
+        // vérification si un objet existe déjà
+        $objet = self::$tabInfo[$className] ?? null;
+        if ($objet == null)
         {
             if ($className == "Model")
             {
                 global $tabConfigSQL;
-                self::$tabInfo[$className] = new Model($tabConfigSQL);
+                $objet = new Model($tabConfigSQL);
             }
             else
             {
-                self::$tabInfo[$className] = new $className;
+                echo "($className)";
+                $objet = new $className;
             }
+            // mémoriser l'objet pour les prochains appels
+            self::$tabInfo[$className] = $objet;
         }
-        return self::$tabInfo[$className];
+        return $objet;
     }
 
     // méthodes d'objets
