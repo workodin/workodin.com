@@ -458,4 +458,18 @@ https://www.php.net/manual/fr/function.mail.php
     <!-- http://robots-txt.com/meta-robots/ -->
     <meta name="robots" content="noindex, nofollow">
 
+## Ajout du CRUD sur la table Post
+
+* CRUD
+* Create
+* Read
+* Update
+* Delete
+* La vie du développeur web tourne autour du CRUD !
+
+## Ajout de formulaire admmin de création de Post
+
+* sur la page admin, on ajoute un formulaire pour créer des contenus (Post)
+* SECURITE: il faut bien vérifier le niveau du User dans le traitement du formulaire
+
 

@@ -38,11 +38,9 @@ class Form
         {
             $formKey        = $this->getInfo("formKey");
             $formTag        = $this->getInfo("formTag");
-            $formTagMethod  = $this->getInfo("formTagMethod", "process");
             // filtrer pour ne garder que les lettres et les chiffres
             // https://www.php.net/manual/fr/function.preg-replace.php
             $formTag        = preg_replace("/[^a-zA-Z0-9]/", "", $formTag);
-            $formTagMethod  = preg_replace("/[^a-zA-Z0-9]/", "", $formTagMethod);
         
             // framework dynamique
             // on prend comme convention que le traitement du formulaire est géré 
@@ -52,12 +50,17 @@ class Form
             // <input type="hidden" name="formTag" value="Newsletter">
             // <input type="hidden" name="formTagMethod" value="process">
             // sera traité par la méthode FormNewsletter::process
-            if (($formKey != "") && ($formTag != "") && ($formTagMethod != ""))
+            if (($formKey != "") && ($formTag != ""))
             {
                 // SECURITE: 
                 // on préfixe le nom de la classe avec Form
                 // pour ne pas pouvoir activer n'importe quel classe
                 $nomClasse = "Form$formTag";
+
+                $formTagMethod  = $this->getInfo("formTagMethod");
+                $formTagMethod  = preg_replace("/[^a-zA-Z0-9]/", "", $formTagMethod);
+                $formTagMethod = "process$formTagMethod";
+                
                 // https://www.php.net/manual/fr/function.method-exists.php
                 if (method_exists($nomClasse, $formTagMethod)) {
                     // assez étrange, mais ça fonctionne avec PHP ;-p
