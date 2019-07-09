@@ -1,8 +1,8 @@
 
 <section>
-    <h2>Contactez-nous !</h2>
-    <div class="row">
-        <div class="col col40">
+    <div class="postMain row">
+        <div class="col col50">
+            <h2>Contactez-nous !</h2>
             <form id="form-contact" action="#form-contact" method="POST">
                 <label for="form-nom">nom</label>
                 <input id="form-nom" type="text" name="name" required placeholder="votre nom">

@@ -1,6 +1,6 @@
 <section>
-    <h2><?php echo $title ?></h2>
-    <div>
+    <div class="postMain">
+        <h2><?php echo $title ?></h2>
 <pre class="post">
 <?php echo $code ?? "" ?>
 </pre>

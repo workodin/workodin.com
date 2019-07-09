@@ -23,7 +23,7 @@
             <strong>Workout & Coding. Everyday & Everywhere.</strong>
             <nav>
                 <ul>
-                    <li><a href="/">accueil</a></li>
+                    <li class="hs"><a href="/">accueil</a></li>
                     <li><a href="/news">news</a></li>
                     <li><a href="/formation">formation</a></li>
                     <li><a href="/emploi">emploi</a></li>
