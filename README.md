@@ -557,3 +557,12 @@ https://www.php.net/manual/fr/function.mail.php
 * Cette URL sera celle proposée par les moteurs de recherche
 * (Notamment pour le https...)
 
+## Reorganisation du dossier template
+
+* Comme il commence à y avoir beaucoup de fichiers dans le dossier template/
+* On crée des sous-dossiers: 
+* template/page
+* template/page-section
+* template/part
+* Il faut aussi modifier la classe Site et les chemins à tester
+

@@ -9,18 +9,15 @@ if ($levelUser < 100)
     // accès interdit    
     // important: erreur 404 pour les moteurs de recherche
     // https://www.php.net/manual/fr/function.header.php
-    header("HTTP/1.0 404 Not Found");
-    require_once("$viewDir/header.php");
-    require_once("$viewDir/section-404.php");
-    require_once("$viewDir/footer.php");
+    header("HTTP/1.1 404 Not Found");
+    require_once("$viewDir/template-404.php");
 }
 else
 {
     // accès ok
     $loginUser = Site::Get("Session")->get("loginUser");
 
-    require_once("$viewDir/header-admin.php");
-    require_once($fichierSection);
-    require_once("$viewDir/footer-admin.php");
-
+    require_once("$viewDir/part/header-admin.php");
+    require_once("$viewDir/part/$pageUri.php");
+    require_once("$viewDir/part/footer-admin.php");
 }

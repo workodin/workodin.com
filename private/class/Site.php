@@ -80,8 +80,8 @@ class Site
             global $pageUri;
             $pageUri                =  $this->getPageUri();
             $viewDir                = "$baseDir/private/template";
-            $fichierSection         = "$viewDir/section-$pageUri.php";
-            $fichierPage            = "$viewDir/page-$pageUri.php";
+            $fichierSection         = "$viewDir/page-section/$pageUri.php";
+            $fichierPage            = "$viewDir/page/$pageUri.php";
             
             $form = Site::Get("Form");
             // https://www.php.net/manual/fr/function.is-file.php
@@ -102,9 +102,9 @@ class Site
 
                 // VIEW
                 // recomposer la page eavec les tranches de HTML
-                require_once("$viewDir/header.php");
+                require_once("$viewDir/part/header.php");
                 require_once($fichierSection);
-                require_once("$viewDir/footer.php");
+                require_once("$viewDir/part/footer.php");
             }
             else
             {
@@ -119,7 +119,7 @@ class Site
                     $templatePost = "$viewDir/template-post.php";
                     if ($template != "")
                     {
-                        $templatePost = "$viewDir/$template.php";
+                        $templatePost = "$viewDir/template-$template.php";
                     }
                     if (is_file($templatePost))
                     {
@@ -134,10 +134,7 @@ class Site
                     // important: erreur 404 pour les moteurs de recherche
                     // https://www.php.net/manual/fr/function.header.php
                     header("HTTP/1.0 404 Not Found");
-
-                    require_once("$viewDir/header.php");
-                    require_once("$viewDir/section-404.php");
-                    require_once("$viewDir/footer.php");
+                    require_once("$viewDir/template-404.php");
                 }
             }
 
