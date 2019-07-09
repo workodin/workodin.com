@@ -541,4 +541,13 @@ https://www.php.net/manual/fr/function.mail.php
 * Le contenu statique de la page d'accueil est maintenant remplacé par une boucle sur Post avec categorie=index
 * Ajout de CSS et utilisation de balise HTML pre
 
+## Ajout de boucle (loop) dans template-post.php
+
+* Ajout d'une boucle sur Post qui affiche les Post avec category=$pageUri
+* Le code du Post est toujours affiché avant
+* Les pages /news, /formation, /emploi utilisent ce template
+* il faut créer les Post avec les URI adaptées et supprimer section-news.php
+* => On a maintenant un moyen simple de créer des pages dynamiques ;-p
+
+
 

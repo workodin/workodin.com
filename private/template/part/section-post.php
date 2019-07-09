@@ -1,11 +1,12 @@
-
 <section>
-    <article>
-        <h3><?php echo $title ?? "" ?></h3>
-        <div>
+    <h2><?php echo $title ?></h2>
+    <div>
 <pre class="post">
 <?php echo $code ?? "" ?>
 </pre>
-        </div>
-    </article>
+    </div>
+
+    <div class="listPost row">
+<?php Site::Get("View")->showPost("category", $pageUri, "publicationDate") ?>
+    </div>
 </section>
