@@ -536,6 +536,9 @@ https://www.php.net/manual/fr/function.mail.php
 * note: o2switch plante sur une erreur "502 bad gateway" si on essaie d'uploader un fichier .php ?
 * affichage des images sur la page /news
 
+## Ajout de boucle (loop) sur la page d'accueil
 
+* Le contenu statique de la page d'accueil est maintenant remplacé par une boucle sur Post avec categorie=index
+* Ajout de CSS et utilisation de balise HTML pre
 
 

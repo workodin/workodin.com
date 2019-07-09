@@ -16,7 +16,7 @@
 <?php require_once("$baseDir/public/assets/css/site.css") ?>
     </style>
 </head>
-<body>
+<body class="<?php echo $pageUri ?>">
     <div class="page">
         <header>
             <h1><a href="/">Workodin.com</a></h1>
