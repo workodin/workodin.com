@@ -108,6 +108,10 @@ class Site
                     extract($tabLine);
 
                     $templatePost = "$viewDir/template-post.php";
+                    if ($template != "")
+                    {
+                        $templatePost = "$viewDir/$template.php";
+                    }
                     if (is_file($templatePost))
                     {
                         // VIEW

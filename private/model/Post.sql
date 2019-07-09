@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `Post` (
   `code` text NOT NULL,
   `urlMedia` text NOT NULL,
   `category` varchar(160) NOT NULL,
+  `template` varchar(160) NOT NULL,
   `status` varchar(160) NOT NULL,
   `level` int(11) NOT NULL,
   `creationDate` datetime NOT NULL,

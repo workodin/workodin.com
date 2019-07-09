@@ -43,6 +43,7 @@ class Controller
         if ($type == "uri")
         {
             $value = preg_replace("/[^a-zA-Z0-9-]/", "", $value);
+            $value = strtolower($value);
         }
         $this->tabForm[$name] = $value;
 

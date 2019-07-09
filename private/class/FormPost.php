@@ -22,6 +22,7 @@ class FormPost
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique", "Post")
                             ->check("category", "text")
+                            ->check("template", "text")
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")
                             // compléter les infos manquantes
@@ -75,6 +76,7 @@ class FormPost
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique1", "Post")
                             ->check("category", "text")
+                            ->check("template", "text")
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")
                             // compléter les infos manquantes

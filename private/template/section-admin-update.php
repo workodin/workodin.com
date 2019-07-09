@@ -17,6 +17,8 @@ foreach($objPDOStatement as $tabLine)
         <input id="form-uri" type="text" name="uri" required placeholder="uri" value="$uri">
         <label for="form-category">categorie</label>
         <input id="form-category" type="text" name="category" required placeholder="catégorie" value="$category">
+        <label for="form-template">template</label>
+        <input id="form-template" type="text" name="template" required placeholder="template" value="$template">
         <label for="form-code">code</label>
         <textarea id="form-code" name="code" required placeholder="votre code" rows="20">$code</textarea>
         <label for="form-urlMedia">url Media</label>
