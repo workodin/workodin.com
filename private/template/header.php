@@ -9,8 +9,9 @@
     <meta name="description" content="Trouvez et préparez votre poste de développeur web fullstack depuis chez vous">
     <meta name="keywords" content="emploi, formation, développeur web, formation distance, france, grande école numérique">
 
+    <link rel="canonical" href="https://workodin.com<?php echo Site::Get("pagePath") ?>">
     <link rel="icon" type="image/png" href="/assets/images/icon.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap" >
 
     <style>
 <?php require_once("$baseDir/public/assets/css/site.css") ?>

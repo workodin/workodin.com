@@ -40,8 +40,8 @@ CODEHTML;
             echo 
 <<<HTML
 
-    <article>
-        <h3>$title</h3>
+    <article id="$uri">
+        <h3><a href="#$uri">$title</a></h3>
         <div class="content"><pre class="post">$code</pre></div>
         $htmlMedia
     </article>

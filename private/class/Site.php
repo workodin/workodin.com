@@ -215,6 +215,9 @@ class Site
         $uri        = $_SERVER["REQUEST_URI"];
         // https://www.php.net/manual/fr/function.parse-url.php
         $path       = parse_url($uri, PHP_URL_PATH);
+
+        // on mémorise le path
+        Site::Set("pagePath", $path);
         // cas spécial auparavant géré par Apache
         if ($path == "/") 
         {

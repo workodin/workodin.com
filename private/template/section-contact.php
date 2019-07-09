@@ -1,7 +1,8 @@
 
 <section>
     <div class="postMain row">
-        <div class="col col50">
+        
+        <article class="col col50">
             <h2>Contactez-nous !</h2>
             <form id="form-contact" action="#form-contact" method="POST">
                 <label for="form-nom">nom</label>
@@ -17,6 +18,9 @@
                     <?php $form->process("Contact") ?>
                 </div>
             </form>
-        </div>
+        </article>
+
+        <?php Site::Get("View")->showPost("category", $pageUri, "publicationDate") ?>
+
     </div>
 </section>

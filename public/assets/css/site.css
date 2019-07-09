@@ -81,7 +81,7 @@ form .feedback {
 .row {
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content:space-around;
     width:100%;
 }
 .col {
@@ -187,5 +187,8 @@ pre.post {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 
 { 
-
+    .row {
+        justify-content:start;
+    }
+    
 }

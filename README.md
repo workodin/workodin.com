@@ -549,5 +549,11 @@ https://www.php.net/manual/fr/function.mail.php
 * il faut créer les Post avec les URI adaptées et supprimer section-news.php
 * => On a maintenant un moyen simple de créer des pages dynamiques ;-p
 
+# Ajout de la balise link rel="canonical"
 
+* Pour améliorer le référencement des pages par les moteurs de recherche
+* On fournit une URL officielle pour chaque page
+* Cela évite des problèmes de duplicate content
+* Cette URL sera celle proposée par les moteurs de recherche
+* (Notamment pour le https...)
 
