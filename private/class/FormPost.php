@@ -22,7 +22,7 @@ class FormPost
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique", "Post")
                             ->check("category", "text")
-                            ->check("template", "text")
+                            ->check("template", "uri", "", "optional")
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")
                             // compléter les infos manquantes
@@ -75,13 +75,13 @@ class FormPost
             $feedback = $objController
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique1", "Post")
-                            ->check("category", "text")
-                            ->check("template", "text")
+                            ->check("category", "uri")
+                            ->check("template", "uri", "", "optional")
                             ->check("code",     "textarea")
                             ->check("urlMedia", "text")
+                            ->check("publicationDate", "datetime", $now)
                             // compléter les infos manquantes
                             ->addData("modificationDate", $now)
-                            ->addData("publicationDate", $now)
                             // ajouter la ligne
                             ->updateLine("Post", "votre contenu est modifié")
                             // récupérer le message de confirmation

@@ -4,7 +4,7 @@
 <?php
 
 $objModel           = Site::Get("Model");
-$objPDOStatement    = $objModel->readLine("Post", "category", "news", "creationDate");
+$objPDOStatement    = $objModel->readLine("Post", "category", "news", "publicationDate");
 
 // mise en buffer de l'affichage
 // https://www.php.net/manual/fr/function.ob-start.php

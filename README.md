@@ -519,6 +519,11 @@ https://www.php.net/manual/fr/function.mail.php
 * Il faut gérer le cas de l'update sur l'uri
 * Chaque Post a sa propre page accessible avec son uri
 
+## Amélioration du CMS
+
+* Gestion de la date de publication pour choisir l'ordre d'affichage des Post dans la page /news
+* Améliorations du CSS et utilisation de la balise HTML pre
+
 
 
 

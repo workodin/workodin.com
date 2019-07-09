@@ -74,9 +74,13 @@ class Controller
             }      
         }
 
-        if ($value == "")
+        // valeur obligatoire
+        if (!in_array("optional", $tabParam))
         {
-            $this->tabError[] = "($name manquant)";
+            if ($value == "")
+            {
+                $this->tabError[] = "($name manquant)";
+            }
         }
 
         // permet le chainage des appels

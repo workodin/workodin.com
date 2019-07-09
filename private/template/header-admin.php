@@ -17,9 +17,10 @@
 
     <style>
 <?php require_once("$baseDir/public/assets/css/site.css") ?>
+<?php require_once("$baseDir/public/assets/css/site-admin.css") ?>
     </style>
 </head>
-<body>
+<body class="admin">
     <div class="page">
         <header>
             <h1><a href="/">Workodin.com</a></h1>

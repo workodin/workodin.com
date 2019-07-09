@@ -11,18 +11,20 @@ foreach($objPDOStatement as $tabLine)
 
     $htmlForm =
 <<<HTML
-        <label for="form-title">title</label>
+        <label for="form-title">titre</label>
         <input id="form-title" type="text" name="title" required placeholder="titre" value="$title">
         <label for="form-uri">uri</label>
         <input id="form-uri" type="text" name="uri" required placeholder="uri" value="$uri">
-        <label for="form-category">categorie</label>
+        <label for="form-category">catégorie</label>
         <input id="form-category" type="text" name="category" required placeholder="catégorie" value="$category">
         <label for="form-template">template</label>
-        <input id="form-template" type="text" name="template" required placeholder="template" value="$template">
+        <input id="form-template" type="text" name="template" placeholder="template" value="$template">
         <label for="form-code">code</label>
         <textarea id="form-code" name="code" required placeholder="votre code" rows="20">$code</textarea>
         <label for="form-urlMedia">url Media</label>
         <input id="form-urlMedia" type="text" name="urlMedia" required placeholder="url Media" value="$urlMedia">
+        <label for="form-publicationDate">date Publication</label>
+        <input id="form-publicationDate" type="text" name="publicationDate" placeholder="Y-m-d H:i:s" value="$publicationDate">
         <input type="hidden" name="id" value="$id">
 
 HTML;

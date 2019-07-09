@@ -13,7 +13,7 @@
         <label for="form-category">categorie</label>
         <input id="form-category" type="text" name="category" required placeholder="catégorie">
         <label for="form-template">template</label>
-        <input id="form-template" type="text" name="template" required placeholder="template">
+        <input id="form-template" type="text" name="template" placeholder="template">
         <label for="form-code">code</label>
         <textarea id="form-code" name="code" required placeholder="votre code" rows="20"></textarea>
         <label for="form-urlMedia">url Media</label>

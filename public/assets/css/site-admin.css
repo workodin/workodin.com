@@ -1,0 +1,7 @@
+.admin .page {
+    max-width:100%;
+}
+
+.admin td {
+    max-width:400px;
+}
