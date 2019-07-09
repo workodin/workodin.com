@@ -21,7 +21,7 @@
     <div class="page">
         <header>
             <h1><a href="/">Workodin.com</a></h1>
-            <strong>Workout & Coding. Everyday & Everywhere.</strong>
+            <h2>Workout & Coding. Everyday & Everywhere.</h2>
             <nav>
                 <ul>
                     <li class="hs"><a href="/">accueil</a></li>
