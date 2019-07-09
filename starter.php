@@ -21,6 +21,9 @@ spl_autoload_register(function($nomClasse){
     }
 });
 
+// variables globales
+Site::Set("baseDir", $baseDir);
+
 // chargement du fichier de config
 $siteMode   = "DEV";
 $configFile = "$baseDir/my-config.php";

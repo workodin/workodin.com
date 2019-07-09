@@ -5,7 +5,7 @@
 
 <section>
     <h3>Gestion des Contenus</h3>
-    <form id="form-post" action="#form-post" method="POST">
+    <form id="form-post" action="#form-post" method="POST" enctype="multipart/form-data">
         <label for="form-title">title</label>
         <input id="form-title" type="text" name="title" required placeholder="titre">
         <label for="form-uri">uri</label>
@@ -17,7 +17,7 @@
         <label for="form-code">code</label>
         <textarea id="form-code" name="code" required placeholder="votre code" rows="20"></textarea>
         <label for="form-urlMedia">url Media</label>
-        <input id="form-urlMedia" type="text" name="urlMedia" required placeholder="url Media">
+        <input id="form-urlMedia" type="file" name="urlMedia" placeholder="upload Media">
         <button type="submit">publier votre contenu</button>
         <input type="hidden" name="formKey" value="Post">
         <input type="hidden" name="formTag" value="<?php $form->show("formKeyPublic") ?>">
@@ -53,7 +53,17 @@ foreach($objPDOStatement as $tabLine)
     echo "<tr>";
     foreach($tabLine as $column => $value)
     {
-        echo "<td>$value</td>";
+        if ($column == "urlMedia")
+        {
+            echo 
+<<<HTML
+        <td><img src="/$value"></td>
+HTML;
+        }
+        else
+        {
+            echo "<td>$value</td>";
+        }
     }
     extract($tabLine);    
     // on ajoute une colonne pour le lien delete

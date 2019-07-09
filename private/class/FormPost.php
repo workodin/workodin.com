@@ -24,8 +24,8 @@ class FormPost
                             ->check("category", "text")
                             ->check("template", "uri", "", "optional")
                             ->check("code",     "textarea")
-                            ->check("urlMedia", "text")
                             // compléter les infos manquantes
+                            ->addUpload("urlMedia", "media", "", "optional")
                             ->addData("creationDate", $now)
                             ->addData("modificationDate", $now)
                             ->addData("publicationDate", $now)
@@ -78,9 +78,9 @@ class FormPost
                             ->check("category", "uri")
                             ->check("template", "uri", "", "optional")
                             ->check("code",     "textarea")
-                            ->check("urlMedia", "text")
                             ->check("publicationDate", "datetime", $now)
                             // compléter les infos manquantes
+                            ->addUpload("urlMedia", "media", "", "optional")
                             ->addData("modificationDate", $now)
                             // ajouter la ligne
                             ->updateLine("Post", "votre contenu est modifié")

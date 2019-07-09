@@ -524,6 +524,18 @@ https://www.php.net/manual/fr/function.mail.php
 * Gestion de la date de publication pour choisir l'ordre d'affichage des Post dans la page /news
 * Améliorations du CSS et utilisation de la balise HTML pre
 
+## Upload de fichier pour Post
+
+* modifier le formulaire HTML pour gérer upload
+* https://www.w3schools.com/php/php_file_upload.asp
+* https://www.php.net/manual/fr/features.file-upload.post-method.php
+* SECURITE: on fait le choix de restreindre la liste des fichiers à des extensions connues
+* Vérifier les paramètres php.ini
+* upload_max_filesize
+* post_max_size
+* note: o2switch plante sur une erreur "502 bad gateway" si on essaie d'uploader un fichier .php ?
+* affichage des images sur la page /news
+
 
 
 

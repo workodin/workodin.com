@@ -5,3 +5,18 @@
 .admin td {
     max-width:400px;
 }
+.admin td img {
+    max-width:10vmin;
+    transition: all 0.5s;
+}
+.admin td img:hover {
+    max-width:20vmin;
+}
+
+.admin form img {
+    max-width:10vmin;
+    transition: all 0.5s;
+}
+.admin form img:hover {
+    max-width:20vmin;
+}

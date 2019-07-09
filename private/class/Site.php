@@ -42,6 +42,15 @@ class Site
         return $objet;
     }
 
+    /**
+     * stockage général de variables pour le site
+     */
+    public static function Set ($key, $value)
+    {
+        self::$tabInfo[$key] = $value;
+
+    }
+
     // méthodes d'objets
 
     /**

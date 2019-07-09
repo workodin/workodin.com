@@ -16,12 +16,27 @@ foreach($objPDOStatement as $tabLine)
     array_map("htmlspecialchars", $tabLine);
     extract($tabLine);
 
+    $htmlMedia = "";
+    if ($urlMedia != "")
+    {
+        $baseDir = Site::Get("baseDir");
+        if (is_file("$baseDir/public/$urlMedia"))
+        {
+            $htmlMedia = 
+<<<CODEHTML
+<div>
+    <img src="/$urlMedia" alt="$urlMedia" title="$urlMedia">
+</div>
+CODEHTML;
+        }
+    }
     echo 
 <<<HTML
 
     <article>
         <h3>$title</h3>
-        <div>$code</div>
+        <div class="content">$code</div>
+        $htmlMedia
     </article>
 
 HTML;

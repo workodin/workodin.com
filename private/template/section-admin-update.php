@@ -9,6 +9,16 @@ foreach($objPDOStatement as $tabLine)
     // array_map("htmlspecialchars", $tabLine);
     extract($tabLine);
 
+    $htmlMedia = "";
+    if ($urlMedia != "")
+    {
+        $htmlMedia =
+<<<CODEHTML
+<img src="$urlMedia" title="$urlMedia">
+<span>$urlMedia</span>
+CODEHTML;
+
+    }
     $htmlForm =
 <<<HTML
         <label for="form-title">titre</label>
@@ -22,7 +32,8 @@ foreach($objPDOStatement as $tabLine)
         <label for="form-code">code</label>
         <textarea id="form-code" name="code" required placeholder="votre code" rows="20">$code</textarea>
         <label for="form-urlMedia">url Media</label>
-        <input id="form-urlMedia" type="text" name="urlMedia" required placeholder="url Media" value="$urlMedia">
+        $htmlMedia
+        <input id="form-urlMedia" type="file" name="urlMedia" placeholder="upload Media">
         <label for="form-publicationDate">date Publication</label>
         <input id="form-publicationDate" type="text" name="publicationDate" placeholder="Y-m-d H:i:s" value="$publicationDate">
         <input type="hidden" name="id" value="$id">
@@ -34,7 +45,7 @@ HTML;
 <?php if (!empty($tabLine)): ?>
 <section>
     <h3>Modification de contenu</h3>
-    <form id="form-post" action="#form-post" method="POST">
+    <form id="form-post" action="#form-post" method="POST" enctype="multipart/form-data">
         <?php echo $htmlForm ?>
         <button type="submit">modifier votre contenu</button>
         <input type="hidden" name="formKey" value="Post">

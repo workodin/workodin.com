@@ -128,4 +128,12 @@ class Form
         echo $this->tabKeyVal[$key] ?? $default;
     }
 
+    /**
+     * 
+     */
+    function getInfoUpload ($name)
+    {
+        $tabInfo = $_FILES[$name] ?? [];
+        return $tabInfo;
+    }
 }
