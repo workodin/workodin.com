@@ -36,6 +36,8 @@ $objPDOStatement    = $objModel->readLine("Post", "", "", "creationDate");
 $formKey            = $form->get("formKeyPublic");
 $tabColumn          = [];
 
+$publicDir          = Site::Get("publicDir");
+
 // mise en buffer de l'affichage
 // https://www.php.net/manual/fr/function.ob-start.php
 ob_start();
@@ -53,7 +55,7 @@ foreach($objPDOStatement as $tabLine)
     echo "<tr>";
     foreach($tabLine as $column => $value)
     {
-        if ($column == "urlMedia")
+        if (($column == "urlMedia") && is_file("$publicDir/$value"))
         {
             echo 
 <<<HTML

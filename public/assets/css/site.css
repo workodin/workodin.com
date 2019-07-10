@@ -124,7 +124,7 @@ table td {
 nav ul {
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content:flex-end;
     width:100%;
     padding-left:0px;
     margin:0;
