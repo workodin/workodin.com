@@ -224,6 +224,9 @@ class Site
 
         // https://www.php.net/manual/fr/function.pathinfo.php
         $filename   = pathinfo($path, PATHINFO_FILENAME);
+        $extension  = pathinfo($path, PATHINFO_EXTENSION);
+        $extension  = strtolower($extension);
+        Site::Set("pagePathExtension", $extension);
 
         return $filename;
     }

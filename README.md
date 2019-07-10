@@ -566,3 +566,7 @@ https://www.php.net/manual/fr/function.mail.php
 * template/part
 * Il faut aussi modifier la classe Site et les chemins à tester
 
+## Ajout template-code.php
+
+* Ce template permet de renvoyer le contenu brut de la colonne code dans Post
+* Utile pour gérer du code dans un CMS
