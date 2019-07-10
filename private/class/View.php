@@ -96,12 +96,14 @@ HTML;
                     $class = "";
                     $href  = "";
                     $label = "";
+                    $rel   = "";
+
                     // attention à ne pas écraser d'autres variables existantes
                     extract($tabItem);
                     // $class, $href, $label 
                     echo 
 <<<CODEHTML
-                    <li class="$class"><a href="$href">$label</a></li>
+                    <li class="$class"><a href="$href" rel="$rel">$label</a></li>
 CODEHTML;
 
                 }

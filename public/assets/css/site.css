@@ -179,6 +179,25 @@ pre.post {
     display:none;
 }
 
+footer .menu-footer-1 ul {
+    justify-content: flex-start;
+}
+footer .menu-footer-1 li {
+    text-align:left;
+}
+
+footer .menu-footer-2 ul {
+    justify-content: flex-end;
+}
+footer .menu-footer-2 li {
+    text-align:right;
+}
+
+.footer2 p {
+    display:block;
+    padding:1rem;
+    text-align:right;
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) 
 {  

@@ -590,3 +590,14 @@ https://www.php.net/manual/fr/function.mail.php
 
 * Le format JSON est assez facile à lire et écrire...
 * (attention: vérifier que le dernier élément n'a pas virgule à la fin...)
+
+## Ajout de paramétrage sur header et footer
+
+* Dans le header, il y a un espace pour un menu principal
+* Dans le footer, il y a 2 colonnes pour 2 menus
+* Dans le header, les h1 et h2 doivent être définis dans le fichier my-config.php
+* Dans le head, les infos lang, title, description, keywords doivent être définis dans le fichier my-config.php
+* => On obtient un CMS qui est en marque blanche!
+* Vous pouvez maintenant l'utiliser pour vos projets ;-p
+* Avec ces fonctionnalités, on peut prototyper rapidement un site
+

@@ -20,7 +20,10 @@ class Site
     public $modelDir = "";
 
     // méthodes de classe
-    // design pattern Factory
+
+    /**
+     * design pattern Factory
+     */
     public static function Get ($className)
     {
         // vérification si un objet existe déjà
@@ -40,6 +43,14 @@ class Site
             self::$tabInfo[$className] = $objet;
         }
         return $objet;
+    }
+
+    /**
+     * affichage variable mémorisée
+     */
+    public static function Show ($key, $default="")
+    {
+        echo Site::Get($key) ?? $default;
     }
 
     /**
