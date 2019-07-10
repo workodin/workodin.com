@@ -25,7 +25,7 @@ class Site
     {
         // vérification si un objet existe déjà
         $objet = self::$tabInfo[$className] ?? null;
-        if ($objet == null)
+        if ($objet === null)
         {
             if ($className == "Model")
             {
