@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title><?php Site::Show("description") ?></title>
+
+    <!-- http://robots-txt.com/meta-robots/ -->
+    <meta name="robots" content="<?php Site::Show("robots") ?>">
+
     <meta name="description" content="<?php Site::Show("description") ?>">
     <meta name="keywords" content="<?php Site::Show("keywords") ?>">
+
 
     <link rel="canonical" href="https://workodin.com<?php echo Site::Get("pagePath") ?>">
     <link rel="icon" type="image/png" href="/assets/images/icon.png">
