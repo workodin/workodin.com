@@ -37,6 +37,14 @@ class View
 CODEHTML;
                 }
             }
+
+            // convert code
+            // build links
+            // https://www.php.net/manual/fr/function.preg-replace.php
+            $pattern     = ',(https://[^ ]+),i';
+            $replacement = '<a href="${1}" target="_blank" rel="nofollow">${1}</a>';
+            $code = preg_replace($pattern, $replacement, $code);
+
             echo 
 <<<HTML
 

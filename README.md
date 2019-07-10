@@ -570,3 +570,10 @@ https://www.php.net/manual/fr/function.mail.php
 
 * Ce template permet de renvoyer le contenu brut de la colonne code dans Post
 * Utile pour gérer du code dans un CMS
+
+## Ajout de convertisseur de code
+
+* Pour écrire du code le plus simplement possible
+* Il faut ensuite enrichir le code avant de l'afficher au visiteur
+* On utilise les expressions régulières pour traiter les textes rapidement
+* https://www.php.net/manual/fr/function.preg-replace.php
