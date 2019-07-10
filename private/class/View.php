@@ -65,4 +65,47 @@ HTML;
         echo $htmlPost;
         
     }
+
+    /**
+     * On peut stocker un menu au format JSON 
+     * dans la colonne code de Post
+     * 
+     * {
+     * "index": {"label": "accueil", "href": "/", "class":"hs" },
+     * "news": {"label": "news", "href": "/news", "class":"" },
+     * "formation": {"label": "formation", "href": "/formation", "class":"" },
+     * "emploi": {"label": "emploi", "href": "/emploi", "class":"" },
+     * "contact": {"label": "contact", "href": "/contact", "class":"" }
+     * }
+     * 
+     */
+    function showMenu ($uri)
+    {
+        $objModel           = Site::Get("Model");
+        $objPDOStatement    = $objModel->readLine("Post", "uri", $uri, "publicationDate");
+        foreach($objPDOStatement as $tabLine)
+        {
+            extract($tabLine);
+            // le code doit être au format JSON
+            // https://www.php.net/manual/fr/function.json-decode.php
+            $tabCode = json_decode($code, true);
+            if (!empty($tabCode))
+            {
+                foreach($tabCode as $item => $tabItem)
+                {
+                    $class = "";
+                    $href  = "";
+                    $label = "";
+                    // attention à ne pas écraser d'autres variables existantes
+                    extract($tabItem);
+                    // $class, $href, $label 
+                    echo 
+<<<CODEHTML
+                    <li class="$class"><a href="$href">$label</a></li>
+CODEHTML;
+
+                }
+            }
+        }
+    }
 }

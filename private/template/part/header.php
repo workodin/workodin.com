@@ -24,11 +24,7 @@
             <h2>Workout & Coding. Everyday & Everywhere.</h2>
             <nav>
                 <ul>
-                    <li class="hs"><a href="/">accueil</a></li>
-                    <li><a href="/news">news</a></li>
-                    <li><a href="/formation">formation</a></li>
-                    <li><a href="/emploi">emploi</a></li>
-                    <li><a href="/contact">contact</a></li>
+                    <?php Site::Get("View")->showMenu("menu") ?>
                 </ul>
             </nav>
         </header>

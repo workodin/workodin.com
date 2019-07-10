@@ -577,3 +577,16 @@ https://www.php.net/manual/fr/function.mail.php
 * Il faut ensuite enrichir le code avant de l'afficher au visiteur
 * On utilise les expressions régulières pour traiter les textes rapidement
 * https://www.php.net/manual/fr/function.preg-replace.php
+
+## Ajout de menu dynamique dans Post
+
+* Avec un CMS, il est important de pouvoir créer des pages, 
+* mais ensuite, il faut pouvoir créer des menus pour naviguer entre les pages
+* Ajout de la méthode View::showMenu
+* qui va extraire d'un Post un code au format JSON
+* https://www.php.net/manual/fr/function.json-decode.php
+* Le format JSON devient un tableau associatif PHP
+* => C'est facile à manipuler ensuite !
+
+* Le format JSON est assez facile à lire et écrire...
+* (attention: vérifier que le dernier élément n'a pas virgule à la fin...)
