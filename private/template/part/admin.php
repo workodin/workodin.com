@@ -62,6 +62,13 @@ foreach($objPDOStatement as $tabLine)
         <td><img src="/$value"></td>
 HTML;
         }
+        elseif ($column == "code")
+        {
+            echo 
+<<<HTML
+        <td><textarea rows="10" disabled>$value</textarea></td>
+HTML;
+        }
         else
         {
             echo "<td>$value</td>";
@@ -94,12 +101,14 @@ $htmlTableHead .= "<td></td><td></td><td></td>";
 ?>
 <section>
     <h3>Liste des contenus</h3>
-    <table>
-        <thead>
-        <?php echo $htmlTableHead ?>        
-        </thead>
-        <tbody>
+    <div class="tableBox">
+        <table>
+            <thead>
+            <?php echo $htmlTableHead ?>        
+            </thead>
+            <tbody>
 <?php echo $htmlTable ?>        
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </section>

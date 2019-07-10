@@ -86,7 +86,7 @@ class Form
      * <input name="nom">
      * $nom = getInfo("nom");
      */
-    function getInfo($name, $default="")
+    function getInfo ($name, $default="")
     {
         $value = $default;
         if (isset($_REQUEST["$name"]))
@@ -94,6 +94,15 @@ class Form
             $value = trim(strip_tags($_REQUEST["$name"]));
         }
         return $value;
+    }
+
+    /**
+     * récupère une info envoyée la navigateur à travers un formulaire
+     * SECURITE: DANGER, ON NE PASSE AUCUN FILTRE
+     */
+    function getInfo0 ($name, $default="")
+    {
+        return $_REQUEST["$name"] ?? $default;
     }
 
     /**

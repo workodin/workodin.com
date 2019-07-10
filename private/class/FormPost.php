@@ -23,7 +23,7 @@ class FormPost
                             ->check("uri",      "uri", "", "unique", "Post")
                             ->check("category", "text")
                             ->check("template", "uri", "", "optional")
-                            ->check("code",     "textarea")
+                            ->check("code",     "code", "", "optional")
                             // compléter les infos manquantes
                             ->addUpload("urlMedia", "media", "", "optional")
                             ->addData("creationDate", $now)
@@ -77,7 +77,7 @@ class FormPost
                             ->check("uri",      "uri", "", "unique1", "Post")
                             ->check("category", "uri")
                             ->check("template", "uri", "", "optional")
-                            ->check("code",     "textarea")
+                            ->check("code",     "code", "", "optional")
                             ->check("publicationDate", "datetime", $now)
                             // compléter les infos manquantes
                             ->addUpload("urlMedia", "media", "", "optional")

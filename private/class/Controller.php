@@ -38,7 +38,14 @@ class Controller
      */
     function check($name, $type, $defaultValue="", $params="", $tableName="")
     {
-        $value = $this->form->getInfo($name, $defaultValue);
+        if ($type == "code")
+        {
+            $value = $this->form->getInfo0($name, $defaultValue);
+        }
+        else
+        {
+            $value = $this->form->getInfo($name, $defaultValue);
+        }
 
         if ($type == "uri")
         {

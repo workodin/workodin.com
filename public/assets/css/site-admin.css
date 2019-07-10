@@ -1,7 +1,6 @@
 .admin .page {
     max-width:100%;
 }
-
 .admin td {
     max-width:400px;
 }
@@ -12,11 +11,21 @@
 .admin td img:hover {
     max-width:20vmin;
 }
-
+.admin section > * {
+    padding:1rem;
+}
 .admin form img {
     max-width:10vmin;
     transition: all 0.5s;
 }
 .admin form img:hover {
     max-width:20vmin;
+}
+.admin .tableBox {
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+}
+.admin table textarea {
+    min-width:400px;
 }
