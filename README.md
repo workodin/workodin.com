@@ -601,3 +601,10 @@ https://www.php.net/manual/fr/function.mail.php
 * Vous pouvez maintenant l'utiliser pour vos projets ;-p
 * Avec ces fonctionnalités, on peut prototyper rapidement un site
 
+## Ajout de JS et PHP pour formulaire Ajax
+
+* AJAX est maintenant devenu le standard pour envoyer les formulaires
+* En effet, AJAX permet de ne pas détruire et reconstruire la page
+* Pour le visiteur, l'expérience est plus rapide
+* Dans notre framework, il suffit d'ajouter la classe ajax à la balise form
+* Le code JS va ajouter un callback pour prendre la main sur ces formulaires

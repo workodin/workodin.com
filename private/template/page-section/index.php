@@ -22,7 +22,7 @@
         <article>
             <h3>Suivez le projet</h3>
             <h4>inscrivez-vous à la newsletter</h4>
-                <form id="form-newsletter" action="#form-newsletter" method="POST">
+                <form id="form-newsletter" action="#form-newsletter" method="POST" class="ajax">
                     <label for="form-nom">nom</label>
                     <input id="form-nom" type="text" name="name" required placeholder="votre nom">
                     <label for="form-email">email</label>

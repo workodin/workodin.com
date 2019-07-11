@@ -4,7 +4,7 @@
         
         <article class="col col50">
             <h2>Contactez-nous !</h2>
-            <form id="form-contact" action="#form-contact" method="POST">
+            <form id="form-contact" action="#form-contact" method="POST" class="ajax">
                 <label for="form-nom">nom</label>
                 <input id="form-nom" type="text" name="name" required placeholder="votre nom">
                 <label for="form-email">email</label>

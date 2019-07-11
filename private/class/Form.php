@@ -11,6 +11,12 @@ class Form
     public $tabKeyVal = [];
 
     /**
+     * on garde des valeurs dans une propriété
+     * pour les réutiliser à travers plusieurs appels à la même fonction
+     */
+    public $tabFeedback = [];
+
+    /**
      * 
      */
     function __construct ()
@@ -30,9 +36,6 @@ class Form
      */
     function process ($formFeedback="")
     {
-        // on garde des valeurs dans une variable static
-        // pour les réutiliser à travers plusieurs appels à la même focntion
-        static $tabFeedback = [];
 
         if ($formFeedback == "")
         {
@@ -68,7 +71,7 @@ class Form
                     // WARNING: EXTREMENT DANGEREUX CAR UN FORMULAIRE POURRAIT ACTIVER UN CODE PHP ARBITRAIRE
                     // TODO: SECURITE
                     $objet = new $nomClasse;
-                    $tabFeedback[$formTag] = $objet->$formTagMethod($this);
+                    $this->tabFeedback[$formTag] = $objet->$formTagMethod($this);
                 }    
             }    
         }
@@ -76,7 +79,7 @@ class Form
         {
             // on affiche le message feedback 
             // pour permettre l'affichage dans la partie view
-            echo $tabFeedback[$formFeedback] ?? "";
+            echo $this->tabFeedback[$formFeedback] ?? "";
         }
     }
 
@@ -144,5 +147,19 @@ class Form
     {
         $tabInfo = $_FILES[$name] ?? [];
         return $tabInfo;
+    }
+
+    /**
+     * 
+     */
+    function getJSON ($tabData=[])
+    {
+        // on ajoute les feedbacks dans la réponse
+        $tabResponse = $tabData + $this->tabFeedback;
+        $tabResponse["timestamp"] = time();
+
+        $texteJSON = json_encode($tabResponse);
+
+        return $texteJSON;
     }
 }
