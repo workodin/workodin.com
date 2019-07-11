@@ -2,4 +2,6 @@ private/*.csv
 private/*.txt
 *.log
 my-*
+public/assets/media/*
+
 

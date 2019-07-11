@@ -18,12 +18,9 @@ body * {
     margin:0 auto;
     background-color:#ffffff;
     min-height:100%;
-    background: url('/assets/images/workodin-workout.jpg');
-    background-size:cover;
 }
 section {
     width:100%;
-    background-color:rgba(255,255,255,0.8);
 }
 header, footer {
     background-color:rgba(0,0,0,0.8);
@@ -68,7 +65,7 @@ input, button, textarea {
     padding:0.5rem;
     margin:0.25rem;
     font-size:1rem;
-    font-family:monospace, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 textarea {
     width:100%;
@@ -125,7 +122,7 @@ table td {
 nav ul {
     display:flex;
     flex-wrap:wrap;
-    justify-content:flex-end;
+    justify-content:center;
     width:100%;
     padding-left:0px;
     margin:0;
@@ -222,6 +219,9 @@ footer .menu-footer-2 li {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 
 { 
+    header nav ul {
+        justify-content:flex-end;
+    }    
     .row {
         justify-content:start;
     }
