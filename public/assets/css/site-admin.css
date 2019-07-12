@@ -41,3 +41,31 @@
     display:flex;
     justify-content: space-between;
 }
+
+.popup {
+    display:none;
+    opacity:0;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.8);
+    z-index:999;
+    transition:all 0.5s;
+}
+.popup.active {
+    display: flex;
+    opacity:1;
+}
+.btnClose {
+    text-align:right;
+    padding:1rem;
+    position:fixed;
+    top:0;
+    right:0;
+    display: inline-block;
+}
+.btnClose a {
+    color:#ff0000;
+}

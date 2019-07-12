@@ -11,8 +11,12 @@ php.idUser     = '<?php echo Site::Get("Session")->get("idUser") ?>';
 <div id="app">
   <div class="toolbar">
     <div>{{ message }}</div>
+    <div><button v-on:click="actSQL">SQL</button></div>
     <div>Post: {{ nbPost }}</div>
     <div>User: {{ loginUser }} ({{ idUser }})</div>
+  </div>
+  <div class="popup" v-bind:class="popupClass"  v-on:click="actPopupHide">
+    <div class="btnClose"><a href="#" v-on:click="actPopupHide">fermer</a></div>
   </div>
 </div>
 

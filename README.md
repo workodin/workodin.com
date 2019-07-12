@@ -625,3 +625,13 @@ https://www.php.net/manual/fr/function.mail.php
 * Astuce: Dans un fichier .php, on peut créer du code JS
 * Cela permet de transférer des infos depuis PHP vers JS
 * Pour plus de clarté, on crée un objet en javascript qui contiendra toutes les infos provenant de PHP
+
+## VueJS: ajout de bouton
+
+* On ajoute un bouton dans la toolbar, et quand on clique sur le bouton, alors une popup s'affiche
+* Dans la popup, on ajoute un bouton pour pouvoir cacher la popup
+* Avec VueJS, on peut gérer les événements des utilisateurs
+* https://fr.vuejs.org/v2/guide/events.html
+* Et on peut gérer dynamiquement les classes sur les balises
+* https://fr.vuejs.org/v2/guide/class-and-style.html
+
