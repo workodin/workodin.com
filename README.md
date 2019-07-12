@@ -608,3 +608,12 @@ https://www.php.net/manual/fr/function.mail.php
 * Pour le visiteur, l'expérience est plus rapide
 * Dans notre framework, il suffit d'ajouter la classe ajax à la balise form
 * Le code JS va ajouter un callback pour prendre la main sur ces formulaires
+
+## Ajout de VueJS
+
+* VueJS est une librairie qui aide à créer des pages web réactives plus facilement
+* https://fr.vuejs.org/v2/guide/index.html
+* La documentation est très bien organisée et traduite en français
+* C'est surement le successeur de jQuery
+* Pour démarrer, il suffit de charger le code de la librairie
+* Et ensuite, on ajoute son code JS

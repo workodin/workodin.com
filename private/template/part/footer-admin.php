@@ -19,8 +19,10 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
 <?php require_once("$baseDir/public/assets/js/site.js") ?>
+<?php require_once("$baseDir/public/assets/js/site-admin.js") ?>
     </script>
 
 </body>
