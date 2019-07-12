@@ -6,10 +6,13 @@ wk.init = function ()
     {
         wk.formT        = wk.form.querySelector('[name=formTag]');
         wk.formK        = wk.form.querySelector('[name=formKey]');
-        wk.formValT     = wk.formT.value;
-        wk.formValK     = wk.formK.value;
-        wk.formT.value  = wk.formValK;
-        wk.formK.value  = wk.formValT;    
+        if (wk.formT && wk.formK)
+        {
+            wk.formValT     = wk.formT.value;
+            wk.formValK     = wk.formK.value;
+            wk.formT.value  = wk.formValK;
+            wk.formK.value  = wk.formValT;        
+        }
     }
 
     wk.formAjaxList         = document.querySelectorAll('form.ajax');
@@ -40,7 +43,8 @@ wk.sendAjax = function (event)
     .then((objResponse) => {
         // console.log(data);
         // affichage du message de confirmation
-        this.querySelector(".feedback").innerHTML = objResponse[formTag];
+        if (objResponse[formTag])
+            this.querySelector(".feedback").innerHTML = objResponse[formTag];
     });
 
 }

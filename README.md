@@ -626,7 +626,7 @@ https://www.php.net/manual/fr/function.mail.php
 * Cela permet de transférer des infos depuis PHP vers JS
 * Pour plus de clarté, on crée un objet en javascript qui contiendra toutes les infos provenant de PHP
 
-## VueJS: ajout de bouton
+## VueJS: ajout de bouton et popup
 
 * On ajoute un bouton dans la toolbar, et quand on clique sur le bouton, alors une popup s'affiche
 * Dans la popup, on ajoute un bouton pour pouvoir cacher la popup
@@ -634,4 +634,12 @@ https://www.php.net/manual/fr/function.mail.php
 * https://fr.vuejs.org/v2/guide/events.html
 * Et on peut gérer dynamiquement les classes sur les balises
 * https://fr.vuejs.org/v2/guide/class-and-style.html
+
+## Ajax: ajout de formulaire Admin
+
+* En mode agile, on a besoin de faire évoluer la Base De Données régulièrement
+* On ajout eun formulaire en Ajax qui permet de lancer n'importe quelle requête SQL
+* DANGER: 
+* Il faut bien protégér le traitement de ce formulaire, 
+* car un hacker pourrait complètement prendre la main sur la BDD !!!
 

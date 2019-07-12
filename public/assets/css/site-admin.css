@@ -57,15 +57,18 @@
 .popup.active {
     display: flex;
     opacity:1;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .btnClose {
     text-align:right;
     padding:1rem;
-    position:fixed;
-    top:0;
-    right:0;
-    display: inline-block;
 }
 .btnClose a {
     color:#ff0000;
+}
+.popupPanel {
+    background-color:#ffffff;
+    max-width:960px;
 }
