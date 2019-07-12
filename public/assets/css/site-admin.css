@@ -29,3 +29,15 @@
 .admin table textarea {
     min-width:300px;
 }
+
+.toolbar {
+    position:fixed;
+    bottom:0;
+    left:0;
+    padding:0.5rem;
+    background-color:#000000;
+    color:#ffffff;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+}

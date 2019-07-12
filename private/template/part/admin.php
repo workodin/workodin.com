@@ -1,6 +1,4 @@
-<div id="app">
-  {{ message }}
-</div>
+<?php require_once("$viewDir/part/admin-app.php") ?>
 
 <section>
     <h3>Bienvenue <?php echo $loginUser ?></h3>

@@ -617,3 +617,11 @@ https://www.php.net/manual/fr/function.mail.php
 * C'est surement le successeur de jQuery
 * Pour démarrer, il suffit de charger le code de la librairie
 * Et ensuite, on ajoute son code JS
+
+## Admin: Ajout de toolbar
+
+* Dans le code HTML de VueJS, on enrichit la page de composants
+* On ajoute une toolbar en position fixed, en bas de la page
+* Astuce: Dans un fichier .php, on peut créer du code JS
+* Cela permet de transférer des infos depuis PHP vers JS
+* Pour plus de clarté, on crée un objet en javascript qui contiendra toutes les infos provenant de PHP
