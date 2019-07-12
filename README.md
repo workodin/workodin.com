@@ -643,3 +643,11 @@ https://www.php.net/manual/fr/function.mail.php
 * Il faut bien protégér le traitement de ce formulaire, 
 * car un hacker pourrait complètement prendre la main sur la BDD !!!
 
+# SQL: Ajout de la colonne idUser dans Post
+
+* On ajoute une relation One-to-Many entre User et Post
+* Un Post est créé par un User
+* Un User peut créer plusieurs Post
+* => On ajoute une colonne idUser dans Post qui servira de Clé étrangère (Foreign Key) vers la table User
+* Dans le traitement du Create de Post, on complète avec idUser de la session
+

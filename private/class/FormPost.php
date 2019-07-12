@@ -72,6 +72,8 @@ class FormPost
         if ($levelUser == 100)
         {
             $now = date("Y-m-d H:i:s");
+            $idUser = Site::Get("Session")->get("idUser");
+
             $feedback = $objController
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique1", "Post")
@@ -80,8 +82,9 @@ class FormPost
                             ->check("code",     "code", "", "optional")
                             ->check("publicationDate", "datetime", $now)
                             // compléter les infos manquantes
-                            ->addUpload("urlMedia", "media", "", "optional")
-                            ->addData("modificationDate", $now)
+                            ->addUpload("urlMedia",         "media", "", "optional")
+                            ->addData("modificationDate",   $now)
+                            ->addData("idUser",             $idUser)
                             // ajouter la ligne
                             ->updateLine("Post", "votre contenu est modifié")
                             // récupérer le message de confirmation

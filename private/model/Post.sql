@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `Post` (
   `creationDate` datetime NOT NULL,
   `modificationDate` datetime NOT NULL,
   `publicationDate` datetime NOT NULL,
+  `idUser` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
