@@ -49,6 +49,11 @@ wk.sendAjax = function (event)
         // affichage du message de confirmation
         if (objResponse[formTag])
             this.querySelector(".feedback").innerHTML = objResponse[formTag];
+
+        // Ajax avec VueJS
+        if(app && objResponse["tabResult"]) {
+            app.tabResult = objResponse["tabResult"];
+        }    
     });
 
 }

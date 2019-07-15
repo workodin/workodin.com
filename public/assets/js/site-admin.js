@@ -1,3 +1,13 @@
+// création des composants Vue
+Vue.component('tr-dyn', {
+  // camelCase en JavaScript
+  props: { 
+    post: Object
+  },
+  template: '<tr><td v-for="(colVal, colName) in post" :class="colName"><pre>{{ colVal }}</pre></td></tr>'
+})
+
+// ensuite, on cére l'instance de Vue
 var app = new Vue({
   el: '#app',
   data: {
@@ -5,7 +15,9 @@ var app = new Vue({
     nbPost:     php.nbPost,
     loginUser:  php.loginUser,
     idUser:     php.idUser,
-    popupClass: { active: false }
+    popupClass: { active: false },
+    codeSQL:    "",
+    tabResult:  []
     /* attention, pas de virgule sur la dernière propriété */
   },
   methods: {

@@ -162,4 +162,15 @@ class Form
 
         return $texteJSON;
     }
+
+    /**
+     * 
+     */
+    function addFeedback ($key, $value)
+    {
+        // on stocke dans le tableau associatif
+        $this->tabFeedback[$key] = $value;
+        // pour permettre le chainage des appels
+        return $this;
+    }
 }

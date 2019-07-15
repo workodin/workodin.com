@@ -651,3 +651,18 @@ https://www.php.net/manual/fr/function.mail.php
 * => On ajoute une colonne idUser dans Post qui servira de Clé étrangère (Foreign Key) vers la table User
 * Dans le traitement du Create de Post, on complète avec idUser de la session
 
+## VueJS et Ajax: ajout de l'affichage des résultats à une requête SQL
+
+* Pour les requêtes SQL en lectre (READ), c'est mieux de pouvoir récupérer la liste des résultats dans la réponse Ajax
+* On modifie le code PHP pour ajouter dans la réponse Json du serveur, le tableau qui contient les lignes trouvées
+* Et on crée un template VueJS pour pouvoir afficher dynamiquement la liste des résultats
+* Attention: on tombe dans des petits travers de VueJS...
+* Pas moyen de faire 2 boucles imbriquées, il faut passer par un template intermédiaire (car VueJS manipule des alias et pas des variables JS)
+* il faut respecter la structure HTML et on ne peut pas insérer des templates n'importe où dans le DOM
+* astuce: utiliser la balise HTML nécessaire pour le DOM et ajouter l'attribut spécial VueJS is="mon-template"
+* => Pour l'administrateur, on obtient un outil CRUD puissant, sur toute la base de données SQL !
+* DANGER: 
+* Il faut bien protégér le traitement de ce formulaire, 
+* car un hacker pourrait complètement prendre la main sur la BDD !!!
+
+

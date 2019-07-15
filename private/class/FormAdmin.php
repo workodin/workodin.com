@@ -37,6 +37,10 @@ class FormAdmin
                     // https://www.php.net/manual/fr/pdostatement.debugdumpparams.php
                     $objPDOStatement->debugDumpParams();
                     $feedback = ob_get_clean();
+
+                    // on ajoute le tableau des résultats
+                    $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
+
                 }
             }               
         }
