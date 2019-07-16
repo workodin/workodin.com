@@ -670,3 +670,8 @@ https://www.php.net/manual/fr/function.mail.php
 * Dans le back-office, on passe tout le CRUD sur Post avec VueJS et Ajax
 * Il faut entrer dans les détails de VueJS...
 * Pour nettoyer, on enlève ensuite, la partie admin qui n'était pas avec VueJS
+
+## Améliorations sécurité liens vers pages externes
+
+* suivre les recommendations de https://web.dev/
+* https://web.dev/external-anchors-use-rel-noopener/

@@ -42,7 +42,7 @@ CODEHTML;
             // build links
             // https://www.php.net/manual/fr/function.preg-replace.php
             $pattern     = ',(https://[^\s]+),i';
-            $replacement = '<a href="${1}" target="_blank" rel="">${1}</a>';
+            $replacement = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
             $code = preg_replace($pattern, $replacement, $code);
 
             echo 
