@@ -48,7 +48,8 @@ var app = new Vue({
     tabResult:  [],
     tabHead:    [],
     mustConfirmDelete:  true,
-    formKey:    ""
+    formKey:    "",
+    formCode:   ""
     /* attention, pas de virgule sur la dernière propriété */
   },
   mounted: function () {

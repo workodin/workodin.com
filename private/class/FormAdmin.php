@@ -85,7 +85,7 @@ class FormAdmin
 
             // on ajoute le tableau des résultats
             $objModel           = Site::Get("Model");
-            $objPDOStatement    = $objModel->readLine("Post", "", "", "creationDate");
+            $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
             $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
 
         }
@@ -111,7 +111,7 @@ class FormAdmin
                             ;
             // on ajoute le tableau des résultats
             $objModel           = Site::Get("Model");
-            $objPDOStatement    = $objModel->readLine("Post", "", "", "creationDate");
+            $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
             $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
         }
         return $feedback;
@@ -150,7 +150,7 @@ class FormAdmin
                             ;
             // on ajoute le tableau des résultats
             $objModel           = Site::Get("Model");
-            $objPDOStatement    = $objModel->readLine("Post", "", "", "creationDate");
+            $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
             $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
         }
         return $feedback;
@@ -170,7 +170,7 @@ class FormAdmin
         {
             // on ajoute le tableau des résultats
             $objModel           = Site::Get("Model");
-            $objPDOStatement    = $objModel->readLine("Post", "", "", "creationDate");
+            $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
             $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
         }
         return $feedback;
