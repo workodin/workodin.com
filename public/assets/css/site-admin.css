@@ -72,4 +72,5 @@
 .popupPanel {
     background-color:#ffffff;
     max-width:960px;
+    min-width:50vw;
 }

@@ -47,10 +47,14 @@ var app = new Vue({
     codeSQL:    "",
     tabResult:  [],
     tabHead:    [],
-    mustConfirmDelete:  true
+    mustConfirmDelete:  true,
+    formKey:    ""
     /* attention, pas de virgule sur la dernière propriété */
   },
   mounted: function () {
+    /* on mémorise formKey pour les formulaires en Ajax */
+    this.formKey = php.formKey;
+
     /* on récupère la liste des Post au chargement de la page */
     formData = new FormData;
     formData.append('formKey', php.formKey);
@@ -68,6 +72,16 @@ var app = new Vue({
       // on affiche la popup
       this.panelActive = "formPostCreate";
       this.popupClass.active = true;
+    },
+    actPostRead: function(event) {
+      this.popupClass.active = false;
+
+      /* on récupère la liste des Post au chargement de la page */
+      formData = new FormData;
+      formData.append('formKey', this.formKey);
+      formData.append('formTag', 'Admin');
+      formData.append('formTagMethod', 'Read');
+      wk.sendAjaxForm(formData, null);  
     },
     actPostUpdate: function(post) {
       this.curPost = post;
