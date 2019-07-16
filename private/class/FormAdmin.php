@@ -36,10 +36,15 @@ class FormAdmin
                     // debug
                     // https://www.php.net/manual/fr/pdostatement.debugdumpparams.php
                     $objPDOStatement->debugDumpParams();
+                    // https://www.php.net/manual/fr/pdostatement.errorinfo.php
+                    print_r($objPDOStatement->errorInfo());
                     $feedback = ob_get_clean();
-
-                    // on ajoute le tableau des résultats
-                    $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
+                    // bricolage pour seulement retourner des résultats sur un SELECT
+                    if(0 === strpos($code, "SELECT"))
+                    {
+                        // on ajoute le tableau des résultats
+                        $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
+                    }
 
                 }
             }               

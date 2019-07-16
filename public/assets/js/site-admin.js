@@ -6,13 +6,19 @@ Vue.component('tr-dyn', {
   },
   methods: {
     actDelete: function(event, curId) {
-      alert('delete:'+curId);
-      formData = new FormData;
-      formData.append('formKey', php.formKey);
-      formData.append('formTag', 'Admin');
-      formData.append('formTagMethod', 'Delete');
-      formData.append('id', curId);
-      wk.sendAjaxForm(formData, null);
+      var checkAction = true;
+
+      if (app.mustConfirmDelete)
+        checkAction = confirm('VOUS ALLEZ SUPPRIMER UNE LIGNE:'+curId);
+
+      if(checkAction) {
+        formData = new FormData;
+        formData.append('formKey', php.formKey);
+        formData.append('formTag', 'Admin');
+        formData.append('formTagMethod', 'Delete');
+        formData.append('id', curId);
+        wk.sendAjaxForm(formData, null);  
+      }
     }
   },
   template: `
@@ -39,10 +45,13 @@ var app = new Vue({
     panelActive: "",
     curPost:    null,
     codeSQL:    "",
-    tabResult:  []
+    tabResult:  [],
+    tabHead:    [],
+    mustConfirmDelete:  true
     /* attention, pas de virgule sur la dernière propriété */
   },
   mounted: function () {
+    /* on récupère la liste des Post au chargement de la page */
     formData = new FormData;
     formData.append('formKey', php.formKey);
     formData.append('formTag', 'Admin');
