@@ -116,6 +116,7 @@ table {
 table td {
     border:1px solid #aaaaaa;
     padding:0.25rem;
+    overflow:auto;
 }
 
 /* nav */

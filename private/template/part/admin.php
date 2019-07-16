@@ -7,7 +7,7 @@
 
 <section>
     <h3>Gestion des Contenus</h3>
-    <form id="form-post" action="#form-post" method="POST" enctype="multipart/form-data">
+    <form id="form-post" action="#form-post" method="POST" enctype="multipart/form-data" class="ajax">
         <label for="form-title">title</label>
         <input id="form-title" type="text" name="title" required placeholder="titre">
         <label for="form-uri">uri</label>

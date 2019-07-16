@@ -33,7 +33,13 @@ wk.sendAjax = function (event)
     // blocage de l'envoi classique
     event.preventDefault();
     // récupération des infos du formulaire
-    formData = new FormData(this);
+    formData = new FormData(event.target);
+
+    wk.sendAjaxForm(formData, event.target);
+}
+
+wk.sendAjaxForm = function (formData, target)
+{
     var formTag = formData.get("formTag");
     // envoi du formulaire en AJAX
     fetch("/api.json", {
@@ -47,8 +53,8 @@ wk.sendAjax = function (event)
     .then((objResponse) => {
         // console.log(data);
         // affichage du message de confirmation
-        if (objResponse[formTag])
-            this.querySelector(".feedback").innerHTML = objResponse[formTag];
+        if (target && formTag && objResponse[formTag])
+            target.querySelector(".feedback").innerHTML = objResponse[formTag];
 
         // Ajax avec VueJS
         if(app && objResponse["tabResult"]) {

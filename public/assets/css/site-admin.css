@@ -27,7 +27,8 @@
     overflow-x:auto;
 }
 .admin table textarea {
-    min-width:300px;
+    display:block;
+    height:100%;
 }
 
 .toolbar {

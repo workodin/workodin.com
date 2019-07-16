@@ -665,4 +665,8 @@ https://www.php.net/manual/fr/function.mail.php
 * Il faut bien protégér le traitement de ce formulaire, 
 * car un hacker pourrait complètement prendre la main sur la BDD !!!
 
+## Back-office, VueJS et Ajax: CRUD sur Post
+
+* Dans le back-office, on passe tout le CRUD sur Post avec VueJS et Ajax
+* Il faut entrer dans les détails de VueJS...
 
