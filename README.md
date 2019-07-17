@@ -700,3 +700,10 @@ exemple:
     code PHP activé:
     (new ExtForm)->runNewsletter("hello")
 
+## Simplification de l'antispam en JS
+
+* Pour être traité, chaque formulaire doit envoyer une clé
+* le code html des formulaires ne contient pas cette clé
+* la clé est ajouté juste avant d'envoyer le formulaire en Ajax
+* Ainsi les formulaires qui ne sont pas envoyées en Ajax seront considérées comme du spam
+* A surveiller si les spammeurs reviennent ?

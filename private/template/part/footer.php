@@ -28,9 +28,18 @@ gtag('js', new Date());
 
 gtag('config', 'UA-143142316-1');
     </script>
-    <script>
+ 
+ 
+ <script>
+
+/* on prépare avec PHP les infos nécessaires pour JS */
+/* on utilise PHP pour créer du code JS */
+var php = {};
+php.formKey    = '<?php $form->show("formKeyPublic") ?>';
+
 <?php require_once("$baseDir/public/assets/js/site.js") ?>
-    </script>
+
+</script>
 
 </body>
 </html>

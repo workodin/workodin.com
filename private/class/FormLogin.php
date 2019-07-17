@@ -72,4 +72,13 @@ class FormLogin
         return $feedback;
     }
 
+    /**
+     * 
+     */
+    function processRegister ($form)
+    {
+        $feedback = "...MERCI DE VOTRE PATIENCE...";
+
+        return $feedback;
+    }
 }

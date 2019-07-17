@@ -34,7 +34,8 @@ wk.sendAjax = function (event)
     event.preventDefault();
     // récupération des infos du formulaire
     formData = new FormData(event.target);
-
+    // protection antispam
+    formData.set("formKey", php.formKey);
     wk.sendAjaxForm(formData, event.target);
 }
 
@@ -57,8 +58,8 @@ wk.sendAjaxForm = function (formData, target)
             target.querySelector(".feedback").innerHTML = objResponse[formTag];
 
         // Ajax avec VueJS
-        if(app && objResponse["tabResult"]) {
-            app.tabResult = objResponse["tabResult"];
+        if((typeof app !== 'undefined') && objResponse['tabResult']) {
+            app.tabResult = objResponse['tabResult'];
         }    
     });
 

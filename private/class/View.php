@@ -5,6 +5,50 @@
  */
 class View
 {
+
+    /**
+     * 
+     */
+    function buildCode ($code)
+    {
+        $result = $code;
+        if ($code != "")
+        {
+
+            // parcours ligne par ligne
+            $tabCode2 = [];
+            $tabCode = explode("\n", $code);
+            foreach($tabCode as $lineCode)
+            {
+                // si la ligne commence par @/
+                // https://www.php.net/manual/fr/function.mb-strpos.php
+                if (mb_strpos($lineCode, "@/") === 0)
+                {
+                    $lineCode = $this->runCommand($lineCode);
+
+                    if ($lineCode != "")
+                    {
+                        $tabCode2[] = $lineCode;
+                    }
+                }
+                else
+                {
+                    // convertir le code
+                    // pour ajouter des liens sur les URLs
+                    // https://www.php.net/manual/fr/function.preg-replace.php
+                    $pattern     = ',(https://[^\s]+),i';
+                    $replacement = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
+                    $lineCode    = preg_replace($pattern, $replacement, $lineCode);
+                    $tabCode2[]  = $lineCode;
+                }
+            }
+            // on reconstruit le code
+            $result = implode("\n", $tabCode2);
+        }
+
+        return $result;
+    }
+
     /**
       * 
      */
@@ -38,35 +82,8 @@ CODEHTML;
                 }
             }
 
-            // parcours ligne par ligne
-            $tabCode2 = [];
-            $tabCode = explode("\n", $code);
-            foreach($tabCode as $lineCode)
-            {
-                // si la ligne commence par @/
-                // https://www.php.net/manual/fr/function.mb-strpos.php
-                if (mb_strpos($lineCode, "@/") === 0)
-                {
-                    $lineCode = $this->runCommand($lineCode);
-
-                    if ($lineCode != "")
-                    {
-                        $tabCode2[] = $lineCode;
-                    }
-                }
-                else
-                {
-                    // convertir le code
-                    // pour ajouter des liens sur les URLs
-                    // https://www.php.net/manual/fr/function.preg-replace.php
-                    $pattern     = ',(https://[^\s]+),i';
-                    $replacement = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
-                    $lineCode    = preg_replace($pattern, $replacement, $lineCode);
-                    $tabCode2[]  = $lineCode;
-                }
-            }
-            // on reconstruit le code
-            $code = implode("\n", $tabCode2);
+            // on construit le code
+            $code = $this->buildCode($code);
 
             echo 
 <<<HTML
