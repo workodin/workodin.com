@@ -94,8 +94,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     <input id="form-template" type="text" name="template" placeholder="template" v-model="curPost.template">
                     <label for="form-code">code</label>
                     <textarea id="form-code" name="code" required placeholder="votre code" rows="20" v-model="curPost.code"></textarea>
-                    <label for="form-urlMedia">url Media ({{ curPost.urlMedia }})</label>
-                    <input id="form-urlMedia" type="file" name="urlMedia" placeholder="upload Media">
+                    <label for="form-urlMedia-update">url Media ({{ curPost.urlMedia }})</label>
+                    <input id="form-urlMedia-update" type="file" name="urlMedia" placeholder="upload Media">
                     <p>nb caractères: {{ curPost.code.length }}</p>
                     <button type="submit">modifier votre contenu</button>
                     <input type="hidden" name="formKey"  v-model="formKey">
