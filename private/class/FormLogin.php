@@ -47,10 +47,24 @@ class FormLogin
                             ->set("loginUser",  $login);
                     
                     // redirection suivant level
+                    if ($level == 10)
+                    {
+                        // https://www.php.net/manual/fr/function.header.php
+                        // header("Location: /membre");
+
+                        // pour redirection avec Ajax
+                        $form->addFeedback("redirection", "/membre");
+
+                    } 
+
+                    // redirection suivant level
                     if ($level == 100)
                     {
                         // https://www.php.net/manual/fr/function.header.php
-                        header("Location: /admin");
+                        // header("Location: /admin");
+
+                        // pour redirection avec Ajax
+                        $form->addFeedback("redirection", "/admin");
                     } 
 
                     // message feedback
@@ -78,7 +92,29 @@ class FormLogin
     function processRegister ($form)
     {
         $feedback = "...MERCI DE VOTRE PATIENCE...";
+        $objController = Site::Get("Controller");
 
+        // SECURITE
+        $levelUser = Site::Get("Session")->get("levelUser");
+        if ($levelUser >= 0)
+        {
+            $now = date("Y-m-d H:i:s");
+            $feedback = $objController
+                            ->check("login",      "uri", "", "unique", "User")
+                            ->check("email",      "email", "", "unique", "User")
+                            ->check("password",   "password")
+                            ->addData("creationDate", $now)
+                            ->addData("level", 10)
+                            ->addData("role", "member")
+                            // ajouter la ligne
+                            ->insertLine("User", "votre compte est activé")
+                            // récupérer le message de confirmation
+                            ->getFeedback();
+            // on envoie un mail 
+            extract($objController->getTabForm());   
+            Site::Get("Email")->send("inscription/$email/$login", 
+                                        "nouvel user inscrit: $email / $login / $now");
+        }
         return $feedback;
     }
 }

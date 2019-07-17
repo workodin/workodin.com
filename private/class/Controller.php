@@ -38,6 +38,7 @@ class Controller
      */
     function check($name, $type, $defaultValue="", $params="", $tableName="")
     {
+        
         if ($type == "code")
         {
             $value = $this->form->getInfo0($name, $defaultValue);
@@ -52,6 +53,28 @@ class Controller
             $value = preg_replace("/[^a-zA-Z0-9-]/", "", $value);
             $value = strtolower($value);
         }
+
+        if ($type == "password")
+        {
+            if (mb_strlen($value) < 8)
+            {
+                $this->tabError[] = "($name trop court)";
+            }
+
+            // hashage du mot de passe
+            $value = password_hash($value, PASSWORD_DEFAULT);
+        }
+
+        if ($type == "email")
+        {
+            $emailFiltre = filter_var($value, FILTER_VALIDATE_EMAIL);
+            if ($emailFiltre != $value)
+            {
+                $this->tabError[] = "($name incorrect: $email)";
+            }
+            $value = $emailFiltre;
+        }
+
         $this->tabForm[$name] = $value;
 
         $tabParam = explode("/", $params);

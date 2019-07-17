@@ -707,3 +707,11 @@ exemple:
 * la clé est ajouté juste avant d'envoyer le formulaire en Ajax
 * Ainsi les formulaires qui ne sont pas envoyées en Ajax seront considérées comme du spam
 * A surveiller si les spammeurs reviennent ?
+
+
+## Ajout du formulaire de création de compte
+
+* Première version du formulaire de création de compte
+* le compte est tout de suite activé
+* le login donne alors l'accès à la page d'espace membre
+* le login est maintenant aussi en Ajax, avec une redirection par JS (et non plus PHP...)

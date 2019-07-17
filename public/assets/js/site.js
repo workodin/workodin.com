@@ -60,7 +60,12 @@ wk.sendAjaxForm = function (formData, target)
         // Ajax avec VueJS
         if((typeof app !== 'undefined') && objResponse['tabResult']) {
             app.tabResult = objResponse['tabResult'];
-        }    
+        }
+        
+        // redirection Ajax
+        if(objResponse['redirection']) {
+            window.location.href = objResponse['redirection'];
+        }
     });
 
 }
