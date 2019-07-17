@@ -675,3 +675,28 @@ https://www.php.net/manual/fr/function.mail.php
 
 * suivre les recommendations de https://web.dev/
 * https://web.dev/external-anchors-use-rel-noopener/
+
+
+## Ajout des Commandes
+
+* Le contenu des articles est simplement du texte
+* Mais on a souvent besoin de pouvoir insérer des éléments plus complexes avec le texte
+* WordPress utilise le système des [shortcodes] pour réaliser cette combinaison
+* Nous allons nous appuyer sur une ligne de commande orientée objet
+* si une ligne commence par @/ alors c'est une commande qui sera remplacée
+* le format sera simplement
+
+    @/classe/methode/param
+
+* qui activera le code PHP
+
+    (new ExtClasse)->runMethode(param)
+
+exemple:
+
+    commande:
+    @/form/newsletter/hello
+
+    code PHP activé:
+    (new ExtForm)->runNewsletter("hello")
+

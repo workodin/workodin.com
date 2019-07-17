@@ -38,12 +38,35 @@ CODEHTML;
                 }
             }
 
-            // convert code
-            // build links
-            // https://www.php.net/manual/fr/function.preg-replace.php
-            $pattern     = ',(https://[^\s]+),i';
-            $replacement = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
-            $code = preg_replace($pattern, $replacement, $code);
+            // parcours ligne par ligne
+            $tabCode2 = [];
+            $tabCode = explode("\n", $code);
+            foreach($tabCode as $lineCode)
+            {
+                // si la ligne commence par @/
+                // https://www.php.net/manual/fr/function.mb-strpos.php
+                if (mb_strpos($lineCode, "@/") === 0)
+                {
+                    $lineCode = $this->runCommand($lineCode);
+
+                    if ($lineCode != "")
+                    {
+                        $tabCode2[] = $lineCode;
+                    }
+                }
+                else
+                {
+                    // convertir le code
+                    // pour ajouter des liens sur les URLs
+                    // https://www.php.net/manual/fr/function.preg-replace.php
+                    $pattern     = ',(https://[^\s]+),i';
+                    $replacement = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
+                    $lineCode    = preg_replace($pattern, $replacement, $lineCode);
+                    $tabCode2[]  = $lineCode;
+                }
+            }
+            // on reconstruit le code
+            $code = implode("\n", $tabCode2);
 
             echo 
 <<<HTML
@@ -64,6 +87,41 @@ HTML;
         
         echo $htmlPost;
         
+    }
+
+    /**
+     * 
+     */
+    function runCommand ($lineCode)
+    {
+        $result = "";
+
+        $tabCommand     = explode("/", trim($lineCode));
+        $commandClass   = $tabCommand[1] ?? "";
+        $commandMethod  = $tabCommand[2] ?? "";
+        $commandParam   = $tabCommand[3] ?? "";
+        if (!empty($commandClass) && !empty($commandMethod))
+        {
+            // conventon du framework
+            // les commandes sont des methodes de classes
+            // exemple:
+            // ExtForm::runContact
+            // sera activée avec la ligne
+            // @/form/contact/
+
+            // https://www.php.net/manual/en/function.ucfirst.php
+            $commandClass   = "Ext" . ucfirst($commandClass);
+            $commandMethod  = "run" . ucfirst($commandMethod);
+            if (method_exists($commandClass, $commandMethod))
+            {
+                $result = Site::Get($commandClass)->$commandMethod($commandParam);                
+            }
+        }
+        else 
+        {
+            // $result = "debug/$commandClass/$commandMethod/$commandParam";
+        }
+        return $result;
     }
 
     /**
