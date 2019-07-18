@@ -18,6 +18,6 @@ else
     $loginUser = Site::Get("Session")->get("loginUser");
 
     require_once("$viewDir/part/header-admin.php");
-    require_once("$viewDir/part/$pageUri.php");
+    require_once("$viewDir/part/section-post.php");
     require_once("$viewDir/part/footer-admin.php");
 }
