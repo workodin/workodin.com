@@ -745,3 +745,6 @@ exemple:
 
 * On crée dans Post le formulaire d'installation
 * Cela permet de supprimer le fichier template/page-section/install.php
+
+* On crée dans Post le contenu de la page d'accueil (index)
+* Cela permet de supprimer le fichier template/page-section/index.php
