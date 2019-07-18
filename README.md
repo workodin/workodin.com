@@ -738,3 +738,7 @@ exemple:
 
 * Ajout de la méthode ExtForm::runInfo
 * Cela permet de supprimer le template info.php
+
+* Ajout de la méthode ExtForm::runLogout
+* Cela permet de supprimer le template logout.php
+* On modifie le template-code.php pour gérer ces pages spéciales avec catégory=command

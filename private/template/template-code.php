@@ -18,6 +18,13 @@ switch ($extension)
     default:
         header("Content-Type: text/plain");
         // ce template permet de renvoyer seulement le contenu de la colonne code
-        echo $code ?? "";
+        if ($category == "command")
+        {
+            echo Site::Get("View")->buildCode($code ?? "");
+        }
+        else
+        {
+            echo $code ?? "";
+        }
 }
 
