@@ -221,6 +221,18 @@ footer .menu-footer-2 li {
     .postMain pre.post {
         column-count:2;
     }
+
+    .index .postMain {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .index .postMain > * {
+        width: 50%;
+    }
+    
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -246,3 +258,5 @@ footer .menu-footer-2 li {
     }
     
 }
+
+
