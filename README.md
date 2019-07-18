@@ -742,3 +742,6 @@ exemple:
 * Ajout de la méthode ExtForm::runLogout
 * Cela permet de supprimer le template logout.php
 * On modifie le template-code.php pour gérer ces pages spéciales avec catégory=command
+
+* On crée dans Post le formulaire d'installation
+* Cela permet de supprimer le fichier template/page-section/install.php
