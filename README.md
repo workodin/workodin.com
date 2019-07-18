@@ -731,3 +731,8 @@ exemple:
 
 * L'idée est de permettre de gérer le maximum de code dans MySQL
 * cela va alléger le code PHP
+
+* On supprime aussi le template login.php
+* A la place, on crée un Post pour le formulaire et un autre pour la page /login
+* Et la page insère le formulaire avec @/form/post/form-login
+
