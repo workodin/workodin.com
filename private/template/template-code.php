@@ -10,11 +10,14 @@ switch ($extension)
     case "js":
         header("Content-Type: application/javascript; charset=UTF-8");
         // ce template permet de renvoyer seulement le contenu de la colonne code
-        echo $code;
+        echo $code ?? "";
+        break;
+    case "code":
+        echo Site::Get("View")->buildCode($code ?? "");
         break;
     default:
         header("Content-Type: text/plain");
         // ce template permet de renvoyer seulement le contenu de la colonne code
-        echo $code;
+        echo $code ?? "";
 }
 

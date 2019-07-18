@@ -736,3 +736,5 @@ exemple:
 * A la place, on crée un Post pour le formulaire et un autre pour la page /login
 * Et la page insère le formulaire avec @/form/post/form-login
 
+* Ajout de la méthode ExtForm::runInfo
+* Cela permet de supprimer le template info.php

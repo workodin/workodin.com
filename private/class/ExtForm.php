@@ -5,6 +5,19 @@
  */
 class ExtForm
 {
+
+    /**
+     * 
+     */
+    function runInfo ($txtParam)
+    {
+        $result = "";
+        ob_start();
+        phpinfo();
+        $result = ob_get_clean();
+        return $result;
+    }
+
     /**
      * 
      */
