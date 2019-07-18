@@ -715,3 +715,19 @@ exemple:
 * le compte est tout de suite activé
 * le login donne alors l'accès à la page d'espace membre
 * le login est maintenant aussi en Ajax, avec une redirection par JS (et non plus PHP...)
+
+## Ajout de méthode ExtForm::runPost
+
+* Cette méthode permet d'aller chercher dans Post un code 
+* et de l'insérer dans un autre Post avec la commande
+
+    @/form/post/uri-du-post
+
+* attention: il doit y avoir des problèmes si on fait des boucles infinies
+
+* Exemple: 
+* on peut créer le formulaire de contact avec son code HTML dans un Post
+* On peut supprimer le template contact.php
+
+* L'idée est de permettre de gérer le maximum de code dans MySQL
+* cela va alléger le code PHP

@@ -8,12 +8,30 @@ class ExtForm
     /**
      * 
      */
+    function runPost ($txtParam)
+    {
+        $result = "";
+
+        $objPDOStatement = Site::Get("Model")->readLine("Post", "uri", $txtParam);
+        foreach($objPDOStatement as $tabLine)
+        {
+            extract($tabLine);
+
+            $result = "</pre>$code<pre>";
+        }
+
+        return $result;
+    }
+
+    /**
+     * 
+     */
     function runInscription ($txtParam)
     {
         $result = "";
 
-        $result = 
-<<<CODEHTML
+        $result =  
+<<<MONHTML
 
 <form id="form-inscription" action="#form-inscription" method="POST" class="ajax">
     <label for="form-login">login</label>
@@ -29,7 +47,8 @@ class ExtForm
     </div>
 </form>
 
-CODEHTML;
+MONHTML;
+
 
         return "</pre>$result<pre>";
     }
