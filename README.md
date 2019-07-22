@@ -769,3 +769,14 @@ exemple:
 * la dernière version sera dans le fichier cache
 * Ensuite, on modifiera le code PHP pour aller chercher ces fichiers cache en plus des fichiers du framework !!!
 
+## Modification code Site pour gérer les fichiers cache
+
+* En plus de chercher le fichier du framework, on cherche si un fichier cache équivalent existe
+* Test:
+* Ajout dans File de private/template/template-membre.php 
+* => cela crée un fichier cache dans my-work/
+* suppression du fichier réel private/template/template-membre.php
+* quand on affiche l'espace membre, c'est le fichier cache qui est utilisé ;-p
+* => on peut maintenant stocker du code PHP dans SQL
+* => le framework PHP garde des fichiers cache PHP pour les utiliser
+* => le repo git ne verra pas ces fichiers cache, donc git ne donne plus la vision complète du code

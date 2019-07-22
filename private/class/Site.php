@@ -120,26 +120,31 @@ class Site
             else
             {
                 $objPDOStatement = Site::Get("Model")->readLine("Post", "uri", $pageUri);
-                foreach($objPDOStatement as $tabLine)
+                foreach ($objPDOStatement as $tabLine)
                 {
                     // traitement des formulaires
                     $form->process();
 
                     extract($tabLine);
 
-                    $templatePost = "$viewDir/template-post.php";
+                    $templatePost  = "$viewDir/template-post.php";
+                    $templatePost2 = "private/template/template-post.php";
                     if ($template != "")
                     {
                         $templatePost = "$viewDir/template-$template.php";
+                        $templatePost2 = "private/template/template-$template.php";
                     }
-                    if (is_file($templatePost))
+
+                    // on va chercher le fichier réel ou virtuel
+                    $templateFile = $this->loadFile($templatePost2);
+                    if (is_file($templateFile))
                     {
                         // VIEW
-                        require_once($templatePost);
+                        require_once($templateFile);
                     }
 
                 }
-                if(empty($tabLine))
+                if (empty($tabLine))
                 {
                     // page non trouvée
                     // important: erreur 404 pour les moteurs de recherche
@@ -156,6 +161,31 @@ class Site
 
     }
     
+    /**
+     * 
+     */
+    function loadFile ($templatePost)
+    {
+        $result = "";
+        $baseDir        = Site::Get("baseDir");
+        $templatePath   = "$baseDir/$templatePost"; 
+        if (is_file($templatePath))
+        {
+            // le fichier existe, il est prioritaire
+            $result = $templatePath;
+        }
+        else
+        {
+            // on va chercher dans le cache des fichiers File
+            $md5file = md5($templatePost);
+            $cacheFile = "$baseDir/my-work/my-$md5file";
+            if (is_file($cacheFile))
+            {
+                $result = $cacheFile;
+            }
+        }
+        return $result;
+    }
 
     /**
      * configure le mode de développement
