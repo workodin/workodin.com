@@ -18,6 +18,9 @@ else
 $installKey = "CHANGE_INSTALL_KEY";
 $adminEmail = "CHANGE_INSTALL_EMAIL";
 
+// TEMPLATE
+Site::Set("templatePriority", "");
+
 // UPLOAD
 Site::Set("uploadPath", "assets/media");
 Site::Set("publicDir", __DIR__ . "/public");

@@ -7,10 +7,8 @@ $levelUser = Site::Get("Session")->get("levelUser", 0);
 if ($levelUser < 100)
 {
     // accès interdit    
-    // important: erreur 404 pour les moteurs de recherche
     // https://www.php.net/manual/fr/function.header.php
-    header("HTTP/1.1 404 Not Found");
-    require_once("$viewDir/template-404.php");
+    header("Location: /login");
 }
 else
 {

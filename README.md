@@ -780,3 +780,20 @@ exemple:
 * => on peut maintenant stocker du code PHP dans SQL
 * => le framework PHP garde des fichiers cache PHP pour les utiliser
 * => le repo git ne verra pas ces fichiers cache, donc git ne donne plus la vision complète du code
+
+## Ajout de chargement de classe à partir des fichiers cache File
+
+* On ajoute une nouvelle fonction callback pour le chargement automatique de classe
+* On va chercher dans le dossier cache my-work/ si un fichier cache File correspond
+* si oui, alors on charge le code PHP de la classe
+* => On peut maintenant ajouter du code HTML et PHP avec la partie admin
+* => Cela permet de coder des formulaires avec leur traitement !
+
+## templates avec fichiers virtuels
+
+* on fait évoluer les templates pour pouvoir gérer avec les fichiers virtuels
+* les templates de private/template/page/
+* les templates de private/template/page-section/
+* les templates de private/template/
+* Ajout d'un paramètre de configuration templatePriority="virtual" pour donner la priorité aux fichiers virtuels
+

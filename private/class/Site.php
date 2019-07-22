@@ -77,8 +77,16 @@ class Site
 
         // variables globales avec $GLOBALS
         $GLOBALS["modelDir"]   = $this->modelDir;
-        $GLOBALS["today"]      = date("Y-m-d");
-        $GLOBALS["now"]        = date("H:i:s");
+
+        // on ajoute un autre chargeur de classe
+        spl_autoload_register(function($nameClass){
+            $pathClass  = $this->loadFile("private/class/$nameClass.php");
+            if (is_file($pathClass))
+            {
+                // charger le code de la classe
+                require_once($pathClass);
+            }
+        });
 
         if ($siteMode == "TERMINAL")
         {
@@ -94,18 +102,26 @@ class Site
             $fichierSection         = "$viewDir/page-section/$pageUri.php";
             $fichierPage            = "$viewDir/page/$pageUri.php";
             
+            $fichierSection2         = "private/template/page-section/$pageUri.php";
+            $fichierPage2            = "private/template/page/$pageUri.php";
+
             $form = Site::Get("Form");
             // https://www.php.net/manual/fr/function.is-file.php
-            if (is_file($fichierPage)) 
+            $filePage    = $this->loadFile($fichierPage2);
+            $fileSection = $this->loadFile($fichierSection2);
+
+            $tabRequire = [];
+            if (is_file($filePage)) 
             {
                 // CONTROLLER
                 // traitement des formulaires
                 $form->process();
 
                 // VIEW
-                require_once($fichierPage);
+                $tabRequire[] = $filePage;
+                // require_once($filePage);
             }
-            elseif (is_file($fichierSection)) 
+            elseif (is_file($fileSection)) 
             {
                 // CONTROLLER
                 // traitement des formulaires
@@ -113,9 +129,14 @@ class Site
 
                 // VIEW
                 // recomposer la page eavec les tranches de HTML
-                require_once("$viewDir/part/header.php");
-                require_once($fichierSection);
-                require_once("$viewDir/part/footer.php");
+                // require_once("$viewDir/part/header.php");
+                // require_once($fileSection);
+                // require_once("$viewDir/part/footer.php");
+
+                $tabRequire[] = "$viewDir/part/header.php";
+                $tabRequire[] = "$fileSection";
+                $tabRequire[] = "$viewDir/part/footer.php";
+
             }
             else
             {
@@ -140,7 +161,8 @@ class Site
                     if (is_file($templateFile))
                     {
                         // VIEW
-                        require_once($templateFile);
+                        // require_once($templateFile);
+                        $tabRequire[] = $templateFile;
                     }
 
                 }
@@ -150,8 +172,16 @@ class Site
                     // important: erreur 404 pour les moteurs de recherche
                     // https://www.php.net/manual/fr/function.header.php
                     header("HTTP/1.0 404 Not Found");
-                    require_once("$viewDir/template-404.php");
+                    // require_once("$viewDir/template-404.php");
+                    $tabRequire[] = "$viewDir/template-404.php";
+
                 }
+            }
+
+            // on charge tous les fichiers nécessaires pour construire la réponse
+            foreach($tabRequire as $fileRequire)
+            {
+                require_once($fileRequire);
             }
 
             // garder un log du visiteur
@@ -167,21 +197,51 @@ class Site
     function loadFile ($templatePost)
     {
         $result = "";
-        $baseDir        = Site::Get("baseDir");
+        $baseDir          = Site::Get("baseDir");
+        // on peut paramétrer l'ordre de priorité
+        $templatePriority = Site::Get("templatePriority");
+
         $templatePath   = "$baseDir/$templatePost"; 
-        if (is_file($templatePath))
+        // on va chercher dans le cache des fichiers File
+        $md5file = md5($templatePost);
+        $cacheFile = "$baseDir/my-work/my-$md5file";
+
+        $tabSearch = [];
+        if ($templatePriority == "virtual")
         {
-            // le fichier existe, il est prioritaire
-            $result = $templatePath;
+            $tabSearch[] = $cacheFile;
+            $tabSearch[] = $templatePath;
         }
         else
         {
-            // on va chercher dans le cache des fichiers File
-            $md5file = md5($templatePost);
-            $cacheFile = "$baseDir/my-work/my-$md5file";
-            if (is_file($cacheFile))
+            $tabSearch[] = $templatePath;
+            $tabSearch[] = $cacheFile;
+        }
+
+        foreach($tabSearch as $search)
+        {
+            if (is_file($search))
             {
-                $result = $cacheFile;
+                $result = $search;
+                break;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * 
+     */
+    function loadTabFile ($tabFile)
+    {
+        $result = [];
+        foreach($tabFile as $file)
+        {
+            $file2 = $this->loadFile($file);
+            if ($file2 != "")
+            {
+                $result[] = $file2;
             }
         }
         return $result;
