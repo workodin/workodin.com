@@ -797,3 +797,13 @@ exemple:
 * les templates de private/template/
 * Ajout d'un paramètre de configuration templatePriority="virtual" pour donner la priorité aux fichiers virtuels
 
+## Admin: ajout de Read et Delete sur File
+
+* On affiche la liste des File
+* On peut supprimer une ligne File (et cela supprime aussi le fichier virtuel de cache)
+* On peut aussi supprimer l'ensemble des fichiers virtuels
+* Si un fichier virtuel n'est pas trouvé, on va chercher si une ligne File correspond
+* Si oui, on crée de nouveau le fichier virtuel de cache
+* ATTENTION: 
+* cela peut provoquer trop de requêtes SQL en SELECT... 
+* => suivre les performances pour optimiser si besoin...

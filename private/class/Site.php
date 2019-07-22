@@ -218,15 +218,41 @@ class Site
             $tabSearch[] = $cacheFile;
         }
 
+        $found = 0;
         foreach($tabSearch as $search)
         {
             if (is_file($search))
             {
                 $result = $search;
+                $found++;
                 break;
             }
         }
 
+        // mise à jour du cache à partir de SQL
+        if ($found == 0)
+        {
+            $objPDOStatement = Site::get("Model")->readLine("File", "path", $templatePost);
+            $md5path         = "";
+            $feedbackVirtual = "";
+            foreach($objPDOStatement as $tabLine)
+            {
+                extract($tabLine);
+                // crée $code et $path
+                $md5path = md5($path);
+
+            }
+            if ($md5path != "") {
+                $baseDir = Site::get("baseDir");
+                $virtualPath = "$baseDir/my-work/my-$md5path";
+                // création du fichier cache
+                file_put_contents($cacheFile, $code);
+                
+                // ré-actualisation du résultat
+                $result = $cacheFile;
+            }
+
+        }
         return $result;
     }
 

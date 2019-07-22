@@ -5,21 +5,6 @@ Vue.component('tr-dyn', {
     post: Object
   },
   methods: {
-    actDelete: function(event, curId) {
-      var checkAction = true;
-
-      if (app.mustConfirmDelete)
-        checkAction = confirm('VOUS ALLEZ SUPPRIMER UNE LIGNE:'+curId);
-
-      if(checkAction) {
-        formData = new FormData;
-        formData.append('formKey', php.formKey);
-        formData.append('formTag', 'Admin');
-        formData.append('formTagMethod', 'Delete');
-        formData.append('id', curId);
-        wk.sendAjaxForm(formData, null);  
-      }
-    }
   },
   template: `
     <tr>
@@ -28,7 +13,7 @@ Vue.component('tr-dyn', {
         <pre v-else>{{ colVal }}</pre>
       </td>
       <td><a href="#" v-on:click="$emit('post-update', post)">modifier</a></td>
-      <td><a href="#" v-on:click="actDelete($event, post.id)">supprimer</a></td>
+      <td><a href="#" v-on:click="$emit('post-delete', post)">supprimer</a></td>
     </tr>
   `
 })
@@ -47,6 +32,8 @@ var app = new Vue({
     curPost:    null,
     codeSQL:    "",
     codeFile:   "",
+    tabFile:    [],
+    tabHeadFile:[],
     tabResult:  [],
     tabHead:    [],
     mustConfirmDelete:  true,
@@ -66,6 +53,22 @@ var app = new Vue({
     wk.sendAjaxForm(formData, null);  
   },
   methods: {
+    actDelete: function(targetTable, targetLine, targetMethod) {
+      var checkAction = true;
+      var curId = targetLine.id;
+      if (app.mustConfirmDelete)
+        checkAction = confirm('VOUS ALLEZ SUPPRIMER UNE LIGNE:'+curId);
+
+      if(checkAction) {
+        formData = new FormData;
+        formData.append('formKey', php.formKey);
+        formData.append('formTag', 'Admin');
+        formData.append('formTagMethod', targetMethod);
+        formData.append('table', targetTable);
+        formData.append('id', curId);
+        wk.sendAjaxForm(formData, null);  
+      }
+    },
     actSQL: function(event) {
       // on affiche la popup
       this.panelActive = "formSQL";
@@ -97,6 +100,24 @@ var app = new Vue({
       this.panelActive = "formPostUpdate";
       this.panelFeedback = "";
       this.popupClass.active = true;
+    },
+    actPostDelete: function(post) {
+      this.curPost = post;
+      this.actDelete('Post', post, 'Delete');
+    },
+    actFileDelete: function(post) {
+      this.curPost = post;
+      this.actDelete('File', post, 'FileDelete');
+    },
+    actFileCacheReset: function(event) {
+      this.popupClass.active = false;
+
+      /* on récupère la liste des Post au chargement de la page */
+      formData = new FormData;
+      formData.append('formKey', this.formKey);
+      formData.append('formTag', 'Admin');
+      formData.append('formTagMethod', 'FileCacheReset');
+      wk.sendAjaxForm(formData, null);  
     },
     actPopupHide: function(event) {
       // on cache la popup

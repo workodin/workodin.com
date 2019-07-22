@@ -10,6 +10,24 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
 
 <div id="app">
     <div class="boxResult">
+        <h3>Liste des File</h3>
+        <div class="tableBox">
+            <table v-if="tabFile.length > 0">
+                <thead>
+                    <tr>
+                        <td v-for="curHead in tabHeadFile"{{ curHead }}></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr is="tr-dyn" v-on:post-delete="actFileDelete" v-for="(post, index) in tabFile" :key="post.id" :post="post">
+                    </tr>
+                </tbody>
+            </table>
+            <p v-else><button v-on:click="actSQL">SQL</button></p>
+        </div>
+    </div>
+
+    <div class="boxResult">
         <div><pre>{{ codeSQL }}</pre></div>
         <h3>Liste des Résultats</h3>
         <div class="tableBox">
@@ -20,7 +38,7 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="tr-dyn" v-on:post-update="actPostUpdate" v-for="(post, index) in tabResult" :key="post.id" :post="post">
+                    <tr is="tr-dyn" v-on:post-update="actPostUpdate" v-on:post-delete="actPostDelete" v-for="(post, index) in tabResult" :key="post.id" :post="post">
                     </tr>
                 </tbody>
             </table>
@@ -32,7 +50,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
         <div><a href="#" v-on:click="actPostCreate">Post</a></div>
         <div><a href="#" v-on:click="actPostRead">Refresh Post</a></div>
         <div><a href="#" v-on:click="actSQL">SQL</a></div>
-        <div><a href="#" v-on:click="actFileCreate">File</a></div>
+        <div><a href="#" v-on:click="actFileCreate">File Create</a></div>
+        <div><a href="#" v-on:click="actFileCacheReset">File Cache Reset</a></div>
         <div>tabResult: {{ tabResult.length }}</div>
         <div><input type="checkbox" id="mustConfirmDelete" v-model="mustConfirmDelete"><label for="mustConfirmDelete">confirmation avant delete</label></div>
         <div>{{ message }}</div>

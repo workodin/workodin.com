@@ -151,17 +151,111 @@ class FormAdmin
         $levelUser = Site::Get("Session")->get("levelUser");
         if ($levelUser == 100)
         {
+            // TODO: improve security
+            $table = $form->getInfo("table");
+            $id    = $form->getInt("id");
             $feedback = $objController
-                            ->deleteLine("Post", "le contenu a été supprimé")
+                            ->deleteLine($table, "la ligne ($id) a été supprimée")
                             // récupérer le message de confirmation
                             ->getFeedback()
                             ;
+
             // on ajoute le tableau des résultats
             $objModel           = Site::Get("Model");
             $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
             $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
+
+            $objPDOStatement    = $objModel->readLine("File", "", "", "modificationDate");
+            $form->addFeedback("tabFile", $objPDOStatement->fetchAll());
         }
         return $feedback;
+    }
+
+    /**
+     * 
+     */
+    function processFileDelete ($form)
+    {
+        $feedback = "";
+        $objController = Site::Get("Controller");
+
+        // SECURITE: ATTENTION PEUT SUPPRIMER TOUTE UNE TABLE
+        $levelUser = Site::Get("Session")->get("levelUser");
+        if ($levelUser == 100)
+        {
+            // TODO: improve security
+            $table = $form->getInfo("table");
+            $id    = $form->getInt("id");
+            $objPDOStatement = Site::get("Model")->readLine("File", "id", $id);
+            $md5path         = "";
+            $feedbackVirtual = "";
+            foreach($objPDOStatement as $tabLine)
+            {
+                extract($tabLine);
+                $md5path = md5($path);
+
+            }
+            if ($md5path != "") {
+                $baseDir = Site::get("baseDir");
+                $virtualPath = "$baseDir/my-work/my-$md5path";
+                if (is_file($virtualPath))
+                {
+                    // DANGER: on supprime un fichier
+                    unlink($virtualPath);
+                    // réinitialise le cache PHP
+                    // https://www.php.net/manual/fr/function.clearstatcache.php
+                    clearstatcache(true, $virtualPath);
+
+                    $feedbackVirtual = "et aussi le fichier virtuel ($virtualPath)";
+                }    
+            }
+
+            $feedback = $objController
+                            ->deleteLine($table, "la ligne ($id) a été supprimée. $feedbackVirtual")
+                            // récupérer le message de confirmation
+                            ->getFeedback()
+                            ;
+
+            // on ajoute le tableau des résultats
+            $objModel           = Site::Get("Model");
+            $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
+            $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
+
+            $objPDOStatement    = $objModel->readLine("File", "", "", "modificationDate");
+            $form->addFeedback("tabFile", $objPDOStatement->fetchAll());
+        }
+        return $feedback;
+    }
+
+    /**
+     * 
+     */
+    function processFileCacheReset ($form)
+    {
+        $feedback = "";
+        $objController = Site::Get("Controller");
+
+        // SECURITE: ATTENTION PEUT SUPPRIMER TOUTE UNE TABLE
+        $levelUser = Site::Get("Session")->get("levelUser");
+        if ($levelUser == 100)
+        {
+            $baseDir = Site::get("baseDir");
+            $cacheMask = "$baseDir/my-work/my-*";
+            // https://www.php.net/manual/fr/function.glob.php
+            $tabCache = glob($cacheMask);
+            $count = 0;
+            foreach($tabCache as $cache)
+            {
+                // DANGER: on supprime le fichier de cache
+                unlink($cache);
+                $count++;
+            }
+
+            $feedback = "$count fichiers supprimés";
+        }
+
+        return $feedback;
+
     }
 
     /**
@@ -215,10 +309,14 @@ class FormAdmin
         $levelUser = Site::Get("Session")->get("levelUser");
         if ($levelUser == 100)
         {
-            // on ajoute le tableau des résultats
+            // on ajoute le tableau des résultats Post
             $objModel           = Site::Get("Model");
             $objPDOStatement    = $objModel->readLine("Post", "", "", "publicationDate");
             $form->addFeedback("tabResult", $objPDOStatement->fetchAll());
+
+            // on ajoute le tableau des résultats File
+            $objPDOStatement    = $objModel->readLine("File", "", "", "modificationDate");
+            $form->addFeedback("tabFile", $objPDOStatement->fetchAll());
         }
         return $feedback;
     }

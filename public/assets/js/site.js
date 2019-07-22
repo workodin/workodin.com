@@ -63,8 +63,13 @@ wk.sendAjaxForm = function (formData, target)
             target.querySelector(".feedback").innerHTML = objResponse[formTag];
 
         // Ajax avec VueJS
-        if((typeof app !== 'undefined') && objResponse['tabResult']) {
-            app.tabResult = objResponse['tabResult'];
+        if(typeof app !== 'undefined') {
+            if (objResponse['tabResult']) {
+                app.tabResult = objResponse['tabResult'];
+            }
+            if (objResponse['tabFile']) {
+                app.tabFile = objResponse['tabFile'];
+            }
             app.panelFeedback = "";
         }
         
