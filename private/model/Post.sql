@@ -41,6 +41,34 @@ CREATE TABLE IF NOT EXISTS `Contact` (
 
 -- --------------------------------------------------------
 --
+-- Structure de la table `File`
+--
+
+DROP TABLE IF EXISTS `File`;
+
+CREATE TABLE IF NOT EXISTS `File` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `File`
+ADD COLUMN `path` text;
+
+ALTER TABLE `File`
+ADD COLUMN `code` text;
+
+ALTER TABLE `File`
+ADD COLUMN `idUser` int(11);
+
+ALTER TABLE `File`
+ADD COLUMN `creationDate` datetime;
+
+ALTER TABLE `File`
+ADD COLUMN `modificationDate` datetime;
+
+
+-- --------------------------------------------------------
+--
 -- Structure de la table `Newsletter`
 --
 

@@ -758,3 +758,14 @@ exemple:
 * https://www.php.net/manual/fr/function.hrtime.php
 * https://www.php.net/manual/fr/function.memory-get-peak-usage.php
 
+
+## Ajout de table SQL FIle
+
+* On ajoute une table SQL File
+* On ajoute sur la page admin, un formulaire de création pour File
+* En plus de stocker la ligne dans SQL, on crée un fichier cache dans le dossier my-work/
+* Cela permet de créer des fichiers "virtuels"
+* ces fichiers seront historisés dans la table SQL
+* la dernière version sera dans le fichier cache
+* Ensuite, on modifiera le code PHP pour aller chercher ces fichiers cache en plus des fichiers du framework !!!
+

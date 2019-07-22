@@ -29,11 +29,11 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
     </div>
 
     <div class="toolbar">
-        <div><button v-on:click="actPostCreate">Post</button></div>
-        <div><button v-on:click="actPostRead">Refresh Post</button></div>
-        <div><button v-on:click="actSQL">SQL</button></div>
+        <div><a href="#" v-on:click="actPostCreate">Post</a></div>
+        <div><a href="#" v-on:click="actPostRead">Refresh Post</a></div>
+        <div><a href="#" v-on:click="actSQL">SQL</a></div>
+        <div><a href="#" v-on:click="actFileCreate">File</a></div>
         <div>tabResult: {{ tabResult.length }}</div>
-        <div>Post: {{ nbPost }}</div>
         <div><input type="checkbox" id="mustConfirmDelete" v-model="mustConfirmDelete"><label for="mustConfirmDelete">confirmation avant delete</label></div>
         <div>{{ message }}</div>
         <div>User: {{ loginUser }} ({{ idUser }})</div>
@@ -45,9 +45,9 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
             <div class="btnClose"><a href="#" v-on:click="actPopupHide">fermer</a></div>
             <div v-if="panelActive == 'formSQL'">
                 <p>note: les requêtes en lectre doivent commencer avec SELECT...</p>
-                <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
-                    <textarea type="text" name="code" required placeholder="code" rows=10 v-model="codeSQL"></textarea>
+                  <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
                     <input type="text" name="format" required placeholder="format">
+                    <textarea type="text" name="code" required placeholder="code" rows=10 v-model="codeSQL"></textarea>
                     <button type="submit">envoyer</button>
                     <input type="hidden" name="formTagMethod" value="Sql">
                     <input type="hidden" name="formTag" value="Admin">
@@ -56,6 +56,20 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     </div>
                 </form>
             </div>
+
+            <div v-if="panelActive == 'formFileCreate'">
+            <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
+                    <textarea type="text" name="code" required placeholder="code" rows=10 v-model="codeFile"></textarea>
+                    <input type="text" name="path" required placeholder="path">
+                    <button type="submit">envoyer</button>
+                    <input type="hidden" name="formTagMethod" value="File">
+                    <input type="hidden" name="formTag" value="Admin">
+                    <input type="hidden" name="formKey"  v-model="formKey">
+                    <div class="feedback">
+                    </div>
+                </form>
+            </div>
+
             <div v-if="panelActive == 'formPostCreate'">
                 <h3>Ajouter un Post</h3>
                 <form v-on:submit.prevent="wk.sendAjax" id="form-post" action="#form-post" method="POST" enctype="multipart/form-data" class="ajax">

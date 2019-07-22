@@ -43,8 +43,10 @@ var app = new Vue({
     idUser:     php.idUser,
     popupClass: { active: false },
     panelActive: "",
+    panelFeedback: "",
     curPost:    null,
     codeSQL:    "",
+    codeFile:   "",
     tabResult:  [],
     tabHead:    [],
     mustConfirmDelete:  true,
@@ -69,6 +71,11 @@ var app = new Vue({
       this.panelActive = "formSQL";
       this.popupClass.active = true;
     },
+    actFileCreate: function(event) {
+      // on affiche la popup
+      this.panelActive = "formFileCreate";
+      this.popupClass.active = true;
+    },
     actPostCreate: function(event) {
       // on affiche la popup
       this.panelActive = "formPostCreate";
@@ -88,6 +95,7 @@ var app = new Vue({
       this.curPost = post;
       // on affiche la popup
       this.panelActive = "formPostUpdate";
+      this.panelFeedback = "";
       this.popupClass.active = true;
     },
     actPopupHide: function(event) {

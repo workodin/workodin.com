@@ -41,6 +41,11 @@ wk.sendAjax = function (event)
 
 wk.sendAjaxForm = function (formData, target)
 {
+    // Ajax avec VueJS
+    if((typeof app !== 'undefined')) {
+        app.panelFeedback = "...";
+    }
+
     var formTag = formData.get("formTag");
     // envoi du formulaire en AJAX
     fetch("/api.json", {
@@ -60,6 +65,7 @@ wk.sendAjaxForm = function (formData, target)
         // Ajax avec VueJS
         if((typeof app !== 'undefined') && objResponse['tabResult']) {
             app.tabResult = objResponse['tabResult'];
+            app.panelFeedback = "";
         }
         
         // redirection Ajax

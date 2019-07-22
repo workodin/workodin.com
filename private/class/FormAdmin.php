@@ -3,6 +3,53 @@
 class FormAdmin
 {
     /**
+     * 
+     */
+    function processFile ($form)
+    {
+        $feedback = "";
+        $objController = Site::Get("Controller");
+
+        // SECURITE
+        $levelUser = Site::Get("Session")->get("levelUser");
+        if ($levelUser == 100)
+        {
+            $now = date("Y-m-d H:i:s");
+            $feedback = $objController
+                            ->check("path",    "path")
+                            ->check("code",    "code", "", "optional")
+                            // compléter les infos manquantes
+                            ->addData("creationDate", $now)
+                            ->addData("modificationDate", $now)
+                            // ajouter la ligne
+                            ->insertLine("File", "votre fichier est enregistré")
+                            // récupérer le message de confirmation
+                            ->getFeedback()
+                            ;
+
+            // crée les variables
+            extract($objController->getTabForm());
+
+            // créer le dossier cache
+            $dataDir = Site::Get("baseDir") . "/my-work";
+            if(!is_dir($dataDir))
+            {
+                mkdir($dataDir);
+            }
+            // créer le fichier cache
+            $md5path = md5($path);
+            file_put_contents("$dataDir/my-$md5path", $code);
+
+            // on ajoute le tableau des résultats
+            $objModel           = Site::Get("Model");
+            $objPDOStatement    = $objModel->readLine("File", "", "", "modificationDate");
+            $form->addFeedback("tabFile", $objPDOStatement->fetchAll());
+
+        }
+        return $feedback;
+
+    }
+    /**
      * DANGER: ON PEUT EXECUTER N'IMPORTE QUELLE REQUETE SQL
      * (note: cette fonction appelle une autre fonction getInfo)
      * @return le message de confirmation (feedback)
