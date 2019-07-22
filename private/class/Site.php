@@ -204,6 +204,13 @@ class Site
         }
         $code       = json_encode($tabRequest);   // TODO: SECURITY
 
+        // https://www.php.net/manual/fr/function.hrtime.php
+        // https://www.php.net/manual/fr/function.memory-get-peak-usage.php
+        // en ms
+        $requestTime    = intval((hrtime(true) - Site::Get("timeStart")) / 1000);
+        // en ko
+        $requestMemory  = intval(memory_get_peak_usage() / 1024);
+
         // sauvegarder dans un fichier CSV
         Site::Get("Model")->insertLine("Visit", [
            "creationDate"   => $now,
@@ -211,7 +218,9 @@ class Site
            "code"           => $code,
            "userAgent"      => $userAgent, 
            "referer"        => $referer, 
-           "ip"             => $ip, 
+           "ip"             => $ip,
+           "requestTime"    => $requestTime,
+           "requestMemory"  => $requestMemory, 
         ]);
     }
 

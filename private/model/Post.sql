@@ -114,6 +114,8 @@ CREATE TABLE IF NOT EXISTS `Visit` (
   `userAgent` varchar(160) NOT NULL,
   `referer` varchar(160) NOT NULL,
   `ip` varchar(160) NOT NULL,
+  `requestTime` int(11) NOT NULL,
+  `requestMemory` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

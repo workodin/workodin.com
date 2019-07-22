@@ -748,3 +748,13 @@ exemple:
 
 * On crée dans Post le contenu de la page d'accueil (index)
 * Cela permet de supprimer le fichier template/page-section/index.php
+
+## Ajout de tracking sur Temps de la requête et Mémmoire consommée
+
+* On ajoute 2 colonnes dans la table Visit
+* requestTime   INT(11)     => en ms
+* requestMemoy  INT(11)     => en ko
+* Ajout de code PHP pour suivre la consommation de ressources (temps et mémoire à chaque requête)
+* https://www.php.net/manual/fr/function.hrtime.php
+* https://www.php.net/manual/fr/function.memory-get-peak-usage.php
+
