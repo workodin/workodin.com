@@ -168,6 +168,9 @@ pre.post {
     padding:1rem;
     margin:0;
 }
+.listPost article.l2 {
+    width:calc(100% / 2);
+}
 .listPost h3 {
     text-transform:uppercase;
     padding-bottom:0.5rem;

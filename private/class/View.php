@@ -85,10 +85,12 @@ CODEHTML;
             // on construit le code
             $code = $this->buildCode($code);
 
+            $codeLength = round(0.001 * mb_strlen($code));
+
             echo 
 <<<HTML
 
-    <article id="$uri">
+    <article id="$uri" class="l$codeLength">
         <h3><a href="#$uri">$title</a></h3>
         <div class="content"><pre class="post">$code</pre></div>
         $htmlMedia
