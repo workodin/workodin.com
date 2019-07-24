@@ -813,3 +813,12 @@ exemple:
 * Ajout envoi email html et pièce jointe
 * Ajout d'envoi du fichier File par email dans traitement de formulaire File Create
 * retour à microtime car hrtime disponible pour PHP7.3+ seulement
+
+## Monaco Editor
+
+* Il faudrait pouvoir écrire du code avec plus d'outils qu'un simple champ textarea
+* On ajoute l'éditeur Monaco Editor dans la partie admin
+* https://github.com/microsoft/monaco-editor
+* Pour combiner monaco editor et vuejs, on crée un nouvel template vuejs 
+* et ensuite, on charge le JS de monaco editor sur l'événement "mounted" dans le template vuejs
+  

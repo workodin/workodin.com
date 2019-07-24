@@ -1,3 +1,38 @@
+// MONACO EDITOR
+var moned = {};
+moned.htmlModel = null;
+moned.editorUpdate = function () {
+    if (app && moned.htmlModel) {
+        // synchro du code entre monaco editor et vuejs
+        app.codeFile = moned.htmlModel.getValue();
+    }
+};
+
+moned.start = function () {
+    // https://github.com/Microsoft/monaco-editor-samples/blob/master/sample-editor/index.html
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.17.1/min/vs' }});
+    window.MonacoEnvironment = {
+      getWorkerUrl: function(workerId, label) {
+          // TODO: better URL by variable fromm PHP
+        return 'https://workodin.com/assets/js/monaco-editor-worker-loader-proxy.js';
+      }
+    };
+    require(['vs/editor/editor.main'], function() {
+        // on crée l'éditeur après le textarea  
+        var editor = monaco.editor.create(document.querySelector('.monaco-editor'), {
+            theme: "vs-dark"
+        });
+        // on remplit le code vuejs dans monaco editor
+        moned.htmlModel = monaco.editor.createModel(app.codeFile);
+        editor.setModel(moned.htmlModel);
+        editor.onDidChangeModelContent(moned.editorUpdate);
+
+    });
+
+}
+
+
+
 // création des composants Vue
 Vue.component('tr-dyn', {
   // camelCase en JavaScript
@@ -16,7 +51,25 @@ Vue.component('tr-dyn', {
       <td><a href="#" v-on:click="$emit('post-delete', post)">supprimer</a></td>
     </tr>
   `
-})
+});
+
+// création des composants Vue
+Vue.component('monaco-editor', {
+    // camelCase en JavaScript
+    props: { 
+      post: Object
+    },
+    mounted: function () {    
+        // MONACO EDITOR
+        moned.start();
+    },
+    methods: {
+    },
+    template: `
+        <div class="monaco-editor"></div>
+    `
+});
+  
 
 // ensuite, on cére l'instance de Vue
 var app = new Vue({
@@ -41,6 +94,12 @@ var app = new Vue({
     formCode:   ""
     /* attention, pas de virgule sur la dernière propriété */
   },
+  computed: {
+      showEditor: function() {
+        // debug
+        return "editor";
+      }
+  },
   mounted: function () {
     /* on mémorise formKey pour les formulaires en Ajax */
     this.formKey = php.formKey;
@@ -50,7 +109,8 @@ var app = new Vue({
     formData.append('formKey', php.formKey);
     formData.append('formTag', 'Admin');
     formData.append('formTagMethod', 'Read');
-    wk.sendAjaxForm(formData, null);  
+    wk.sendAjaxForm(formData, null);
+
   },
   methods: {
     actDelete: function(targetTable, targetLine, targetMethod) {
@@ -126,3 +186,4 @@ var app = new Vue({
     /* attention, pas de virgule sur la dernière propriété */
   }
 })
+

@@ -77,7 +77,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
             </div>
 
             <div v-if="panelActive == 'formFileCreate'">
-            <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
+                <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
+                    <monaco-editor :post="curPost"></monaco-editor>
                     <textarea type="text" name="code" required placeholder="code" rows=10 v-model="codeFile"></textarea>
                     <input type="text" name="path" required placeholder="path">
                     <button type="submit">envoyer</button>
@@ -142,10 +143,13 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
             </div>
         </div>    
     </div>
+
+    <div v-if="panelActive == 'formFileCreate'">
+        {{ showEditor }}
+    </div>
+
 </div>
-
-
-
+<!--/ app -->
 
         </main>
         <footer class="row">
@@ -168,6 +172,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.17.1/min/vs/loader.js"></script>
+
     <script>
 <?php require_once("$baseDir/public/assets/js/site.js") ?>
 <?php require_once("$baseDir/public/assets/js/site-admin.js") ?>
