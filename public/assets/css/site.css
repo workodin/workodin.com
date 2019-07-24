@@ -169,7 +169,7 @@ pre.post {
     margin:0;
 }
 .listPost article.l2 {
-    width:calc(100% / 2);
+    width:calc(100% / 1.5);
 }
 .listPost h3 {
     text-transform:uppercase;

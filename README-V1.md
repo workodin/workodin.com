@@ -826,3 +826,7 @@ exemple:
 
 * Monaco Editor plus grand
 * Ajout range pour longueur de texte dans td
+* Ajout monaco editor dans Post Create et Update
+* Ajout "click to copy" sur les td pour créer à partir d'un code existant
+* améliorations CSS
+

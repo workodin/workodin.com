@@ -19,7 +19,7 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="tr-dyn" v-on:post-delete="actFileDelete" v-for="(post, index) in tabFile" :key="post.id" :post="post">
+                    <tr is="tr-dyn" v-on:post-td-click="actFileCopy" v-on:post-delete="actFileDelete" v-for="(post, index) in tabFile" :key="post.id" :post="post">
                     </tr>
                 </tbody>
             </table>
@@ -38,7 +38,7 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="tr-dyn" v-on:post-update="actPostUpdate" v-on:post-delete="actPostDelete" v-for="(post, index) in tabResult" :key="post.id" :post="post">
+                    <tr is="tr-dyn" v-on:post-td-click="actPostCopy" v-on:post-update="actPostUpdate" v-on:post-delete="actPostDelete" v-for="(post, index) in tabResult" :key="post.id" :post="post">
                     </tr>
                 </tbody>
             </table>
@@ -53,7 +53,7 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
         <div><a href="#" v-on:click="actFileCreate">File Create</a></div>
         <div><a href="#" v-on:click="actFileCacheReset">File Cache Reset</a></div>
         <div>tabResult: {{ tabResult.length }}</div>
-        <div><input type="range" v-model="maxLength" min="" max="2000" step="50"></div>
+        <div><input type="range" v-model="maxLength" min="" max="2000" step="10"></div>
         <div>{{ maxLength }}</div>
         <div><input type="checkbox" id="mustConfirmDelete" v-model="mustConfirmDelete"><label for="mustConfirmDelete">confirmation avant delete</label></div>
         <div>{{ message }}</div>
@@ -64,7 +64,7 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
     <div class="popup" v-bind:class="popupClass">
         <div class="popupPanel">
             <div class="btnClose"><a href="#" v-on:click="actPopupHide">fermer</a></div>
-            <div v-if="panelActive == 'formSQL'">
+            <div class="popupBox" v-if="panelActive == 'formSQL'">
                 <p>note: les requêtes en lectre doivent commencer avec SELECT...</p>
                   <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
                     <input type="text" name="format" required placeholder="format">
@@ -78,8 +78,9 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                 </form>
             </div>
 
-            <div v-if="panelActive == 'formFileCreate'">
-                <monaco-editor :post="curPost"></monaco-editor>
+            <div class="popupBox" v-if="panelActive == 'formFileCreate'">
+            <h3>Ajouter un File</h3>
+                <monaco-editor :post="curPost" :config="{ table: 'File', target: 'monaco-editor-File' }"></monaco-editor>
                 <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
                     <textarea class="codeFile" type="text" name="code" required placeholder="code" rows=10 v-model="codeFile"></textarea>
                     <input type="text" name="path" required placeholder="path">
@@ -92,8 +93,9 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                 </form>
             </div>
 
-            <div v-if="panelActive == 'formPostCreate'">
+            <div class="popupBox" v-if="panelActive == 'formPostCreate'">
                 <h3>Ajouter un Post</h3>
+                <monaco-editor :post="curPost" :config="{ table: 'Post', target: 'monaco-editor-Post'  }"></monaco-editor>
                 <form v-on:submit.prevent="wk.sendAjax" id="form-post" action="#form-post" method="POST" enctype="multipart/form-data" class="ajax">
                     <label for="form-title">title</label>
                     <input id="form-title" type="text" name="title" required placeholder="titre">
@@ -103,8 +105,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     <input id="form-category" type="text" name="category" required placeholder="catégorie">
                     <label for="form-template">template</label>
                     <input id="form-template" type="text" name="template" placeholder="template">
-                    <label for="form-code">code</label>
-                    <textarea id="form-code" name="code" required placeholder="votre code" rows="20" v-model="formCode"></textarea>
+                    <label for="form-code" class="codePost">code</label>
+                    <textarea id="form-code" name="code" class="codePost" required placeholder="votre code" rows="20" v-model="formCode"></textarea>
                     <label for="form-urlMedia">url Media</label>
                     <input id="form-urlMedia" type="file" name="urlMedia" placeholder="upload Media">
                     <p>nb caractères: {{formCode.length }}</p>
@@ -117,8 +119,9 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     </div>
                 </form>
             </div>
-            <div v-if="panelActive == 'formPostUpdate'">
+            <div class="popupBox" v-if="panelActive == 'formPostUpdate'">
                 <h3>Modifier un Post ({{ curPost.id}})</h3>
+                <monaco-editor :post="curPost" :config="{ table: 'Post', target: 'monaco-editor-Post'  }"></monaco-editor>
                 <form v-on:submit.prevent="wk.sendAjax" id="form-post" action="#form-post" method="POST" enctype="multipart/form-data" class="ajax">
                     <label for="form-title">title</label>
                     <input id="form-title" type="text" name="title" required placeholder="titre" v-model="curPost.title">
@@ -128,8 +131,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     <input id="form-category" type="text" name="category" required placeholder="catégorie" v-model="curPost.category">
                     <label for="form-template">template</label>
                     <input id="form-template" type="text" name="template" placeholder="template" v-model="curPost.template">
-                    <label for="form-code">code</label>
-                    <textarea id="form-code" name="code" required placeholder="votre code" rows="20" v-model="curPost.code"></textarea>
+                    <label for="form-code" class="codePost">code</label>
+                    <textarea id="form-code" name="code" class="codePost" required placeholder="votre code" rows="20" v-model="curPost.code"></textarea>
                     <label for="form-urlMedia-update">url Media ({{ curPost.urlMedia }})</label>
                     <input id="form-urlMedia-update" type="file" name="urlMedia" placeholder="upload Media">
                     <p>nb caractères: {{ curPost.code.length }}</p>
@@ -144,10 +147,6 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                 </form>
             </div>
         </div>    
-    </div>
-
-    <div v-if="panelActive == 'formFileCreate'">
-        {{ showEditor }}
     </div>
 
 </div>
