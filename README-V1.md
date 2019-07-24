@@ -821,4 +821,8 @@ exemple:
 * https://github.com/microsoft/monaco-editor
 * Pour combiner monaco editor et vuejs, on crée un nouvel template vuejs 
 * et ensuite, on charge le JS de monaco editor sur l'événement "mounted" dans le template vuejs
-  
+
+## Améliorations UX admin
+
+* Monaco Editor plus grand
+* Ajout range pour longueur de texte dans td

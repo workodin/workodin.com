@@ -23,10 +23,14 @@ moned.start = function () {
             theme: "vs-dark"
         });
         // on remplit le code vuejs dans monaco editor
-        moned.htmlModel = monaco.editor.createModel(app.codeFile);
+        moned.htmlModel = monaco.editor.createModel(app.codeFile, "php");
         editor.setModel(moned.htmlModel);
         editor.onDidChangeModelContent(moned.editorUpdate);
 
+        // resize
+        window.addEventListener('resize', function(){
+            editor.layout(); 
+        });
     });
 
 }
@@ -40,12 +44,23 @@ Vue.component('tr-dyn', {
     post: Object
   },
   methods: {
+      filter: function (colVal) {
+          if ('string' == typeof colVal) {
+              return colVal.substring(0, app.maxLength);
+          }
+          else {
+              return '...';
+          }
+      },
+      doRowClass: function (post) {
+        return 'tabline';
+      }
   },
   template: `
-    <tr>
+    <tr :class="doRowClass(post)">
       <td v-for="(colVal, colName) in post" :class="colName">
         <img v-if="colName == 'urlMedia'" :src="colVal" :title="colVal">
-        <pre v-else>{{ colVal }}</pre>
+        <pre v-else>{{ filter(colVal) }}</pre>
       </td>
       <td><a href="#" v-on:click="$emit('post-update', post)">modifier</a></td>
       <td><a href="#" v-on:click="$emit('post-delete', post)">supprimer</a></td>
@@ -89,6 +104,7 @@ var app = new Vue({
     tabHeadFile:[],
     tabResult:  [],
     tabHead:    [],
+    maxLength:  160,
     mustConfirmDelete:  true,
     formKey:    "",
     formCode:   ""

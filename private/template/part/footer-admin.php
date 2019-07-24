@@ -53,6 +53,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
         <div><a href="#" v-on:click="actFileCreate">File Create</a></div>
         <div><a href="#" v-on:click="actFileCacheReset">File Cache Reset</a></div>
         <div>tabResult: {{ tabResult.length }}</div>
+        <div><input type="range" v-model="maxLength" min="" max="2000" step="50"></div>
+        <div>{{ maxLength }}</div>
         <div><input type="checkbox" id="mustConfirmDelete" v-model="mustConfirmDelete"><label for="mustConfirmDelete">confirmation avant delete</label></div>
         <div>{{ message }}</div>
         <div>User: {{ loginUser }} ({{ idUser }})</div>
@@ -77,9 +79,9 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
             </div>
 
             <div v-if="panelActive == 'formFileCreate'">
+                <monaco-editor :post="curPost"></monaco-editor>
                 <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
-                    <monaco-editor :post="curPost"></monaco-editor>
-                    <textarea type="text" name="code" required placeholder="code" rows=10 v-model="codeFile"></textarea>
+                    <textarea class="codeFile" type="text" name="code" required placeholder="code" rows=10 v-model="codeFile"></textarea>
                     <input type="text" name="path" required placeholder="path">
                     <button type="submit">envoyer</button>
                     <input type="hidden" name="formTagMethod" value="File">
