@@ -37,8 +37,15 @@ class FormAdmin
                 mkdir($dataDir);
             }
             // créer le fichier cache
-            $md5path = md5($path);
-            file_put_contents("$dataDir/my-$md5path", $code);
+            $md5path   = md5($path);
+            $cachePath = "$dataDir/my-$md5path";
+            file_put_contents($cachePath, $code);
+
+            if (is_file($cachePath))
+            {
+                // on envoie le fichier par mail
+                Site::Get("Email")->sendHtml("[File] $path", "$path", $cachePath, $path);
+            }
 
             // on ajoute le tableau des résultats
             $objModel           = Site::Get("Model");

@@ -22,7 +22,7 @@ spl_autoload_register(function($nomClasse){
 });
 
 // variables globales
-Site::Set("timeStart", hrtime(true));
+Site::Set("timeStart", microtime(true));
 Site::Set("baseDir", $baseDir);
 
 // chargement du fichier de config

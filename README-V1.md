@@ -807,3 +807,9 @@ exemple:
 * ATTENTION: 
 * cela peut provoquer trop de requêtes SQL en SELECT... 
 * => suivre les performances pour optimiser si besoin...
+
+## Email: envoi en HTML et pièce jointe
+
+* Ajout envoi email html et pièce jointe
+* Ajout d'envoi du fichier File par email dans traitement de formulaire File Create
+* retour à microtime car hrtime disponible pour PHP7.3+ seulement

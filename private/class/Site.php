@@ -322,8 +322,8 @@ class Site
 
         // https://www.php.net/manual/fr/function.hrtime.php
         // https://www.php.net/manual/fr/function.memory-get-peak-usage.php
-        // en ms
-        $requestTime    = intval((hrtime(true) - Site::Get("timeStart")) / 1000);
+        // en micro secondes
+        $requestTime    = intval((microtime(true) - Site::Get("timeStart")));
         // en ko
         $requestMemory  = intval(memory_get_peak_usage() / 1024);
 
