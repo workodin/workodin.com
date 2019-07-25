@@ -121,3 +121,24 @@
 .boxResult h3 {
     padding-left:1rem;
 }
+
+.admin header {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    min-height:5vmin;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-around;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+}
+.admin h1, .admin h2 {
+    margin-bottom:0;
+    font-size:1rem;
+}
+.admin main {
+    padding-top:5rem;
+    padding-bottom:5rem;
+}
