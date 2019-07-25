@@ -163,13 +163,13 @@ pre.post {
     white-space: pre-line;
 }
 .postMain {
-    padding:1rem;
+    padding:2rem;
 }
 /* news */
 .listPost article {
     width:calc(100% / 3);
     min-width:360px;
-    padding:1rem;
+    padding:2rem;
     margin:0;
 }
 .listPost article.l2 {
@@ -226,7 +226,7 @@ footer .menu-footer-2 li {
 @media (min-width: 768px) 
 {  
     .postMain pre.post {
-        column-count:2;
+        column-width:480px;
     }
 
     .index .postMain {
