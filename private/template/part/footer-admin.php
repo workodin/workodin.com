@@ -63,12 +63,15 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
 
     <div class="popup" v-bind:class="popupClass">
         <div class="popupPanel">
-            <div class="btnClose"><a href="#" v-on:click="actPopupHide">fermer</a></div>
+            <div class="btnClose"><a href="#" @click.prevent="actPopupHide">fermer</a></div>
+
             <div class="popupBox" v-if="panelActive == 'formSQL'">
-                <p>note: les requêtes en lectre doivent commencer avec SELECT...</p>
-                  <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
-                    <input type="text" name="format" required placeholder="format">
-                    <textarea type="text" name="code" required placeholder="code" rows=10 v-model="codeSQL"></textarea>
+                <h3>Lancer une requête SQL</h3>
+                <monaco-editor :post="curPost" :config="{ table: '', target: 'monaco-editor-Sql' }"></monaco-editor>
+                <form v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
+                    <input type="text" name="format" required placeholder="format" v-model="commandFormat">
+                    <p>note: les requêtes en lecture doivent commencer avec SELECT...</p>
+                    <textarea type="text" name="code" class="codeFile" required placeholder="code" rows=10 v-model="codeSQL"></textarea>
                     <button type="submit">envoyer</button>
                     <input type="hidden" name="formTagMethod" value="Sql">
                     <input type="hidden" name="formTag" value="Admin">
@@ -79,9 +82,9 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
             </div>
 
             <div class="popupBox" v-if="panelActive == 'formFileCreate'">
-            <h3>Ajouter un File</h3>
+                <h3>Ajouter un File</h3>
                 <monaco-editor :post="curPost" :config="{ table: 'File', target: 'monaco-editor-File' }"></monaco-editor>
-                <form  v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
+                <form v-on:submit.prevent="wk.sendAjax" method="POST" action="#" class="ajax">
                     <textarea class="codeFile" type="text" name="code" required placeholder="code" rows=10 v-model="codeFile"></textarea>
                     <input type="text" name="path" required placeholder="path">
                     <button type="submit">envoyer</button>
@@ -146,6 +149,10 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     </div>
                 </form>
             </div>
+            <div class="monEdBox">
+                <div class="iconBar"><a href="#" @click.prevent="actEditorLayout">editor layout</a></div>
+            </div>  
+
         </div>    
     </div>
 

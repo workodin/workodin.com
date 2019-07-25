@@ -17,6 +17,10 @@ moned.editorUpdate  = function () {
         {
             app.curPost.code = moned.htmlModel.getValue();            
         }
+        else if (app.panelActive == "formSQL")
+        {
+          app.codeSQL = moned.htmlModel.getValue();
+        }
     }
 };
 
@@ -32,14 +36,15 @@ moned.start         = function (targetClass) {
     };
     require(['vs/editor/editor.main'], function() {
         if (moned.editor == null) {
-            // on crée l'éditeur après le textarea  
+            // on crée l'éditeur sur une balise div déterminée par une classe
             // ne pas oublier de rajouter le prefixe . pour sélectionner une classe
             moned.editor = monaco.editor.create(document.querySelector('.' + targetClass), {
                 theme: "vs-dark"
             });
             // resize
             window.addEventListener('resize', function(){
-                moned.editor.layout(); 
+              if (moned.editor)
+                  moned.editor.layout(); 
             });
 
             // on remplit le code vuejs dans monaco editor
@@ -48,7 +53,9 @@ moned.start         = function (targetClass) {
                 moned.htmlModel = monaco.editor.createModel("", "php");
                 moned.editor.setModel(moned.htmlModel);
                 moned.editor.onDidChangeModelContent(moned.editorUpdate);
-            }
+
+                moned.actShowPopup();
+              }
 
         }
     });
@@ -56,6 +63,7 @@ moned.start         = function (targetClass) {
 }
 
 moned.actShowPopup = function () {
+
     if (app && (moned.htmlModel != null)) {
         if (app.panelActive == "formFileCreate")
         {
@@ -69,7 +77,11 @@ moned.actShowPopup = function () {
         {
             moned.htmlModel.setValue(app.curPost.code);
         }
-    }
+        else if (app.panelActive == "formSQL")
+        {
+            moned.htmlModel.setValue(app.codeSQL);
+        }
+      }
 }
 
 // création des composants Vue
@@ -94,10 +106,10 @@ Vue.component('tr-dyn', {
   template: `
     <tr :class="doRowClass(post)">
         <td>
-            <div><a href="#" v-on:click="$emit('post-update', post)">modifier</a></div>
-            <div><a href="#" v-on:click="$emit('post-delete', post)">supprimer</a></div>
+            <div><a href="#" @click.prevent="$emit('post-update', post)" title="modifier">(M)</a></div>
+            <div><a href="#" @click.prevent="$emit('post-delete', post)" title="supprimer">(X)</a></div>
         </td>
-        <td v-for="(colVal, colName) in post" :class="colName" @click="$emit('post-td-click', post)">
+        <td v-for="(colVal, colName) in post" :class="colName" @click.prevent="$emit('post-td-click', post)">
             <img v-if="colName == 'urlMedia'" :src="colVal" :title="colVal">
             <pre v-else>{{ filter(colVal) }}</pre>
         </td>
@@ -119,7 +131,7 @@ Vue.component('monaco-editor', {
     methods: {
     },
     template: `
-        <div class="monaco-editor" :class="config.target"></div>
+    <div class="monaco-editor" :class="config.target"></div>
     `
 });
   
@@ -128,24 +140,25 @@ Vue.component('monaco-editor', {
 var app = new Vue({
   el: '#app',
   data: {
-    message:    'Bienvenue',
-    nbPost:     php.nbPost,
-    loginUser:  php.loginUser,
-    idUser:     php.idUser,
-    popupClass: { active: false },
-    panelActive: "",
-    panelFeedback: "",
-    curPost:    null,
-    codeSQL:    "",
-    codeFile:   "",
-    tabFile:    [],
-    tabHeadFile:[],
-    tabResult:  [],
-    tabHead:    [],
-    maxLength:  160,
+    message:        'Bienvenue',
+    nbPost:         php.nbPost,
+    loginUser:      php.loginUser,
+    idUser:         php.idUser,
+    popupClass:     { active: false },
+    panelActive:    "",
+    panelFeedback:  "",
+    curPost:        null,
+    codeSQL:        "SELECT count(*) FROM Visit",
+    commandFormat:  "sql",
+    codeFile:       "",
+    tabFile:        [],
+    tabHeadFile:    [],
+    tabResult:      [],
+    tabHead:        [],
+    maxLength:      160,
     mustConfirmDelete:  true,
-    formKey:    "",
-    formCode:   ""
+    formKey:        "",
+    formCode:       ""
     /* attention, pas de virgule sur la dernière propriété */
   },
   computed: {
@@ -183,6 +196,7 @@ var app = new Vue({
       // on affiche la popup
       this.panelActive = "formSQL";
       this.popupClass.active = true;
+      moned.actShowPopup();
     },
     actPostCreate: function(event) {
       // on affiche la popup
@@ -202,7 +216,6 @@ var app = new Vue({
     },
     actPostUpdate: function(post) {
       this.curPost = post;
-      console.log(this.curPost);
       // on affiche la popup
       this.panelActive = "formPostUpdate";
       this.panelFeedback = "";
@@ -212,9 +225,6 @@ var app = new Vue({
     actPostCopy: function(post) {
         // on copie le code
         this.formCode = post.code;
-        if (moned.htmlModel) {
-            moned.htmlModel.setValue(post.code);
-        }
         // on affiche la popup
         this.panelActive = "formPostCreate";
         this.popupClass.active = true;
@@ -232,10 +242,7 @@ var app = new Vue({
     },
     actFileCopy: function(post) {
         // on copie le code
-        if (moned.htmlModel)  {
-            moned.htmlModel.setValue(post.code);
-        }
-
+        this.codeFile = post.code;
         // on affiche la popup
         this.panelActive = "formFileCreate";
         this.popupClass.active = true;
@@ -258,6 +265,10 @@ var app = new Vue({
     actPopupHide: function(event) {
       // on cache la popup
       this.popupClass.active = false;
+    },
+    actEditorLayout: function(event) {
+      if (moned.editor)
+      moned.editor.layout(); 
     }
     /* attention, pas de virgule sur la dernière propriété */
   }
