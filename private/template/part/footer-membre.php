@@ -1,4 +1,19 @@
 
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+        <h3>Parcours de formation</h3>
+        </v-container>
+        <v-container>
+            <v-timeline dense>
+                <v-timeline-item v-for="item in tabItem">{{ item }}</v-timeline-item>
+            </v-timeline>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
        </main>
         <footer class="row">
         <div class="col col50 footer1">
@@ -30,16 +45,25 @@ gtag('config', 'UA-143142316-1');
     </script>
  
  
- <script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify"></script>
+    <script>
 
-/* on prépare avec PHP les infos nécessaires pour JS */
-/* on utilise PHP pour créer du code JS */
-var php = {};
-php.formKey    = '<?php $form->show("formKeyPublic") ?>';
+    /* on prépare avec PHP les infos nécessaires pour JS */
+    /* on utilise PHP pour créer du code JS */
+    var php = {};
+    php.formKey    = '<?php $form->show("formKeyPublic") ?>';
 
-<?php require_once("$baseDir/public/assets/js/site.js") ?>
+    <?php require_once("$baseDir/public/assets/js/site.js") ?>
 
-</script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: {
+          tabItem: [ "HTML", "CSS", "JS", "PHP", "SQL" ]
+      }
+    })
+  </script>
 
 </body>
 </html>

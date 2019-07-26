@@ -2,7 +2,6 @@
 <html lang="<?php Site::Show("lang") ?>">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title><?php Site::Show("description") ?></title>
@@ -16,7 +15,12 @@
 
     <link rel="canonical" href="https://workodin.com<?php echo Site::Get("pagePath") ?>">
     <link rel="icon" type="image/png" href="/assets/images/icon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap" >
+
+    <!-- vuetify -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
     <style>
 <?php require_once("$baseDir/public/assets/css/site.css") ?>

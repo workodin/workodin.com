@@ -830,3 +830,9 @@ exemple:
 * Ajout "click to copy" sur les td pour créer à partir d'un code existant
 * améliorations CSS
 
+## Ajout de Vuetify dans l'espace membre
+
+* https://vuetifyjs.com/en/
+* La version 2 vient de sortir
+* Vuetify est une bibliothèque de composants UI pour VueJS
+* Le design sur les principes du Material Design V2
