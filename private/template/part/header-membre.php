@@ -22,19 +22,49 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
-    <style>
-<?php require_once("$baseDir/public/assets/css/site.css") ?>
-    </style>
 </head>
 <body class="<?php echo $pageUri ?>">
     <div class="page">
-        <header>
-            <h1><a href="/"><?php Site::Show("h1") ?></a></h1>
-            <h2><?php Site::Show("h2") ?></h2>
-            <nav>
-                <ul>
-                    <?php Site::Get("View")->showMenu("menu") ?>
-                </ul>
-            </nav>
-        </header>
         <main>
+
+        <div id="app">
+    <v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    >
+      <v-list dense>
+      <v-list-item @click="">
+          <v-list-item-action>
+          </v-list-item-action>
+          <v-list-item-content>
+              <v-list-item-title><a href="/">Accueil</a></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="">
+          <v-list-item-action>
+          </v-list-item-action>
+          <v-list-item-content>
+              <v-list-item-title><a href="/membre">Espace Membre</a></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="">
+          <v-list-item-action>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title><a href="/logout">Déconnexion</a></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar app color="indigo" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Espace Membre Workodin</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center>
+          <v-flex>
+          <div class="left">

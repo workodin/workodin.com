@@ -1,37 +1,23 @@
 
-  <div id="app">
-    <v-app>
-      <v-content>
-        <v-container>
-        <h3>Parcours de formation</h3>
-        </v-container>
-        <v-container>
-            <v-timeline dense>
-                <v-timeline-item v-for="item in tabItem">{{ item }}</v-timeline-item>
-            </v-timeline>
-        </v-container>
-      </v-content>
-    </v-app>
+          
+    </div>
+
+    <div class="right">
+    <h3>Parcours de formation</h3>
+        <v-timeline dense>
+            <v-timeline-item v-for="item in tabItem">{{ item }}</v-timeline-item>
+        </v-timeline>
+    </div>
+
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+    <v-footer color="indigo" app>
+        </v-app>
   </div>
 
        </main>
-        <footer class="row">
-        <div class="col col50 footer1">
-            <nav class="menu-footer-1">
-                <ul>
-                    <?php Site::Get("View")->showMenu("menu-footer-membre-1") ?>
-                </ul>
-            </nav>
-        </div>    
-        <div class="col col50 footer2">
-        <nav class="menu-footer-2">
-                <ul>
-                    <?php Site::Get("View")->showMenu("menu-footer-membre-2") ?>
-                </ul>
-            </nav>
-            <p><small>(page publiée le <?php echo date("d/m/Y - H:i:s") ?>)</small></p>
-        </div>    
-        </footer>
     </div>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -60,6 +46,7 @@ gtag('config', 'UA-143142316-1');
       el: '#app',
       vuetify: new Vuetify(),
       data: {
+          drawer: null,
           tabItem: [ "HTML", "CSS", "JS", "PHP", "SQL" ]
       }
     })
