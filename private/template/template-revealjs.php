@@ -2,6 +2,7 @@
 // on récupère la source markdown
 $urlMarkdown = $form->getInfo("source");
 $revealTheme = $form->getInfo("theme", "white");
+$revealTimer = $form->getInt("timer", 10000);
 
 ?>
 <!doctype html>
@@ -46,12 +47,15 @@ $revealTheme = $form->getInfo("theme", "white");
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				autoSlide: <?php echo $revealTimer ?>,
+				loop: true,
 				slideNumber: true,
 				dependencies: [
 					{ src: '/assets/revealjs/plugin/markdown/marked.js' },
 					{ src: '/assets/revealjs/plugin/markdown/markdown.js' },
 					{ src: '/assets/revealjs/plugin/notes/notes.js', async: true },
-					{ src: '/assets/revealjs/plugin/highlight/highlight.js', async: true }
+					{ src: '/assets/revealjs/plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true }
 				]
 			});
 		</script>
