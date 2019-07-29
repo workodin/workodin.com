@@ -15,6 +15,10 @@ switch ($extension)
     case "code":
         echo Site::Get("View")->buildCode($code ?? "");
         break;
+    case "go":
+        // redirection vers une autre url
+        header("Location: $code");
+        break;
     default:
         header("Content-Type: text/plain");
         // ce template permet de renvoyer seulement le contenu de la colonne code

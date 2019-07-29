@@ -1,3 +1,7 @@
+<?php
+// on récupère la source markdown
+$urlMarkdown = $form->getInfo("source");
+?>
 <!doctype html>
 <html>
 	<head>
@@ -25,8 +29,11 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<?php if ($urlMarkdown): ?>
+				<section data-markdown="<?php echo $urlMarkdown ?>"></section>
+				<?php else: ?>
+				<section><?php echo date("H:i:s") ?></section>
+				<?php endif; ?>
 			</div>
 		</div>
 
