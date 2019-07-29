@@ -13,7 +13,7 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer color="indigo" app>
+    <v-footer color="orange" app>
         </v-app>
   </div>
 
