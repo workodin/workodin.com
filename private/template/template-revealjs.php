@@ -1,6 +1,8 @@
 <?php
 // on récupère la source markdown
 $urlMarkdown = $form->getInfo("source");
+$revealTheme = $form->getInfo("theme", "white");
+
 ?>
 <!doctype html>
 <html>
@@ -8,11 +10,11 @@ $urlMarkdown = $form->getInfo("source");
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Workodin Show</title>
 
 		<link rel="stylesheet" href="/assets/revealjs/css/reset.css">
 		<link rel="stylesheet" href="/assets/revealjs/css/reveal.css">
-		<link rel="stylesheet" href="/assets/revealjs/css/theme/black.css">
+		<link rel="stylesheet" href="/assets/revealjs/css/theme/<?php echo $revealTheme ?>.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="/assets/revealjs/lib/css/monokai.css">
@@ -44,6 +46,7 @@ $urlMarkdown = $form->getInfo("source");
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				slideNumber: true,
 				dependencies: [
 					{ src: '/assets/revealjs/plugin/markdown/marked.js' },
 					{ src: '/assets/revealjs/plugin/markdown/markdown.js' },
