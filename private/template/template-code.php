@@ -19,6 +19,11 @@ switch ($extension)
         // redirection vers une autre url
         header("Location: $code");
         break;
+    case "pro":
+    case "proxy":
+        // redirection vers une autre url
+        echo file_get_contents("$code");
+        break;
     default:
         header("Content-Type: text/plain");
         // ce template permet de renvoyer seulement le contenu de la colonne code
