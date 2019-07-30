@@ -1,8 +1,9 @@
 <?php
 // on récupère la source markdown
-$urlMarkdown = $form->getInfo("source");
-$revealTheme = $form->getInfo("theme", "white");
-$revealTimer = $form->getInt("timer", 10000);
+$urlMarkdown 		= $form->getInfo("source");
+$revealTheme 		= $form->getInfo("theme", "white");
+$revealTransition 	= $form->getInfo("transition", "convex");
+$revealTimer 		= $form->getInt("timer", 10000);
 
 ?>
 <!doctype html>
@@ -50,12 +51,13 @@ $revealTimer = $form->getInt("timer", 10000);
 				autoSlide: <?php echo $revealTimer ?>,
 				loop: true,
 				slideNumber: true,
+				transition: '<?php echo $revealTransition ?>', // none/fade/slide/convex/concave/zoom
 				dependencies: [
 					{ src: '/assets/revealjs/plugin/markdown/marked.js' },
 					{ src: '/assets/revealjs/plugin/markdown/markdown.js' },
 					{ src: '/assets/revealjs/plugin/notes/notes.js', async: true },
 					{ src: '/assets/revealjs/plugin/highlight/highlight.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true }
+					{ src: '/assets/revealjs/plugin/zoom-js/zoom.js', async: true }
 				]
 			});
 		</script>

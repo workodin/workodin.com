@@ -16,6 +16,8 @@ switch ($extension)
         echo Site::Get("View")->buildCode($code ?? "");
         break;
     case "go":
+        // pas d'indexation
+        header("X-Robots-Tag: noindex, nofollow", true);
         // redirection vers une autre url
         header("Location: $code");
         break;

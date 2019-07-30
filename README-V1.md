@@ -836,3 +836,11 @@ exemple:
 * La version 2 vient de sortir
 * Vuetify est une bibliothèque de composants UI pour VueJS
 * Le design sur les principes du Material Design V2
+
+## Ajout de template RevealJS pour créer des slideshows
+
+* https://revealjs.com/#/
+* RevealJS est un framework JS pour créer des présentations (slideshow)
+* Il est facilement utilisable avec du HTML, CSS et JS
+* Il est possible d'utiliser le format Markdown pour le contenu
+* Il est possible de charger le contenu Markdown à partir d'une URL
