@@ -172,6 +172,9 @@ pre.post {
     padding:2rem;
     margin:0;
 }
+.listPost article:first-child {
+    width:calc(100% / 1.5);
+}
 .listPost article.l2 {
     width:calc(100% / 1.5);
 }
@@ -188,6 +191,15 @@ pre.post {
     max-height:80vmin;
     transition: all 0.4s;
 }
+
+.listPost article:first-child img {
+    max-height:40vmin;
+}
+
+.listPost article.l2 img {
+    max-height:40vmin;
+}
+
 .listPost img:hover {
     box-shadow:2px 4px 6px #666666;
 }
