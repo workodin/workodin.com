@@ -33,12 +33,20 @@ class View
                 }
                 else
                 {
+                    $tabPattern = [];
+                    $tabReplace = [];
+
                     // convertir le code
                     // pour ajouter des liens sur les URLs
                     // https://www.php.net/manual/fr/function.preg-replace.php
-                    $pattern     = ',(https://[^\s]+),i';
-                    $replacement = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
-                    $lineCode    = preg_replace($pattern, $replacement, $lineCode);
+                    $tabPattern[]     = ',(https://workodin.com/[^\s]+.pro),i';
+                    // bircolage: on rajoute @ pour marquer l'url comme non concernée pour le pattern suivant 
+                    $tabReplace[] = '<a class="iframe" href="${1}" target="_blank" rel="noopener">@${1}</a>';
+
+                    $tabPattern[]     = ',[^"@](https://[^\s]+),i';
+                    $tabReplace[] = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
+
+                    $lineCode    = preg_replace($tabPattern, $tabReplace, $lineCode);
                     $tabCode2[]  = $lineCode;
                 }
             }
