@@ -26,7 +26,27 @@ wk.init = function ()
             curForm.addEventListener('submit', wk.sendAjax);
         });
     }
+
+    setTimeout(wk.insertIframe, 2000);
+
 };
+
+wk.insertIframe = function ()
+{
+    // insérer les iframes
+    wk.iframeList = document.querySelectorAll('a.iframe');
+    if (wk.iframeList)
+    {
+        wk.iframeList.forEach(function(curA){
+            var curHref = curA.href;
+            // https://plainjs.com/javascript/manipulation/replace-a-dom-element-36/
+            var newEl = document.createElement('div');
+            newEl.innerHTML = '<iframe title="show-wordpress-001" src="' + curHref +'" height="480px" width="100%" style="border:none;"></iframe>';
+            curA.parentNode.replaceChild(newEl, curA);
+        });
+    }
+    
+}
 
 wk.sendAjax = function (event)
 {

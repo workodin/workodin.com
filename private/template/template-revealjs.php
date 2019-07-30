@@ -3,6 +3,7 @@
 $urlMarkdown 		= $form->getInfo("source");
 $revealTheme 		= $form->getInfo("theme", "white");
 $revealTransition 	= $form->getInfo("transition", "convex");
+$revealTranspeed 	= $form->getInfo("transpeed", "default");
 $revealTimer 		= $form->getInt("timer", 10000);
 
 ?>
@@ -52,6 +53,7 @@ $revealTimer 		= $form->getInt("timer", 10000);
 				loop: true,
 				slideNumber: true,
 				transition: '<?php echo $revealTransition ?>', // none/fade/slide/convex/concave/zoom
+				transitionSpeed: '<?php echo $revealTranspeed ?>', // default/fast/slow
 				dependencies: [
 					{ src: '/assets/revealjs/plugin/markdown/marked.js' },
 					{ src: '/assets/revealjs/plugin/markdown/markdown.js' },
