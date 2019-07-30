@@ -46,6 +46,9 @@ class View
                     $tabPattern[]     = ',[^"@](https://[^\s]+),i';
                     $tabReplace[] = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
 
+                    $tabPattern[]     = ',^(https://[^\s]+),i';
+                    $tabReplace[] = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
+
                     $lineCode    = preg_replace($tabPattern, $tabReplace, $lineCode);
                     $tabCode2[]  = $lineCode;
                 }

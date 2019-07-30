@@ -42,7 +42,7 @@ wk.insertIframe = function ()
             // https://plainjs.com/javascript/manipulation/replace-a-dom-element-36/
             var newEl = document.createElement('div');
             newEl.innerHTML = '<iframe title="show-wordpress-001" src="' + curHref +'" height="480px" width="100%" style="border:none;"></iframe>';
-            curA.parentNode.replaceChild(newEl, curA);
+            curA.parentNode.insertBefore(newEl, curA);
         });
     }
     
