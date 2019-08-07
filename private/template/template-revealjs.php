@@ -35,7 +35,7 @@ $revealTimer 		= $form->getInt("timer", 10000);
 		<div class="reveal">
 			<div class="slides">
 				<?php if ($urlMarkdown): ?>
-				<section data-markdown="<?php echo $urlMarkdown ?>"></section>
+				<section data-separator-vertical="^\r?\n----\r?\n$" data-markdown="<?php echo $urlMarkdown ?>"></section>
 				<?php else: ?>
 				<section><?php echo date("H:i:s") ?></section>
 				<?php endif; ?>
@@ -51,7 +51,13 @@ $revealTimer 		= $form->getInt("timer", 10000);
 			Reveal.initialize({
 				autoSlide: <?php echo $revealTimer ?>,
 				loop: true,
+				fragments: true,
+				fragmentInURL: true,
+				embedded: true,
 				slideNumber: true,
+				hideAddressBar: true,
+				hash: true,
+				history: true,
 				transition: '<?php echo $revealTransition ?>', // none/fade/slide/convex/concave/zoom
 				transitionSpeed: '<?php echo $revealTranspeed ?>', // default/fast/slow
 				dependencies: [
