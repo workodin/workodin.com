@@ -196,8 +196,14 @@ pre.post {
     max-height:40vmin;
 }
 
+
 .listPost article.l2 img {
     max-height:40vmin;
+}
+
+.listPost article img[src$="svg"] {
+    max-height:100%;
+    padding:1rem;
 }
 
 .listPost img:hover {
