@@ -43,6 +43,9 @@ wk.insertIframe = function ()
             var newEl = document.createElement('div');
             newEl.innerHTML = '<iframe title="show-wordpress-001" src="' + curHref +'" height="480px" width="100%" style="border:none;"></iframe>';
             curA.parentNode.insertBefore(newEl, curA);
+
+            // add class
+            curA.parentNode.classList.add("ifBox");
         });
     }
     

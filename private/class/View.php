@@ -5,12 +5,18 @@
  */
 class View
 {
+    /**
+     * curClass
+     */
+    public $curClass = "";
 
     /**
      * 
      */
-    function buildCode ($code)
+    function buildCode ($code, $curClass="")
     {
+        $this->curClass = $curClass;
+
         $result = $code;
         if ($code != "")
         {
@@ -33,15 +39,24 @@ class View
                 }
                 else
                 {
+                    $countReplace  = 0;
                     $tabPattern = [];
                     $tabReplace = [];
-
                     // convertir le code
                     // pour ajouter des liens sur les URLs
                     // https://www.php.net/manual/fr/function.preg-replace.php
                     $tabPattern[]     = ',(https://workodin.com/[^\s]+.pro),i';
                     // bircolage: on rajoute @ pour marquer l'url comme non concernée pour le pattern suivant 
                     $tabReplace[] = '<a class="iframe" href="${1}" target="_blank" rel="noopener">@${1}</a>';
+                    $lineCode    = preg_replace($tabPattern, $tabReplace, $lineCode, -1, $countReplace);
+                    if ($countReplace > 0)
+                    {
+                        $this->curClass = "ifBox";
+                    }   
+
+                    $countReplace  = 0;
+                    $tabPattern = [];
+                    $tabReplace = [];
 
                     $tabPattern[]     = ',[^"@](https://[^\s]+),i';
                     $tabReplace[] = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
@@ -49,7 +64,7 @@ class View
                     $tabPattern[]     = ',^(https://[^\s]+),i';
                     $tabReplace[] = '<a href="${1}" target="_blank" rel="noopener">${1}</a>';
 
-                    $lineCode    = preg_replace($tabPattern, $tabReplace, $lineCode);
+                    $lineCode    = preg_replace($tabPattern, $tabReplace, $lineCode, -1, $countReplace);
                     $tabCode2[]  = $lineCode;
                 }
             }
@@ -98,10 +113,12 @@ CODEHTML;
 
             $codeLength = round(0.001 * mb_strlen($code));
 
+            $curClass = trim("l$codeLength " . $this->curClass);
+
             echo 
 <<<HTML
 
-    <article id="$uri" class="l$codeLength">
+    <article id="$uri" class="$curClass">
         <h3><a href="#$uri">$title</a></h3>
         <div class="content"><pre class="post">$code</pre></div>
         $htmlMedia
