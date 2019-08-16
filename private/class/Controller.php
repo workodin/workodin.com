@@ -43,6 +43,10 @@ class Controller
         {
             $value = $this->form->getInfo0($name, $defaultValue);
         }
+        elseif ($type == "int")
+        {
+            $value = $this->form->getInt($name, $defaultValue);
+        }
         else
         {
             $value = $this->form->getInfo($name, $defaultValue);
@@ -107,7 +111,7 @@ class Controller
         // valeur obligatoire
         if (!in_array("optional", $tabParam))
         {
-            if ($value == "")
+            if (($type != "int") && ($value == ""))
             {
                 $this->tabError[] = "($name manquant)";
             }

@@ -158,7 +158,7 @@ SQL;
     }
 
     /**
-     * 
+     * sécurité: attention aux injections SQL
      */
     function readLine ($tableName, $filterColumn="", $filterValue="", $sortColumn="id")
     {
@@ -171,7 +171,13 @@ SQL;
             $tabColumnValue[$filterColumn] = $filterValue;
         }
 
-        if ($sortColumn != "")
+        if (is_array($sortColumn))
+        {
+            // tri multiple
+            // https://www.php.net/manual/fr/function.implode.php
+            $sortOrder = "ORDER BY " . implode(", ", $sortColumn);
+        }
+        elseif ($sortColumn != "")
         {
             $sortOrder = "ORDER BY `$sortColumn` DESC";
         }

@@ -108,6 +108,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     <input id="form-category" type="text" name="category" required placeholder="catégorie">
                     <label for="form-template">template</label>
                     <input id="form-template" type="text" name="template" placeholder="template">
+                    <label for="form-priority">priority</label>
+                    <input id="form-priority" type="text" name="priority" placeholder="priority">
                     <label for="form-code" class="codePost">code</label>
                     <textarea id="form-code" name="code" class="codePost" required placeholder="votre code" rows="20" v-model="formCode"></textarea>
                     <label for="form-urlMedia">url Media</label>
@@ -134,6 +136,8 @@ php.formKey    = '<?php $form->show("formKeyPublic") ?>';
                     <input id="form-category" type="text" name="category" required placeholder="catégorie" v-model="curPost.category">
                     <label for="form-template">template</label>
                     <input id="form-template" type="text" name="template" placeholder="template" v-model="curPost.template">
+                    <label for="form-priority">priority</label>
+                    <input id="form-priority" type="text" name="priority" placeholder="priority" v-model="curPost.priority">
                     <label for="form-code" class="codePost">code</label>
                     <textarea id="form-code" name="code" class="codePost" required placeholder="votre code" rows="20" v-model="curPost.code"></textarea>
                     <label for="form-urlMedia-update">url Media ({{ curPost.urlMedia }})</label>

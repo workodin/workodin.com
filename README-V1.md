@@ -844,3 +844,17 @@ exemple:
 * Il est facilement utilisable avec du HTML, CSS et JS
 * Il est possible d'utiliser le format Markdown pour le contenu
 * Il est possible de charger le contenu Markdown à partir d'une URL
+
+## Ajout de template Adminer
+
+* Pour gérer plus efficacement la base de données
+* tout le code tient en une seule page
+* https://www.adminer.org
+* un template est maintenant disponible
+
+## Ajout de colonne priority dans Post
+
+* On a besoin de pouvoir choisir l'ordre d'affichage des Post dans une boucle
+* La colonne priority permet de donner un tri prioritaire 
+* et ensuite un deuxieme tri sur les plus récents
+* les codes CRU doivent être modifiés pour gérer cette colonne priority qui est un entier

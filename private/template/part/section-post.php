@@ -7,6 +7,6 @@
     </div>
 
     <div class="listPost row">
-<?php Site::Get("View")->showPost("category", $pageUri, "publicationDate") ?>
+<?php Site::Get("View")->showPost("category", $pageUri, [ "priority DESC", "publicationDate DESC"  ]) ?>
     </div>
 </section>

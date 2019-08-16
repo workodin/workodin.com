@@ -124,6 +124,7 @@ class FormAdmin
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique", "Post")
                             ->check("category", "text")
+                            ->check("priority", "int")
                             ->check("template", "uri", "", "optional")
                             ->check("code",     "code", "", "optional")
                             // compléter les infos manquantes
@@ -284,6 +285,7 @@ class FormAdmin
                             ->check("title",    "text")
                             ->check("uri",      "uri", "", "unique1", "Post")
                             ->check("category", "uri")
+                            ->check("priority", "int")
                             ->check("template", "uri", "", "optional")
                             ->check("code",     "code", "", "optional")
                             ->check("publicationDate", "datetime", $now)
