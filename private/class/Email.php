@@ -7,7 +7,12 @@ class Email
 {
 
     /**
-     * 
+     * Undocumented function
+     *
+     * @param [type] $title
+     * @param [type] $content
+     * @param string $to
+     * @return void
      */
     function send ($title, $content, $to="hello@workodin.com")
     {
